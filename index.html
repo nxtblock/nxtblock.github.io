@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>方块工作室 & GenGen队</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --bg: #f9f9f9;
+            --text: #333;
+            --card-bg: white;
+        }
+        
+        .dark-mode {
+            --primary: #3498db;
+            --secondary: #2c3e50;
+            --accent: #e74c3c;
+            --light: #34495e;
+            --dark: #ecf0f1;
+            --bg: #1a1a1a;
+            --text: #ecf0f1;
+            --card-bg: #2c3e50;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0;
+            background-color: var(--bg);
+            transition: all 0.3s ease;
+        }
+        
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            max-width: 1400px;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+        }
+        
+        header.hidden {
+            transform: translateY(-100%);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 25px;
+            margin: 0 5px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            font-size: 1.1em;
+        }
+        
+        nav a:hover, nav a.active {
+            background-color: var(--secondary);
+        }
+        
+        h1 {
+            color: var(--primary);
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        h2 {
+            color: var(--secondary);
+            border-left: 5px solid var(--secondary);
+            padding-left: 15px;
+            margin-top: 30px;
+        }
+        
+        h3 {
+            color: var(--primary);
+            margin-top: 20px;
+        }
+        
+        .container {
+            padding: 100px 40px 40px;
+        }
+        
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        .team-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .slogan {
+            font-style: italic;
+            color: var(--accent);
+            text-align: center;
+            margin: 25px 0;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        .members {
+            background-color: var(--light);
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        
+        .member {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .member:before {
+            content: "•";
+            color: var(--secondary);
+            position: absolute;
+            left: 10px;
+            font-weight: bold;
+        }
+        
+        .role {
+            font-weight: bold;
+            color: var(--dark);
+        }
+        
+        .nickname {
+            color: var(--accent);
+            font-style: italic;
+        }
+        
+        a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        .links {
+            margin-top: 25px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .link-item {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--light);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .link-item:hover {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        .link-item:hover a {
+            color: white;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px solid var(--light);
+            color: var(--text);
+            background-color: var(--card-bg);
+            margin-top: 50px;
+        }
+        
+        .feature-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-top: 25px;
+        }
+        
+        .feature {
+            flex: 1 1 300px;
+            background: var(--light);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .history-timeline {
+            position: relative;
+            padding-left: 40px;
+            margin: 40px 0;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-bottom: 40px;
+        }
+        
+        .timeline-item:before {
+            content: "";
+            position: absolute;
+            left: -25px;
+            top: 5px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: var(--secondary);
+            border: 3px solid var(--bg);
+        }
+        
+        .timeline-item:after {
+            content: "";
+            position: absolute;
+            left: -18px;
+            top: 20px;
+            width: 3px;
+            height: calc(100% - 20px);
+            background-color: var(--secondary);
+        }
+        
+        .timeline-item:last-child:after {
+            display: none;
+        }
+        
+        .timeline-date {
+            font-weight: bold;
+            color: var(--accent);
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+        
+        .theme-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 99;
+            transition: all 0.3s ease;
+        }
+        
+        .theme-toggle:hover {
+            background: var(--secondary);
+            transform: scale(1.1);
+        }
+        
+        .join-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+            justify-content: center;
+        }
+        
+        .join-option {
+            flex: 1 1 400px;
+            max-width: 500px;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .join-title {
+            font-size: 1.5em;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        
+        .join-button {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .join-button:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 80px 20px 20px;
+            }
+            
+            nav a {
+                padding: 8px 15px;
+                font-size: 1em;
+            }
+            
+            .team-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="main-header">
+        <nav>
+            <a href="#" class="nav-link active" data-page="block">方块工作室</a>
+            <a href="#" class="nav-link" data-page="gengen">GenGen队</a>
+            <a href="#" class="nav-link" data-page="join">加入我们</a>
+        </nav>
+    </header>
+    
+    <button class="theme-toggle" id="themeToggle">🌓</button>
+    
+    <div class="container">
+        <!-- 方块工作室页面 -->
+        <div id="block" class="page active">
+            <div class="team-card">
+                <h2>方块工作室 (Next Block Studio / GenGenDev)</h2>
+                <p>成立于2022年，由liyifan202201创立，是一个专注于为OIer服务的开发工作室。我们致力于通过技术手段解决OIer在学习、训练和竞赛中遇到的各种问题。</p>
+                
+                <div class="slogan">"为OIer服务 - 用代码改变学习体验"</div>
+                
+                <h3>发展历程</h3>
+                <div class="history-timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">2022年初</div>
+                        <p>由liyifan202201创立，最初名为"Next Block Studio"，后发展为"方块工作室"</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2023年</div>
+                        <p>团队扩充，General0826和GCSG01加入成为核心成员</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2024年</div>
+                        <p>开始开发GenGenToolBox项目，旨在为OIer提供一站式解决方案</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2025年</div>
+                        <p>团队GitHub组织"nxtblock"持续发展，项目进入稳定维护期</p>
+                    </div>
+                </div>
+                
+                <h3>核心成员</h3>
+                <div class="members">
+                    <div class="member">
+                        <span class="role">团长:</span> liyifan202201 <span class="nickname">【蒟蒻】</span>
+                        <p>工作室创始人，负责整体规划和项目管理，热爱算法和系统设计。</p>
+                    </div>
+                    <div class="member">
+                        <span class="role">管理成员:</span> General0826 <span class="nickname">【莱德队长】</span>
+                        <p>全栈开发者，GenGenToolBox核心开发者，同时是GenGen队的创始人。</p>
+                    </div>
+                    <div class="member">
+                        <span class="role">主团长:</span> GCSG01
+                        <p>工具开发专家，负责GenGenToolBox的功能实现和优化。</p>
+                    </div>
+                </div>
+                
+                <h3>旗舰产品：GenGenToolBox</h3>
+                <p><strong>GenGenToolBox</strong> 是一个为OIer开发的全能工具箱，旨在提供一站式的编程竞赛解决方案：</p>
+                
+                <div class="feature-list">
+                    <div class="feature">
+                        <h4>开发环境配置</h4>
+                        <ul>
+                            <li>一键配置VSCode竞赛环境</li>
+                            <li>自动安装常用插件和扩展</li>
+                            <li>预置竞赛常用代码模板</li>
+                        </ul>
+                    </div>
+                    <div class="feature">
+                        <h4>实用工具</h4>
+                        <ul>
+                            <li>算法可视化工具</li>
+                            <li>测试数据生成器</li>
+                            <li>代码性能分析</li>
+                        </ul>
+                    </div>
+                    <div class="feature">
+                        <h4>娱乐功能</h4>
+                        <ul>
+                            <li>一键启动Minecraft</li>
+                            <li>内置小游戏放松身心</li>
+                            <li>学习计时与番茄钟</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="links">
+                    <div class="link-item"><a href="https://github.com/nxtblock/ggtoolbox" target="_blank">GenGenToolBox GitHub</a></div>
+                    <div class="link-item"><a href="https://github.com/nxtblock" target="_blank">方块工作室 GitHub</a></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- GenGen队页面 -->
+        <div id="gengen" class="page">
+            <div class="team-card">
+                <h2>GenGen队</h2>
+                <p>成立于2024年，由General0826创立，是一个活跃在洛谷平台上的OI问题解答团队。我们以专业的知识和热情的态度，帮助OIer解决算法学习和竞赛中遇到的各种问题。</p>
+                
+                <div class="slogan">"分享知识，共同进步"</div>
+                
+                <h3>团队起源</h3>
+                <p>GenGen队的成立源于洛谷上的<a href="https://www.luogu.com.cn/discuss/870801" target="_blank">一篇讨论帖</a>。这篇帖子因其专业性和幽默感迅速走红，获得了大量OIer的关注，甚至引起了洛谷管理员的注意和互动。</p>
+                <p>随着影响力的扩大，General0826决定正式成立GenGen队，将有共同理念的OIer组织起来，更系统地帮助社区成员。</p>
+                
+                <h3>2025年现状</h3>
+                <p>截至2025年，GenGen队已经成为洛谷上最活跃的OI帮助团队之一，累计帮助解决了数千个算法问题，并建立了完善的知识库和帮助体系。</p>
+                
+                <h3>我们的工作</h3>
+                <div class="feature-list">
+                    <div class="feature">
+                        <h4>问题解答</h4>
+                        <p>在洛谷讨论区帮助解决算法问题，提供优化建议和替代解法。</p>
+                    </div>
+                    <div class="feature">
+                        <h4>经验分享</h4>
+                        <p>撰写算法学习指南和竞赛经验，帮助新手快速入门。</p>
+                    </div>
+                    <div class="feature">
+                        <h4>资源整理</h4>
+                        <p>收集整理优质学习资源和实用工具，方便OIer查找使用。</p>
+                    </div>
+                </div>
+                
+                <h3>团队文化</h3>
+                <p>GenGen队秉承"专业、友善、互助"的理念：</p>
+                <ul>
+                    <li>专业 - 确保解答的准确性和最优性</li>
+                    <li>友善 - 以平等态度对待每一位提问者</li>
+                    <li>互助 - 团队成员互相学习，共同进步</li>
+                </ul>
+                
+                <div class="links">
+                    <div class="link-item"><a href="https://www.luogu.com.cn/team/85363" target="_blank">洛谷团队主页</a></div>
+                    <div class="link-item"><a href="https://www.luogu.com.cn/discuss/870801" target="_blank">起源讨论帖</a></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 加入我们页面 -->
+        <div id="join" class="page">
+            <div class="team-card">
+                <h2>加入我们</h2>
+                <p>无论你是开发者、算法爱好者，还是热心助人的OIer，我们都欢迎你的加入！请选择你想加入的团队：</p>
+                
+                <div class="join-options">
+                    <div class="join-option">
+                        <h3 class="join-title">方块工作室</h3>
+                        <p>如果你热爱开发，想为OIer创造实用工具，欢迎加入我们的开发团队！</p>
+                        <p><strong>要求：</strong></p>
+                        <ul style="text-align: left; padding-left: 20px;">
+                            <li>熟悉至少一种编程语言</li>
+                            <li>有项目开发经验或强烈学习意愿</li>
+                            <li>能为OIer开发实用工具的热情</li>
+                        </ul>
+                        <a href="https://github.com/nxtblock" class="join-button" target="_blank">前往GitHub</a>
+                    </div>
+                    
+                    <div class="join-option">
+                        <h3 class="join-title">GenGen队</h3>
+                        <p>如果你擅长算法，乐于帮助他人解决问题，欢迎加入我们的洛谷帮助团队！</p>
+                        <p><strong>要求：</strong></p>
+                        <ul style="text-align: left; padding-left: 20px;">
+                            <li>熟悉基础算法和数据结构</li>
+                            <li>乐于助人，有耐心解答问题</li>
+                            <li>活跃的洛谷社区成员优先</li>
+                        </ul>
+                        <a href="https://www.luogu.com.cn/team/85363" class="join-button" target="_blank">前往洛谷</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>© 2022-2025 方块工作室 & GenGen队</p>
+    </footer>
+
+    <script>
+        // 导航切换
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // 更新活跃导航项
+                document.querySelectorAll('.nav-link').forEach(nav => {
+                    nav.classList.remove('active');
+                });
+                this.classList.add('active');
+                
+                // 切换页面
+                const pageId = this.getAttribute('data-page');
+                document.querySelectorAll('.page').forEach(page => {
+                    page.classList.remove('active');
+                });
+                document.getElementById(pageId).classList.add('active');
+                
+                // 滚动到顶部
+                window.scrollTo(0, 0);
+            });
+        });
+        
+        // 主题切换
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            // 保存用户偏好
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('darkMode', isDark);
+        });
+        
+        // 检查保存的主题偏好
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+        }
+        
+        // 滚动时隐藏导航栏
+        let lastScroll = 0;
+        const header = document.getElementById('main-header');
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll <= 0) {
+                header.classList.remove('hidden');
+                return;
+            }
+            
+            if (currentScroll > lastScroll && !header.classList.contains('hidden')) {
+                // 向下滚动
+                header.classList.add('hidden');
+            } else if (currentScroll < lastScroll && header.classList.contains('hidden')) {
+                // 向上滚动
+                header.classList.remove('hidden');
+            }
+            
+            lastScroll = currentScroll;
+        });
+    </script>
+</body>
+</html>
