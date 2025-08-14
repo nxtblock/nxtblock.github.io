@@ -1,590 +1,491 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>方块工作室 & GenGen队</title>
-    <style>
-        :root {
-            --primary: #2c3e50;
-            --secondary: #3498db;
-            --accent: #e74c3c;
-            --light: #ecf0f1;
-            --dark: #2c3e50;
-            --bg: #f9f9f9;
-            --text: #333;
-            --card-bg: white;
-        }
-        
-        .dark-mode {
-            --primary: #3498db;
-            --secondary: #2c3e50;
-            --accent: #e74c3c;
-            --light: #34495e;
-            --dark: #ecf0f1;
-            --bg: #1a1a1a;
-            --text: #ecf0f1;
-            --card-bg: #2c3e50;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text);
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0;
-            background-color: var(--bg);
-            transition: all 0.3s ease;
-        }
-        
-        header {
-            background-color: var(--primary);
-            color: white;
-            padding: 15px 0;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            max-width: 1400px;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-            transform: translateY(0);
-            transition: transform 0.3s ease;
-        }
-        
-        header.hidden {
-            transform: translateY(-100%);
-        }
-        
-        nav {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 10px 25px;
-            margin: 0 5px;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-            font-size: 1.1em;
-        }
-        
-        nav a:hover, nav a.active {
-            background-color: var(--secondary);
-        }
-        
-        h1 {
-            color: var(--primary);
-            font-size: 2.5em;
-            margin-bottom: 10px;
-        }
-        
-        h2 {
-            color: var(--secondary);
-            border-left: 5px solid var(--secondary);
-            padding-left: 15px;
-            margin-top: 30px;
-        }
-        
-        h3 {
-            color: var(--primary);
-            margin-top: 20px;
-        }
-        
-        .container {
-            padding: 100px 40px 40px;
-        }
-        
-        .page {
-            display: none;
-            animation: fadeIn 0.5s ease;
-        }
-        
-        .page.active {
-            display: block;
-        }
-        
-        .team-card {
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin-bottom: 40px;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .slogan {
-            font-style: italic;
-            color: var(--accent);
-            text-align: center;
-            margin: 25px 0;
-            font-weight: bold;
-            font-size: 1.2em;
-        }
-        
-        .members {
-            background-color: var(--light);
-            padding: 20px;
-            border-radius: 5px;
-            margin-top: 20px;
-        }
-        
-        .member {
-            margin-bottom: 10px;
-            padding-left: 25px;
-            position: relative;
-        }
-        
-        .member:before {
-            content: "•";
-            color: var(--secondary);
-            position: absolute;
-            left: 10px;
-            font-weight: bold;
-        }
-        
-        .role {
-            font-weight: bold;
-            color: var(--dark);
-        }
-        
-        .nickname {
-            color: var(--accent);
-            font-style: italic;
-        }
-        
-        a {
-            color: var(--secondary);
-            text-decoration: none;
-            font-weight: bold;
-        }
-        
-        a:hover {
-            text-decoration: underline;
-        }
-        
-        .links {
-            margin-top: 25px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-        
-        .link-item {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: var(--light);
-            border-radius: 5px;
-            transition: all 0.3s ease;
-        }
-        
-        .link-item:hover {
-            background-color: var(--secondary);
-            color: white;
-        }
-        
-        .link-item:hover a {
-            color: white;
-        }
-        
-        footer {
-            text-align: center;
-            padding: 30px 0;
-            border-top: 1px solid var(--light);
-            color: var(--text);
-            background-color: var(--card-bg);
-            margin-top: 50px;
-        }
-        
-        .feature-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 25px;
-            margin-top: 25px;
-        }
-        
-        .feature {
-            flex: 1 1 300px;
-            background: var(--light);
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        .history-timeline {
-            position: relative;
-            padding-left: 40px;
-            margin: 40px 0;
-        }
-        
-        .timeline-item {
-            position: relative;
-            padding-bottom: 40px;
-        }
-        
-        .timeline-item:before {
-            content: "";
-            position: absolute;
-            left: -25px;
-            top: 5px;
-            width: 15px;
-            height: 15px;
-            border-radius: 50%;
-            background-color: var(--secondary);
-            border: 3px solid var(--bg);
-        }
-        
-        .timeline-item:after {
-            content: "";
-            position: absolute;
-            left: -18px;
-            top: 20px;
-            width: 3px;
-            height: calc(100% - 20px);
-            background-color: var(--secondary);
-        }
-        
-        .timeline-item:last-child:after {
-            display: none;
-        }
-        
-        .timeline-date {
-            font-weight: bold;
-            color: var(--accent);
-            font-size: 1.1em;
-            margin-bottom: 5px;
-        }
-        
-        .theme-toggle {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: var(--primary);
-            color: white;
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-            z-index: 99;
-            transition: all 0.3s ease;
-        }
-        
-        .theme-toggle:hover {
-            background: var(--secondary);
-            transform: scale(1.1);
-        }
-        
-        .join-options {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            margin-top: 40px;
-            justify-content: center;
-        }
-        
-        .join-option {
-            flex: 1 1 400px;
-            max-width: 500px;
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-        
-        .join-title {
-            font-size: 1.5em;
-            color: var(--secondary);
-            margin-bottom: 20px;
-        }
-        
-        .join-button {
-            display: inline-block;
-            background: var(--secondary);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            margin-top: 20px;
-            transition: all 0.3s ease;
-        }
-        
-        .join-button:hover {
-            background: var(--primary);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        @media (max-width: 768px) {
-            .container {
-                padding: 80px 20px 20px;
-            }
-            
-            nav a {
-                padding: 8px 15px;
-                font-size: 1em;
-            }
-            
-            .team-card {
-                padding: 20px;
-            }
-        }
-    </style>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='128' height='128'%3E%3Crect rx='20' width='128' height='128' fill='url(%23g)'/%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%2360a5fa'/%3E%3Cstop offset='0.5' stop-color='%2334d399'/%3E%3Cstop offset='1' stop-color='%237c3aed'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ctext x='34' y='84' font-size='72' fill='%230b1020' font-weight='bold'%3EG%3C/text%3E%3C/svg%3E" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>GenGen 团队 | 官方站</title>
+  <meta name="description" content="GenGen 团队：用开源点亮 OI 工具生态。了解我们的项目、成员与支持方式。" />
+  <meta name="theme-color" content="#0f172a" />
+  <!--
+    GenGen 单文件多页面站点
+    - 现代、简洁、响应式
+    - 纯 HTML/CSS/JS
+    - 锚点导航 + 平滑滚动 + ScrollSpy
+    - 所有图片圆角渲染
+  -->
+  <style>
+    /* ========== 基础变量与重置 ========== */
+    :root{
+      --bg: #0b1020;              /* 背景（深色） */
+      --panel: #0f172a;           /* 面板底色 */
+      --card: #111827;            /* 卡片底色 */
+      --text: #e5e7eb;            /* 主文本 */
+      --muted: #a6adbb;           /* 次级文本 */
+      --brand: #60a5fa;           /* 品牌高亮 */
+      --brand-2: #34d399;         /* 辅助高亮 */
+      --danger: #ef4444;
+
+      --radius: 14px;
+      --radius-sm: 10px;
+      --shadow: 0 10px 30px rgba(0,0,0,.25);
+      --w: 1120px;
+      --nav-h: 64px;
+      --gap: 20px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font: 16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,
+            "PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",
+            "Helvetica Neue",Arial,sans-serif;
+      color:var(--text);
+      background: radial-gradient(1200px 600px at 10% -10%, #1a2240 0%, transparent 60%) ,
+                  radial-gradient(900px 400px at 90% -20%, #0e3448 0%, transparent 60%) ,
+                  var(--bg);
+    }
+    img{max-width:100%;height:auto;display:block}
+
+    /* ========== 统一圆角渲染（所有用户/项目图片） ========== */
+    img, .rounded { border-radius: var(--radius-sm); }
+
+    /* ========== 布局与容器 ========== */
+    .container{max-width:var(--w);padding:0 20px;margin:0 auto}
+    section{padding:72px 0; scroll-margin-top: calc(var(--nav-h) + 12px);}
+    .muted{color:var(--muted)}
+    .brand{color:var(--brand)}
+    .accent{color:var(--brand-2)}
+    .btn{
+      display:inline-flex;align-items:center;gap:.5rem;
+      background:linear-gradient(135deg,var(--brand),#7c3aed);
+      color:#fff;border:none;border-radius:12px;padding:12px 16px;
+      font-weight:600;text-decoration:none;box-shadow:var(--shadow);
+      transition:transform .15s ease, filter .2s ease;
+    }
+    .btn:hover{transform:translateY(-1px);filter:saturate(1.1)}
+    .btn.ghost{
+      background:transparent;border:1px solid #32405b;color:var(--text);
+      box-shadow:none;
+    }
+    .pill{
+      display:inline-block;padding:4px 10px;border-radius:999px;
+      background:#16233f;color:#b7c3d7;font-size:12px;border:1px solid #223359;
+    }
+
+    /* ========== 顶部导航 ========== */
+    .site-header{
+      position:sticky;top:0;z-index:20;height:var(--nav-h);
+      backdrop-filter:saturate(1.2) blur(10px);
+      background: color-mix(in oklab, var(--panel) 90%, transparent);
+      border-bottom:1px solid #1f2937;
+    }
+    .nav{
+      height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;
+      gap:16px;
+    }
+    .brandmark{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text)}
+    .brandmark .logo{
+      width:28px;height:28px;border-radius:8px;display:grid;place-items:center;
+      background:conic-gradient(from 210deg, #60a5fa, #34d399, #7c3aed, #60a5fa);
+      box-shadow:0 4px 14px rgba(96,165,250,.35);
+      font-weight:900;color:#0b1020;font-size:14px;
+    }
+    .brandmark .title{font-weight:800;letter-spacing:.2px}
+    .nav-links{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+    .nav-links a{
+      color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:10px;
+      transition:color .2s ease, background .2s ease;
+    }
+    .nav-links a.active, .nav-links a:hover{color:#fff;background:#1a243a}
+    .menu-btn{display:none}
+
+    /* ========== 区域（首页） ========== */
+    .hero{
+      display:grid;gap:28px;align-items:center;
+      grid-template-columns: 1.25fr 1fr;
+    }
+    .hero h1{margin:0 0 10px;font-size:40px;line-height:1.15}
+    .hero p{margin:0 0 18px;color:#cdd5e1}
+    .hero .cta{display:flex;gap:12px;flex-wrap:wrap}
+    .hero-visual{
+      padding:16px;background:linear-gradient(180deg,#0f1b34,#0b1326);
+      border:1px solid #1f2d4a;border-radius:var(--radius);box-shadow:var(--shadow);
+    }
+    .hero-visual img{width:100%;height:auto}
+
+    /* ========== 卡片与网格 ========== */
+    .grid{
+      display:grid;gap:18px;
+      grid-template-columns: repeat(12, 1fr);
+    }
+    .col-12{grid-column: span 12}
+    .col-6{grid-column: span 6}
+    .col-4{grid-column: span 4}
+    .card{
+      background:linear-gradient(180deg,#0e162b,#0b1326);
+      border:1px solid #1f2d4a;border-radius:var(--radius);padding:18px;
+      box-shadow: var(--shadow);
+    }
+    .card h3{margin:0 0 6px}
+    .card .meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+
+    /* ========== 团队头像卡片 ========== */
+    .member{
+      display:flex;gap:14px;align-items:center
+    }
+    .avatar{
+      width:64px;height:64px;flex:0 0 auto;border-radius:12px;overflow:hidden;
+      border:1px solid #1f2d4a;background:#0d1324;
+    }
+    .avatar img{width:100%;height:100%;object-fit:cover}
+
+    /* ========== 底部与杂项 ========== */
+    footer{padding:28px 0;color:#9da7bb;border-top:1px solid #1f2937;margin-top:20px}
+
+    /* ========== 响应式 ========== */
+    @media (max-width: 960px){
+      .hero{grid-template-columns: 1fr}
+      .col-6{grid-column: span 12}
+      .col-4{grid-column: span 12}
+    }
+    @media (max-width: 720px){
+      .nav{gap:8px}
+      .menu-btn{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;background:#1a243a;border:1px solid #25324a;color:#cdd5e1}
+      .nav-links{display:none;position:absolute;left:0;right:0;top:var(--nav-h);padding:10px 20px;background:#0f172a;border-bottom:1px solid #1f2937}
+      .nav-links.show{display:flex}
+      .hero h1{font-size:32px}
+    }
+
+    /* ========== 小动画 ========== */
+    .fade-in{opacity:0;transform:translateY(6px);animation:fade .6s ease both}
+    @keyframes fade{to{opacity:1;transform:none}}
+  </style>
 </head>
 <body>
-    <header id="main-header">
-        <nav>
-            <a href="#" class="nav-link active" data-page="block">方块工作室</a>
-            <a href="#" class="nav-link" data-page="gengen">GenGen队</a>
-            <a href="#" class="nav-link" data-page="join">加入我们</a>
-        </nav>
-    </header>
-    
-    <button class="theme-toggle" id="themeToggle">🌓</button>
-    
-    <div class="container">
-        <!-- 方块工作室页面 -->
-        <div id="block" class="page active">
-            <div class="team-card">
-                <h2>方块工作室 (Next Block Studio / GenGenDev)</h2>
-                <p>成立于2022年，由liyifan202201创立，是一个专注于为OIer服务的开发工作室。我们致力于通过技术手段解决OIer在学习、训练和竞赛中遇到的各种问题。</p>
-                
-                <div class="slogan">"为OIer服务 - 用代码改变学习体验"</div>
-                
-                <h3>发展历程</h3>
-                <div class="history-timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-date">2022年初</div>
-                        <p>由liyifan202201创立，最初名为"Next Block Studio"，后发展为"方块工作室"</p>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">2023年</div>
-                        <p>团队扩充，General0826和GCSG01加入成为核心成员</p>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">2024年</div>
-                        <p>开始开发GenGenToolBox项目，旨在为OIer提供一站式解决方案</p>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">2025年</div>
-                        <p>团队GitHub组织"nxtblock"持续发展，项目进入稳定维护期</p>
-                    </div>
-                </div>
-                
-                <h3>核心成员</h3>
-                <div class="members">
-                    <div class="member">
-                        <span class="role">团长:</span> liyifan202201 <span class="nickname">【蒟蒻】</span>
-                        <p>工作室创始人，负责整体规划和项目管理，热爱算法和系统设计。</p>
-                    </div>
-                    <div class="member">
-                        <span class="role">管理成员:</span> General0826 <span class="nickname">【莱德队长】</span>
-                        <p>全栈开发者，GenGenToolBox核心开发者，同时是GenGen队的创始人。</p>
-                    </div>
-                    <div class="member">
-                        <span class="role">主团长:</span> GCSG01
-                        <p>工具开发专家，负责GenGenToolBox的功能实现和优化。</p>
-                    </div>
-                </div>
-                
-                <h3>旗舰产品：GenGenToolBox</h3>
-                <p><strong>GenGenToolBox</strong> 是一个为OIer开发的全能工具箱，旨在提供一站式的编程竞赛解决方案：</p>
-                
-                <div class="feature-list">
-                    <div class="feature">
-                        <h4>开发环境配置</h4>
-                        <ul>
-                            <li>一键配置VSCode竞赛环境</li>
-                            <li>自动安装常用插件和扩展</li>
-                            <li>预置竞赛常用代码模板</li>
-                        </ul>
-                    </div>
-                    <div class="feature">
-                        <h4>实用工具</h4>
-                        <ul>
-                            <li>算法可视化工具</li>
-                            <li>测试数据生成器</li>
-                            <li>代码性能分析</li>
-                        </ul>
-                    </div>
-                    <div class="feature">
-                        <h4>娱乐功能</h4>
-                        <ul>
-                            <li>一键启动Minecraft</li>
-                            <li>内置小游戏放松身心</li>
-                            <li>学习计时与番茄钟</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="links">
-                    <div class="link-item"><a href="https://github.com/nxtblock/ggtoolbox" target="_blank">GenGenToolBox GitHub</a></div>
-                    <div class="link-item"><a href="https://github.com/nxtblock" target="_blank">方块工作室 GitHub</a></div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- GenGen队页面 -->
-        <div id="gengen" class="page">
-            <div class="team-card">
-                <h2>GenGen队</h2>
-                <p>成立于2024年，由General0826创立，是一个活跃在洛谷平台上的OI问题解答团队。我们以专业的知识和热情的态度，帮助OIer解决算法学习和竞赛中遇到的各种问题。</p>
-                
-                <div class="slogan">"分享知识，共同进步"</div>
-                
-                <h3>团队起源</h3>
-                <p>GenGen队的成立源于洛谷上的<a href="https://www.luogu.com.cn/discuss/870801" target="_blank">一篇讨论帖</a>。这篇帖子因其专业性和幽默感迅速走红，获得了大量OIer的关注，甚至引起了洛谷管理员的注意和互动。</p>
-                <p>随着影响力的扩大，General0826决定正式成立GenGen队，将有共同理念的OIer组织起来，更系统地帮助社区成员。</p>
-                
-                <h3>2025年现状</h3>
-                <p>截至2025年，GenGen队已经成为洛谷上最活跃的OI帮助团队之一，累计帮助解决了数千个算法问题，并建立了完善的知识库和帮助体系。</p>
-                
-                <h3>我们的工作</h3>
-                <div class="feature-list">
-                    <div class="feature">
-                        <h4>问题解答</h4>
-                        <p>在洛谷讨论区帮助解决算法问题，提供优化建议和替代解法。</p>
-                    </div>
-                    <div class="feature">
-                        <h4>经验分享</h4>
-                        <p>撰写算法学习指南和竞赛经验，帮助新手快速入门。</p>
-                    </div>
-                    <div class="feature">
-                        <h4>资源整理</h4>
-                        <p>收集整理优质学习资源和实用工具，方便OIer查找使用。</p>
-                    </div>
-                </div>
-                
-                <h3>团队文化</h3>
-                <p>GenGen队秉承"专业、友善、互助"的理念：</p>
-                <ul>
-                    <li>专业 - 确保解答的准确性和最优性</li>
-                    <li>友善 - 以平等态度对待每一位提问者</li>
-                    <li>互助 - 团队成员互相学习，共同进步</li>
-                </ul>
-                
-                <div class="links">
-                    <div class="link-item"><a href="https://www.luogu.com.cn/team/85363" target="_blank">洛谷团队主页</a></div>
-                    <div class="link-item"><a href="https://www.luogu.com.cn/discuss/870801" target="_blank">起源讨论帖</a></div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- 加入我们页面 -->
-        <div id="join" class="page">
-            <div class="team-card">
-                <h2>加入我们</h2>
-                <p>无论你是开发者、算法爱好者，还是热心助人的OIer，我们都欢迎你的加入！请选择你想加入的团队：</p>
-                
-                <div class="join-options">
-                    <div class="join-option">
-                        <h3 class="join-title">方块工作室</h3>
-                        <p>如果你热爱开发，想为OIer创造实用工具，欢迎加入我们的开发团队！</p>
-                        <p><strong>要求：</strong></p>
-                        <ul style="text-align: left; padding-left: 20px;">
-                            <li>熟悉至少一种编程语言</li>
-                            <li>有项目开发经验或强烈学习意愿</li>
-                            <li>能为OIer开发实用工具的热情</li>
-                        </ul>
-                        <a href="https://github.com/nxtblock" class="join-button" target="_blank">前往GitHub</a>
-                    </div>
-                    
-                    <div class="join-option">
-                        <h3 class="join-title">GenGen队</h3>
-                        <p>如果你擅长算法，乐于帮助他人解决问题，欢迎加入我们的洛谷帮助团队！</p>
-                        <p><strong>要求：</strong></p>
-                        <ul style="text-align: left; padding-left: 20px;">
-                            <li>熟悉基础算法和数据结构</li>
-                            <li>乐于助人，有耐心解答问题</li>
-                            <li>活跃的洛谷社区成员优先</li>
-                        </ul>
-                        <a href="https://www.luogu.com.cn/team/85363" class="join-button" target="_blank">前往洛谷</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <footer>
-        <p>© 2022-2025 方块工作室 & GenGen队</p>
-    </footer>
+  <a href="#home" class="pill" style="position:absolute;left:-999px;top:0">跳至主要内容</a>
 
-    <script>
-        // 导航切换
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                // 更新活跃导航项
-                document.querySelectorAll('.nav-link').forEach(nav => {
-                    nav.classList.remove('active');
-                });
-                this.classList.add('active');
-                
-                // 切换页面
-                const pageId = this.getAttribute('data-page');
-                document.querySelectorAll('.page').forEach(page => {
-                    page.classList.remove('active');
-                });
-                document.getElementById(pageId).classList.add('active');
-                
-                // 滚动到顶部
-                window.scrollTo(0, 0);
-            });
-        });
-        
-        // 主题切换
-        const themeToggle = document.getElementById('themeToggle');
-        themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            // 保存用户偏好
-            const isDark = document.body.classList.contains('dark-mode');
-            localStorage.setItem('darkMode', isDark);
-        });
-        
-        // 检查保存的主题偏好
-        if (localStorage.getItem('darkMode') === 'true') {
-            document.body.classList.add('dark-mode');
-        }
-        
-        // 滚动时隐藏导航栏
-        let lastScroll = 0;
-        const header = document.getElementById('main-header');
-        
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-            
-            if (currentScroll <= 0) {
-                header.classList.remove('hidden');
-                return;
-            }
-            
-            if (currentScroll > lastScroll && !header.classList.contains('hidden')) {
-                // 向下滚动
-                header.classList.add('hidden');
-            } else if (currentScroll < lastScroll && header.classList.contains('hidden')) {
-                // 向上滚动
-                header.classList.remove('hidden');
-            }
-            
-            lastScroll = currentScroll;
-        });
-    </script>
+  <!-- 顶部导航 -->
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brandmark" href="#home" aria-label="返回首页">
+        <span class="logo">G</span>
+        <span class="title">GenGen 团队</span>
+      </a>
+
+      <button class="menu-btn" id="menuBtn" aria-label="打开菜单">☰</button>
+
+      <nav class="nav-links" id="navLinks" aria-label="主导航">
+        <a href="#home">首页</a>
+        <a href="#projects">项目</a>
+        <a href="#team">团队</a>
+        <a href="#support">支持我们</a>
+        <a href="#links">链接</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 首页 -->
+  <section id="home">
+    <div class="container hero">
+      <div class="fade-in" style="animation-delay:.05s">
+        <div class="pill">用开源点亮 OI 工具生态</div>
+        <h1>你好，我们是 <span class="brand">GenGen</span> 团队</h1>
+        <p>一支由 OIer 与开发者组成的小团队，利用休息时间打造顺手的工具：从桌面工具箱到在线脚本，专注简洁、稳定与可扩展。</p>
+        <ul class="muted" style="list-style:none;padding:0;margin:14px 0;display:grid;gap:6px">
+          <li>— GenGen ToolBox：基于 C++/raylib 的模块化桌面工具箱</li>
+          <li>— GenGen CF RMJ：在洛谷平台直接提交 CF 题目的油猴脚本</li>
+        </ul>
+        <div class="cta">
+          <a class="btn" href="#projects">浏览项目</a>
+          <a class="btn ghost" href="#support">支持我们</a>
+        </div>
+        <p class="muted" style="margin-top:10px">Star、分享与赞赏，都是推动我们前行的燃料。</p>
+      </div>
+      <div class="hero-visual fade-in" style="animation-delay:.15s">
+        <!-- 团队吉祥物 General0826 -->
+        <img
+          src="https://cdn.luogu.com.cn/upload/image_hosting/7effselq.png"
+          alt="GenGen 团队吉祥物 General0826"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- 项目 -->
+  <section id="projects">
+    <div class="container">
+      <h2 style="margin:0 0 14px">项目介绍</h2>
+      <p class="muted" style="margin:0 0 18px">模块化、一站式、面向真实场景的工具集。</p>
+
+      <div class="grid">
+        <!-- GenGen ToolBox -->
+        <article class="card col-6 fade-in" style="animation-delay:.05s">
+          <div class="meta">
+            <span class="pill">C++</span>
+            <span class="pill">raylib</span>
+            <span class="pill">桌面应用</span>
+            <span class="pill">模块化</span>
+          </div>
+          <h3>GenGen ToolBox</h3>
+          <p>基于 raylib、使用 C++ 开发，面向 OIer 的桌面工具箱。集成导航、签到、MC 启动、脚本市场等功能，以模块化设计提供一站式服务，便于扩展与维护。</p>
+          <ul class="muted" style="margin:10px 0 14px">
+            <li><strong>模块化：</strong>按需启用与组合功能模块</li>
+            <li><strong>一站式：</strong>从日常打卡到工具启动，集中管理</li>
+            <li><strong>跨平台潜力：</strong>基于 raylib 图形层，界面轻量</li>
+          </ul>
+          <div class="rounded" style="overflow:hidden;border:1px solid #223359">
+            <img
+              src="https://cdn.luogu.com.cn/upload/image_hosting/ofpwdjv8.png"
+              alt="GenGen ToolBox 截图"
+              loading="lazy"
+            />
+          </div>
+          <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+            <a class="btn" href="https://github.com/nxtblock/ggtoolbox" target="_blank" rel="noopener">GitHub 获取</a>
+            <span class="pill">MIT License</span>
+          </div>
+        </article>
+
+        <!-- GenGen CF RMJ -->
+        <article class="card col-6 fade-in" style="animation-delay:.15s">
+          <div class="meta">
+            <span class="pill">油猴脚本</span>
+            <span class="pill">Luogu × Codeforces</span>
+            <span class="pill">Edge + 暴力猴推荐</span>
+          </div>
+          <h3>GenGen CF RMJ</h3>
+          <p>用于在洛谷平台直接提交 Codeforces 题目的脚本。减少页面切换与手动粘贴操作，提升做题流畅度。</p>
+          <ul class="muted" style="margin:10px 0 14px">
+            <li><strong>使用前提：</strong>拥有并登录 CF 账号</li>
+            <li><strong>环境建议：</strong>安装暴力猴/篡改猴，推荐 Edge + 暴力猴</li>
+            <li><strong>安装指南：</strong>获取最新 <code>.user.js</code> 脚本并允许管理器接管</li>
+          </ul>
+          <div class="rounded" style="overflow:hidden;border:1px solid #223359">
+            <img
+              src="https://cdn.luogu.com.cn/upload/image_hosting/safff5jk.png"
+              alt="GenGen CF RMJ 使用界面示意图"
+              loading="lazy"
+            />
+          </div>
+          <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+            <a class="btn" href="https://openuserjs.org/scripts/liyifan202201outlook.com/GenGen_CF_RMJ" target="_blank" rel="noopener">下载/安装指引</a>
+            <span class="pill">MIT License</span>
+          </div>
+          <details style="margin-top:10px">
+            <summary class="muted">快速安装步骤</summary>
+            <ol style="margin:8px 0 0 18px">
+              <li>在浏览器安装脚本管理器（推荐 Edge 安装 暴力猴）。</li>
+              <li>访问上方 GitHub 链接，找到 CF RMJ 的最新 <code>.user.js</code>。</li>
+              <li>点击脚本文件，管理器将提示安装；确认后在洛谷站点即可生效。</li>
+              <li>确保已登录 Codeforces 账号，否则提交会失败。</li>
+            </ol>
+          </details>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 团队 -->
+  <section id="team">
+    <div class="container">
+      <h2 style="margin:0 0 14px">团队成员</h2>
+      <p class="muted" style="margin:0 0 18px">小而专注：开发与后勤协作，让工具更可靠。</p>
+
+      <!-- 吉祥物 -->
+      <div class="card fade-in" style="animation-delay:.05s">
+        <div class="member">
+          <div class="avatar">
+            <img src="https://cdn.luogu.com.cn/upload/usericon/1351126.png" alt="General0826 头像" loading="lazy" />
+          </div>
+          <div>
+            <strong>吉祥物：</strong>General0826
+            <div class="muted">团队形象代言，GenGen队创立者。</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 开发组 -->
+      <div class="grid" style="margin-top:16px">
+        <div class="col-12">
+          <div class="pill">开发组（2 人）</div>
+          <p class="muted" style="margin:8px 0 12px">职责：项目架构、功能开发、性能优化与发布流程。</p>
+        </div>
+
+        <div class="card col-6 fade-in" style="animation-delay:.1s">
+          <div class="member">
+            <div class="avatar">
+              <img src="https://cdn.luogu.com.cn/upload/usericon/661094.png" alt="liyifan202201 头像" loading="lazy" />
+            </div>
+            <div>
+              <strong>liyifan202201</strong>
+              <div class="muted">核心开发 · C++/脚本 · 模块化设计</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card col-6 fade-in" style="animation-delay:.15s">
+          <div class="member">
+            <div class="avatar">
+              <img src="https://cdn.luogu.com.cn/upload/usericon/1032267.png" alt="GCSG01 头像" loading="lazy" />
+            </div>
+            <div>
+              <strong>GCSG01</strong>
+              <div class="muted">核心开发 · UI/交互 · 自动化与发布</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 后勤组 -->
+      <div class="grid" style="margin-top:12px">
+        <div class="col-12">
+          <div class="pill">后勤组（1 人）</div>
+          <p class="muted" style="margin:8px 0 12px">职责：运营支持、沟通协同、内容与用户反馈收集。</p>
+        </div>
+
+        <div class="card col-6 fade-in" style="animation-delay:.2s">
+          <div class="member">
+            <div class="avatar">
+              <img src="https://cdn.luogu.com.cn/upload/usericon/697932.png" alt="Gcend 头像" loading="lazy" />
+            </div>
+            <div>
+              <strong>Gcend</strong>
+              <div class="muted">后勤支持 · 文档与社区运营</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 支持我们 -->
+  <section id="support">
+    <div class="container">
+      <h2 style="margin:0 0 14px">支持我们</h2>
+      <p class="muted" style="margin:0 0 12px">
+        我们在课业之余抽空开发与维护开源项目。你的支持能帮助我们覆盖基础成本、持续打磨体验。
+      </p>
+      <div class="grid">
+        <div class="col-6">
+          <div class="card fade-in" style="animation-delay:.05s">
+            <h3 style="margin:0 0 8px">赞赏通道</h3>
+            <p class="muted" style="margin:0 0 10px">扫码赞赏或保存图片，感谢你的每一份支持。</p>
+            <div class="rounded" style="overflow:hidden;border:1px solid #223359;max-width:320px">
+              <img
+                src="https://cdn.luogu.com.cn/upload/image_hosting/7uzglkak.png"
+                alt="GenGen 队赞赏码"
+                loading="lazy"
+              />
+            </div>
+            <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+              <a class="btn" href="https://cdn.luogu.com.cn/upload/image_hosting/7uzglkak.png" target="_blank" rel="noopener">打开大图</a>
+              <a class="btn ghost" href="#links">更多链接</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="card fade-in" style="animation-delay:.15s">
+            <h3 style="margin:0 0 8px">你还能这样帮助</h3>
+            <ul class="muted" style="margin:6px 0 0">
+              <li><strong>Star/Watch：</strong>关注 GitHub 仓库，第一时间获得更新</li>
+              <li><strong>反馈建议：</strong>提交 Issue 共享想法与场景</li>
+              <li><strong>传播分享：</strong>推荐给身边的 OIer 与同学</li>
+              <li><strong>贡献代码：</strong>欢迎 PR 与脚本/模块扩展</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 外部链接 -->
+  <section id="links">
+    <div class="container">
+      <h2 style="margin:0 0 14px">链接</h2>
+      <div class="grid">
+        <div class="col-6">
+          <div class="card fade-in" style="animation-delay:.05s">
+            <h3 style="margin:0 0 8px">团队与项目</h3>
+            <ul style="margin:0;padding-left:18px">
+              <li><strong>GitHub 组织：</strong><a class="brand" href="https://github.com/nxtblock" target="_blank" rel="noopener">https://github.com/nxtblock</a></li>
+              <li><strong>洛谷团队主页：</strong><a class="brand" href="https://www.luogu.com.cn/team/111044" target="_blank" rel="noopener">https://www.luogu.com.cn/team/111044</a> <span class="muted">（可能需要登录）</span></li>
+            </ul>
+            <p class="muted" style="margin:12px 0 0">提示：所有项目均使用 MIT 协议。</p>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="card fade-in" style="animation-delay:.1s">
+            <h3 style="margin:0 0 8px">快速到达</h3>
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <a class="btn" href="#projects">查看项目</a>
+              <a class="btn ghost" href="#support">去赞赏</a>
+            </div>
+            <p class="muted" style="margin:12px 0 0">遇到问题？开个 Issue 或在洛谷团队留言即可。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer>
+    <div class="container" style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between">
+      <div>© <span id="y"></span> GenGen Team · MIT</div>
+      <div class="muted">Made with focus, in spare time.</div>
+    </div>
+  </footer>
+
+  <script>
+    // 年份
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // 移动端菜单开关
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    menuBtn?.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+    // 点击导航后关闭菜单（移动端）
+    navLinks.querySelectorAll('a').forEach(a=>{
+      a.addEventListener('click', ()=> navLinks.classList.remove('show'));
+    });
+
+    // ScrollSpy：滚动高亮当前导航项
+    const links = Array.from(document.querySelectorAll('.nav-links a'));
+    const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+
+    const setActive = (id) => {
+      links.forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + id);
+      });
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter(e => e.isIntersecting)
+        .sort((a,b) => b.intersectionRatio - a.intersectionRatio);
+      if (visible[0]) setActive(visible[0].target.id);
+    }, { rootMargin: "-40% 0px -50% 0px", threshold: [0.1, 0.25, 0.5] });
+
+    sections.forEach(sec => observer.observe(sec));
+
+    // 可选：锚点跳转微调（兼容部分浏览器的滚动偏移）
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', (e)=>{
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if(!el) return;
+        e.preventDefault();
+        const top = el.getBoundingClientRect().top + window.scrollY - (parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) + 8);
+        window.scrollTo({ top, behavior: 'smooth' });
+        history.replaceState(null, '', '#' + id);
+      })
+    });
+  </script>
 </body>
 </html>
