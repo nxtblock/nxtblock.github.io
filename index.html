@@ -1,230 +1,23 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='128' height='128'%3E%3Crect rx='20' width='128' height='128' fill='url(%23g)'/%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%2360a5fa'/%3E%3Cstop offset='0.5' stop-color='%2334d399'/%3E%3Cstop offset='1' stop-color='%237c3aed'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ctext x='34' y='84' font-size='72' fill='%230b1020' font-weight='bold'%3EG%3C/text%3E%3C/svg%3E" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='128' height='128'%3E%3Crect rx='20' width='128' height='128' fill='url(%23g)'/%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%2360a5fa'/%3E%3Cstop offset='0.5' stop-color='%2334d399'/%3E%3Cstop offset='1' stop-color='%237c3aed'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ctext x='34' y='84' font-size='72' fill='%230b1020' font-weight='bold'%3EG%3C/text%3E%3C/svg%3E" />
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <title>GenGen 团队 | 官方站</title>
   <meta name="description" content="GenGen 团队：用开源点亮 OI 工具生态。了解我们的项目、成员与支持方式。" />
   <meta name="theme-color" content="#0f172a" />
-  <!--
-    GenGen 单文件多页面站点
-    - 现代、简洁、响应式
-    - 纯 HTML/CSS/JS
-    - 锚点导航 + 平滑滚动 + ScrollSpy
-    - 所有图片圆角渲染
-  -->
-  <style>
-    /* ========== 基础变量与重置 ========== */
-    :root{
-      --bg: #0b1020;              /* 背景（深色） */
-      --panel: #0f172a;           /* 面板底色 */
-      --card: #111827;            /* 卡片底色 */
-      --text: #e5e7eb;            /* 主文本 */
-      --muted: #a6adbb;           /* 次级文本 */
-      --brand: #60a5fa;           /* 品牌高亮 */
-      --brand-2: #34d399;         /* 辅助高亮 */
-      --danger: #ef4444;
-
-      --radius: 14px;
-      --radius-sm: 10px;
-      --shadow: 0 10px 30px rgba(0,0,0,.25);
-      --w: 1120px;
-      --nav-h: 64px;
-      --gap: 20px;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font: 16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,
-            "PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",
-            "Helvetica Neue",Arial,sans-serif;
-      color:var(--text);
-      background: radial-gradient(1200px 600px at 10% -10%, #1a2240 0%, transparent 60%) ,
-                  radial-gradient(900px 400px at 90% -20%, #0e3448 0%, transparent 60%) ,
-                  var(--bg);
-      background-attachment: fixed;
-    }
-    img{max-width:100%;height:auto;display:block}
-
-    /* ========== 统一圆角渲染（所有用户/项目图片） ========== */
-    img, .rounded { border-radius: var(--radius-sm); }
-
-    /* ========== 布局与容器 ========== */
-    .container{max-width:var(--w);padding:0 20px;margin:0 auto}
-    section{padding:72px 0; scroll-margin-top: calc(var(--nav-h) + 12px);}
-    .muted{color:var(--muted)}
-    .brand{color:var(--brand)}
-    .accent{color:var(--brand-2)}
-    .btn{
-      display:inline-flex;align-items:center;gap:.5rem;
-      background:linear-gradient(135deg,var(--brand),#7c3aed);
-      color:#fff;border:none;border-radius:12px;padding:12px 16px;
-      font-weight:600;text-decoration:none;box-shadow:var(--shadow);
-      transition:transform .15s ease, filter .2s ease;
-    }
-    .btn:hover{transform:translateY(-1px);filter:saturate(1.1)}
-    .btn.ghost{
-      background:transparent;border:1px solid #32405b;color:var(--text);
-      box-shadow:none;
-    }
-    .pill{
-      display:inline-block;padding:4px 10px;border-radius:999px;
-      background:#16233f;color:#b7c3d7;font-size:12px;border:1px solid #223359;
-    }
-
-    /* ========== 顶部导航 ========== */
-    .site-header{
-      position:sticky;top:0;z-index:20;height:var(--nav-h);
-      backdrop-filter:saturate(1.2) blur(10px);
-      background: color-mix(in oklab, var(--panel) 90%, transparent);
-      border-bottom:1px solid #1f2937;
-    }
-    .nav{
-      height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;
-      gap:16px;
-    }
-    .brandmark{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text)}
-    .brandmark .logo{
-      width:28px;height:28px;border-radius:8px;display:grid;place-items:center;
-      background:conic-gradient(from 210deg, #60a5fa, #34d399, #7c3aed, #60a5fa);
-      box-shadow:0 4px 14px rgba(96,165,250,.35);
-      font-weight:900;color:#0b1020;font-size:14px;
-    }
-    .brandmark .title{font-weight:800;letter-spacing:.2px}
-    .nav-links{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
-    .nav-links a{
-      color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:10px;
-      transition:color .2s ease, background .2s ease;
-    }
-    .nav-links a.active, .nav-links a:hover{color:#fff;background:#1a243a}
-    .menu-btn{display:none}
-
-    /* ========== 区域（首页） ========== */
-    .hero{
-      display:grid;gap:28px;align-items:center;
-      grid-template-columns: 1.25fr 1fr;
-    }
-    .hero h1{margin:0 0 10px;font-size:40px;line-height:1.15}
-    .hero p{margin:0 0 18px;color:#cdd5e1}
-    .hero .cta{display:flex;gap:12px;flex-wrap:wrap}
-    .hero-visual{
-      padding:16px;background:linear-gradient(180deg,#0f1b34,#0b1326);
-      border:1px solid #1f2d4a;border-radius:var(--radius);box-shadow:var(--shadow);
-    }
-    .hero-visual img{width:100%;height:auto}
-
-    /* ========== 卡片与网格 ========== */
-    .grid{
-      display:grid;gap:18px;
-      grid-template-columns: repeat(12, 1fr);
-    }
-    .col-12{grid-column: span 12}
-    .col-6{grid-column: span 6}
-    .col-4{grid-column: span 4}
-    .card{
-      background:linear-gradient(180deg,#0e162b,#0b1326);
-      border:1px solid #1f2d4a;border-radius:var(--radius);padding:18px;
-      box-shadow: var(--shadow);
-    }
-    .card h3{margin:0 0 6px}
-    .card .meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
-
-    /* ========== 团队头像卡片 ========== */
-    .member{
-      display:flex;gap:14px;align-items:center
-    }
-    .avatar{
-      width:64px;height:64px;flex:0 0 auto;border-radius:12px;overflow:hidden;
-      border:1px solid #1f2d4a;background:#0d1324;
-    }
-    .avatar img{width:100%;height:100%;object-fit:cover}
-
-    /* ========== 底部与杂项 ========== */
-    footer{padding:28px 0;color:#9da7bb;border-top:1px solid #1f2937;margin-top:20px}
-
-    /* ========== 响应式 ========== */
-    @media (max-width: 960px){
-      .hero{grid-template-columns: 1fr}
-      .col-6{grid-column: span 12}
-      .col-4{grid-column: span 12}
-    }
-    @media (max-width: 720px){
-      .nav{gap:8px}
-      .menu-btn{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;background:#1a243a;border:1px solid #25324a;color:#cdd5e1}
-      .nav-links{display:none;position:absolute;left:0;right:0;top:var(--nav-h);padding:10px 20px;background:#0f172a;border-bottom:1px solid #1f2937}
-      .nav-links.show{display:flex}
-      .hero h1{font-size:32px}
-    }
-
-    /* ========== 小动画 ========== */
-    .fade-in{opacity:0;transform:translateY(6px);animation:fade .6s ease both}
-    @keyframes fade{to{opacity:1;transform:none}}
-
-    /* 模态框背景 */
-    .modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    padding-top: 100px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.9);
-    }
-
-    /* 模态框内容 */
-    .modal-content {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 700px;
-    }
-
-    /* 关闭按钮 */
-    .close {
-    position: absolute;
-    top: 15px;
-    right: 35px;
-    color: #f1f1f1;
-    font-size: 40px;
-    font-weight: bold;
-    transition: 0.3s;
-    }
-
-    .close:hover,
-    .close:focus {
-    color: #bbb;
-    text-decoration: none;
-    cursor: pointer;
-    }
-
-    /* 动画效果 */
-    .modal-content, #caption {  
-    animation-name: zoom;
-    animation-duration: 0.6s;
-    }
-
-    @keyframes zoom {
-    from {transform:scale(0)} 
-    to {transform:scale(1)}
-    }
-  </style>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <a href="#home" class="pill" style="position:absolute;left:-999px;top:0">跳至主要内容</a>
 
   <!-- 模态框 -->
-    <div id="myModal" class="modal">
+  <div id="myModal" class="modal">
     <span class="close">&times;</span>
     <img class="modal-content" id="img01">
     <div id="caption"></div>
-    </div>
+  </div>
 
   <!-- 顶部导航 -->
   <header class="site-header">
@@ -266,7 +59,7 @@
       <div class="hero-visual fade-in" style="animation-delay:.15s">
         <!-- 团队吉祥物 General0826 -->
         <img
-          src="https://cdn.luogu.com.cn/upload/image_hosting/7effselq.png"
+          src="images/7effselq.png"
           alt="GenGen 团队吉祥物 General0826"
           loading="lazy"
         />
@@ -299,7 +92,7 @@
           </ul>
           <div class="rounded" style="overflow:hidden;border:1px solid #223359">
             <img
-              src="https://cdn.luogu.com.cn/upload/image_hosting/ofpwdjv8.png"
+              src="images/ofpwdjv8.png"
               alt="GenGen ToolBox 截图"
               loading="lazy"
             />
@@ -326,7 +119,7 @@
           </ul>
           <div class="rounded" style="overflow:hidden;border:1px solid #223359">
             <img
-              src="https://cdn.luogu.com.cn/upload/image_hosting/safff5jk.png"
+              src="images/safff5jk.png"
               alt="GenGen CF RMJ 使用界面示意图"
               loading="lazy"
             />
@@ -358,7 +151,7 @@
       <div class="card fade-in" style="animation-delay:.05s">
         <div class="member">
           <div class="avatar">
-            <img src="https://cdn.luogu.com.cn/upload/usericon/1351126.png" alt="General0826 头像" loading="lazy" />
+            <img src="images/1351126.png" alt="General0826 头像" loading="lazy" />
           </div>
           <div>
             <strong>吉祥物：</strong>General0826
@@ -377,7 +170,7 @@
         <div class="card col-6 fade-in" style="animation-delay:.1s">
           <div class="member">
             <div class="avatar">
-              <img src="https://cdn.luogu.com.cn/upload/usericon/661094.png" alt="liyifan202201 头像" loading="lazy" />
+              <img src="images/661094.png" alt="liyifan202201 头像" loading="lazy" />
             </div>
             <div>
               <strong>liyifan202201</strong>
@@ -389,7 +182,7 @@
         <div class="card col-6 fade-in" style="animation-delay:.15s">
           <div class="member">
             <div class="avatar">
-              <img src="https://cdn.luogu.com.cn/upload/usericon/1032267.png" alt="GCSG01 头像" loading="lazy" />
+              <img src="images/1032267.png" alt="GCSG01 头像" loading="lazy" />
             </div>
             <div>
               <strong>GCSG01</strong>
@@ -409,7 +202,7 @@
         <div class="card col-6 fade-in" style="animation-delay:.2s">
           <div class="member">
             <div class="avatar">
-              <img src="https://cdn.luogu.com.cn/upload/usericon/697932.png" alt="Gcend 头像" loading="lazy" />
+              <img src="images/697932.png" alt="Gcend 头像" loading="lazy" />
             </div>
             <div>
               <strong>Gcend</strong>
@@ -436,7 +229,7 @@
             <p class="muted" style="margin:0 0 10px">扫码赞赏，感谢你的每一份支持。</p>
             <div class="rounded" style="overflow:hidden;border:1px solid #223359;max-width:320px">
               <img
-                src="https://cdn.luogu.com.cn/upload/image_hosting/7uzglkak.png"
+                src="images/7uzglkak.png"
                 loading="lazy"
               />
             </div>
@@ -483,7 +276,7 @@
             <div style="display:flex;gap:10px;flex-wrap:wrap">
               <a class="btn" href="#projects">查看项目</a>
               <a class="btn ghost" href="#support">去赞赏</a>
-              <a class="btn href="#home">返回顶部</a>
+              <a class="btn" href="#home">返回顶部</a>
             </div>
             <p class="muted" style="margin:12px 0 0">遇到问题？开个 Issue 或在洛谷团队留言即可。</p>
           </div>
@@ -500,81 +293,6 @@
     </div>
   </footer>
 
-  <script>
-    // 年份
-    document.getElementById('y').textContent = new Date().getFullYear();
-
-    // 移动端菜单开关
-    const menuBtn = document.getElementById('menuBtn');
-    const navLinks = document.getElementById('navLinks');
-    menuBtn?.addEventListener('click', () => {
-      navLinks.classList.toggle('show');
-    });
-    // 点击导航后关闭菜单（移动端）
-    navLinks.querySelectorAll('a').forEach(a=>{
-      a.addEventListener('click', ()=> navLinks.classList.remove('show'));
-    });
-
-    // ScrollSpy：滚动高亮当前导航项
-    const links = Array.from(document.querySelectorAll('.nav-links a'));
-    const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
-
-    const setActive = (id) => {
-      links.forEach(a => {
-        a.classList.toggle('active', a.getAttribute('href') === '#' + id);
-      });
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      const visible = entries
-        .filter(e => e.isIntersecting)
-        .sort((a,b) => b.intersectionRatio - a.intersectionRatio);
-      if (visible[0]) setActive(visible[0].target.id);
-    }, { rootMargin: "-40% 0px -50% 0px", threshold: [0.1, 0.25, 0.5] });
-
-    sections.forEach(sec => observer.observe(sec));
-
-    // 可选：锚点跳转微调（兼容部分浏览器的滚动偏移）
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-        a.addEventListener('click', (e)=>{
-        const id = a.getAttribute('href').slice(1);
-        const el = document.getElementById(id);
-        if(!el) return;
-        e.preventDefault();
-        const top = el.getBoundingClientRect().top + window.scrollY - (parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) + 8);
-        window.scrollTo({ top, behavior: 'smooth' });
-        history.replaceState(null, '', '#' + id);
-    })
-    });
-    // 获取模态框元素
-    const modal = document.getElementById("myModal");
-
-    // 获取图片元素
-    const img = document.querySelector("#support .rounded img");
-    const modalImg = document.getElementById("img01");
-    const captionText = document.getElementById("caption");
-
-    // 当用户点击图片时，打开模态框
-    img.onclick = function(){
-    modal.style.display = "block";
-    modalImg.src = this.src;
-    captionText.innerHTML = this.alt;
-    }
-
-    // 获取关闭按钮
-    const span = document.getElementsByClassName("close")[0];
-
-    // 当用户点击关闭按钮时，关闭模态框
-    span.onclick = function() { 
-    modal.style.display = "none";
-    }
-
-    // 点击模态框外区域关闭模态框
-    window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-    }
-  </script>
+  <script src="js/script.js"></script>
 </body>
 </html>
