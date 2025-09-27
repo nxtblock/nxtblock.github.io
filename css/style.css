@@ -22,6 +22,7 @@ html,body{height:100%}
 html{scroll-behavior:smooth}
 body{
   margin:0;
+  padding-top: calc(var(--nav-h) + 1px); 
   font: 16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,
         "PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",
         "Helvetica Neue",Arial,sans-serif;
@@ -60,11 +61,16 @@ section{padding:72px 0; scroll-margin-top: calc(var(--nav-h) + 12px);}
 }
 
 /* ========== 顶部导航 ========== */
-.site-header{
-  position:sticky;top:0;z-index:20;height:var(--nav-h);
-  backdrop-filter:saturate(1.2) blur(10px);
+.site-header {
+  position: fixed; /* ← 改这里 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 20;
+  height: var(--nav-h);
+  backdrop-filter: saturate(1.2) blur(10px);
   background: color-mix(in oklab, var(--panel) 90%, transparent);
-  border-bottom:1px solid #1f2937;
+  border-bottom: 1px solid #1f2937;
 }
 .nav{
   height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;
