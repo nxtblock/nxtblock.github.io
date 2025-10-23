@@ -11,7 +11,7 @@
   --danger: #ef4444;
 
   --radius: 14px;
-  --radius-sm: 10px;
+  --radius-sm: 5px;
   --shadow: 0 10px 30px rgba(0,0,0,.25);
   --w: 1120px;
   --nav-h: 64px;
@@ -62,7 +62,7 @@ section{padding:72px 0; scroll-margin-top: calc(var(--nav-h) + 12px);}
 
 /* ========== 顶部导航 ========== */
 .site-header {
-  position: fixed; /* ← 改这里 */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -79,7 +79,7 @@ section{padding:72px 0; scroll-margin-top: calc(var(--nav-h) + 12px);}
 .brandmark{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text)}
 .brandmark .logo{
   width:28px;height:28px;border-radius:8px;display:grid;place-items:center;
-  background:conic-gradient(from 210deg, #60a5fa, #34d399, #7c3aed, #60a5fa);
+  background:color-mix(in oklab, var(--panel) 90%, transparent);
   box-shadow:0 4px 14px rgba(96,165,250,.35);
   font-weight:900;color:#0b1020;font-size:14px;
 }
