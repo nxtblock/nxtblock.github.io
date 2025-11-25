@@ -1,0 +1,111 @@
+{
+  "title": "GenGen Team",
+  "description": "GenGen Team: Illuminating the OI tools ecosystem with open source.",
+  "skipToMain": "Skip to main content",
+  "ariaLogo": "Return to homepage",
+  "ariaMenu": "Open menu",
+  "ariaNav": "Main navigation",
+  "home": "Home",
+  "projects": "Projects",
+  "team": "Team",
+  "support": "Support Us",
+  "links": "Links",
+  "heroTagline": "Illuminating OI tools ecosystem with open source",
+  "heroTitle": "Hello, we are the <span class=\"brand\">GenGen</span> Team",
+  "heroDescription": "A small team composed of OIers and developers, creating handy tools in our spare time: from desktop toolboxes to online scripts, focusing on simplicity, stability, and scalability.",
+  "browseProjects": "Browse Projects",
+  "supportUs": "Support Us",
+  "starsMessage": "Stars, shares, and donations are all fuel that drives us forward.",
+  "projectsTitle": "Project Introduction",
+  "projectsSubtitle": "Modular, one-stop, real-world scenario oriented toolset.",
+  "toolboxTitle": "GenGen ToolBox",
+  "toolboxDescription": "Desktop toolbox for OIers, developed with C++ based on raylib. Integrates navigation, check-in, MC launcher, script market and other functions, providing one-stop service with modular design for easy expansion[...]",
+  "toolboxFeatures": {
+    "modular": "Modular: Enable and combine functional modules as needed",
+    "oneStop": "One-stop: Centralized management from daily check-in to tool launching",
+    "crossPlatform": "Cross-platform potential: Lightweight interface based on raylib graphics layer"
+  },
+  "getFromGitHub": "Get from GitHub",
+  "getFromMirror": "Get from Domestic Mirror",
+  "cfRmjTitle": "GenGen CF RMJ",
+  "cfRmjDescription": "A script for directly submitting Codeforces problems on the Luogu platform. Reduces page switching and manual paste operations, improving problem-solving fluency.",
+  "cfRmjRequirements": {
+    "prerequisite": "Prerequisite: Have and be logged into a CF account",
+    "environment": "Environment recommendation: Install Violentmonkey/Tampermonkey, recommend Edge + Violentmonkey",
+    "installGuide": "Installation guide: Get the latest <code>.user.js</code> script and allow the manager to take over"
+  },
+  "installGuide": "Download/Installation Guide",
+  "quickInstallSteps": "Quick Installation Steps",
+  "installSteps": [
+    "Install a script manager in your browser (recommend Edge with Violentmonkey).",
+    "Visit the GitHub link above, find the latest <code>.user.js</code> for CF RMJ.",
+    "Click the script file, the manager will prompt for installation; confirm and it will take effect on Luogu sites.",
+    "Ensure you are logged into your Codeforces account, otherwise submissions will fail."
+  ],
+  "luoguIntlTitle": "GenGen Luogu International",
+  "luoguIntlDescription": "Used to optimize the viewing experience of Luogu International version in China (similar to luogu.me).",
+  "visit": "Click to Visit",
+  "luoguIntlFeatures": {
+    "speed": "Access speed: Extremely fast (Cloudflare global edge network)",
+    "ads": "Ads: Completely ad-free",
+    "features": "Feature scope: Complete proxy for luogu.com (users/columns, etc.)",
+    "usage": "Usage: Simply replace the domain in the original Luogu International site link with lg.gengen.qzz.io"
+  },
+  "usageNotes": "Usage Notes",
+  "usageInstructions": [
+    "Simply replace the domain in the original Luogu International site link with lg.gengen.qzz.io",
+    "⛔ Not affiliated with Luogu official team;",
+    "⛔ All content copyright belongs to the original site luogu.com, this site only provides proxy functionality;"
+  ],
+  "teamTitle": "Team Members",
+  "teamSubtitle": "Small but focused: Development and logistics collaboration, making tools more reliable.",
+  "mascot": "Mascot",
+  "mascotName": "General0826",
+  "mascotDesc": "Team image representative, founder of GenGen team.",
+  "devTeam": "Development Team (2 people)",
+  "devTeamDuties": "Responsibilities: Project architecture, feature development, performance optimization and release process.",
+  "dev1Name": "liyifan202201",
+  "dev1Role": "Core Developer · C++/Scripts · Modular Design",
+  "dev2Name": "GCSG01",
+  "dev2Role": "Core Developer · UI/Interaction · Automation and Release",
+  "logisticsTeam": "Logistics Team (1 person)",
+  "logisticsTeamDuties": "Responsibilities: Operation support, communication coordination, content and user feedback collection.",
+  "logisticsName": "Gcend",
+  "logisticsRole": "Logistics Support · Documentation and Community Operations",
+  "supportTitle": "Support Us",
+  "supportDescription": "We develop and maintain open source projects in our spare time after academic work. Your support helps us cover basic costs and continuously refine the experience.",
+  "donationTitle": "Donation Channel",
+  "donationDesc": "Scan code to donate, thank you for every bit of support.",
+  "openImage": "Open Large Image",
+  "moreLinks": "More Links",
+  "otherWays": "You can also help in these ways",
+  "waysToHelp": [
+    "Star/Watch: Follow GitHub repositories to get updates first. Give us a Star please 🙏.",
+    "Feedback: Submit Issues to share ideas and scenarios",
+    "Share: Recommend to OIers and classmates around you",
+    "Contribute code: Welcome PRs and script/module extensions"
+  ],
+  "linksTitle": "Links",
+  "teamLinks": "Team and Projects",
+  "quickArrival": "Quick Arrival",
+  "backTop": "Back to Top",
+  "githubOrg": "GitHub Organization",
+  "luoguTeam": "Luogu Team Homepage",
+  "licenseNote": "Note: All projects use the MIT license.",
+  "footer": "© <span id=\"y\"></span> GenGen Team · MIT",
+  "footerMotto": "To young to simple",
+  "luoguIntlLinks": [
+    {
+      "name": "Main Link",
+      "url": "https://luogu.qzz.io/"
+    },
+    {
+      "name": "Backup Link 1",
+      "url": "https://lg.gengen.qzz.io/"
+    },
+    {
+      "name": "Backup Link 2",
+      "url": "https://luogu.qzz.io/"
+    }
+  ]
+}

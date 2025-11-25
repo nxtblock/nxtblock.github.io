@@ -1,0 +1,111 @@
+{
+  "title": "GenGen 队",
+  "description": "GenGen 队：用开源点亮 OI 工具的生态。",
+  "skipToMain": "跳至主要内容",
+  "ariaLogo": "返回首页",
+  "ariaMenu": "打开菜单",
+  "ariaNav": "主导航",
+  "home": "首页",
+  "projects": "项目",
+  "team": "团队",
+  "support": "支持我们",
+  "links": "链接",
+  "heroTagline": "用开源点亮 OI 工具生态",
+  "heroTitle": "你好，我们是 <span class=\"brand\">GenGen</span> 队",
+  "heroDescription": "一支由 OIer 与开发者组成的小队，利用休息时间打造顺手的工具：从桌面工具箱到在线脚本，专注简洁、稳定与可扩展。",
+  "browseProjects": "浏览项目",
+  "supportUs": "支持我们",
+  "starsMessage": "Star、分享与赞赏，都是推动我们前行的燃料。",
+  "projectsTitle": "项目介绍",
+  "projectsSubtitle": "模块化、一站式、面向真实场景的工具集。",
+  "toolboxTitle": "GenGen ToolBox",
+  "toolboxDescription": "基于 raylib、使用 C++ 开发，面向 OIer 的桌面工具箱。集成导航、签到、MC 启动、脚本市场等功能，以模块化设计提供一站式服务，便于扩展[...]",
+  "toolboxFeatures": {
+    "modular": "模块化：按需启用与组合功能模块",
+    "oneStop": "一站式：从日常打卡到工具启动，集中管理",
+    "crossPlatform": "跨平台潜力：基于 raylib 图形层，界面轻量"
+  },
+  "getFromGitHub": "GitHub 获取",
+  "getFromMirror": "国内镜像获取",
+  "cfRmjTitle": "GenGen CF RMJ",
+  "cfRmjDescription": "用于在洛谷平台直接提交 Codeforces 题目的脚本。减少页面切换与手动粘贴操作，提升做题流畅度。",
+  "cfRmjRequirements": {
+    "prerequisite": "使用前提：拥有并登录 CF 账号",
+    "environment": "环境建议：安装暴力猴/篡改猴，推荐 Edge + 暴力猴",
+    "installGuide": "安装指南：获取最新 <code>.user.js</code> 脚本并允许管理器接管"
+  },
+  "installGuide": "下载/安装指引",
+  "quickInstallSteps": "快速安装步骤",
+  "installSteps": [
+    "在浏览器安装脚本管理器（推荐 Edge 安装 暴力猴）。",
+    "访问上方 GitHub 链接，找到 CF RMJ 的最新 <code>.user.js</code>。",
+    "点击脚本文件，管理器将提示安装；确认后在洛谷站点即可生效。",
+    "确保已登录 Codeforces 账号，否则提交会失败。"
+  ],
+  "luoguIntlTitle": "GenGen 洛谷国际",
+  "luoguIntlDescription": "用于在国内优化队洛谷国际版的查看体验（类似于 luogu.me）。",
+  "visit": "点击访问",
+  "luoguIntlFeatures": {
+    "speed": "访问速度：极快（Cloudflare 全球边缘网络）",
+    "ads": "广告：完全无广告",
+    "features": "功能范围：完整代理 luogu.com（用户/专栏等）",
+    "usage": "使用说明：只需将原洛谷国际站链接中的域名替换为 lg.gengen.qzz.io 即可"
+  },
+  "usageNotes": "使用说明",
+  "usageInstructions": [
+    "只需将原洛谷国际站链接中的域名替换为 lg.gengen.qzz.io 华即可",
+    "⛔不隶属于洛谷（Luogu）官方团队；",
+    "⛔所有内容版权归属原站 luogu.com 所有，本站仅提供代理的功能；"
+  ],
+  "teamTitle": "队成员",
+  "teamSubtitle": "小而专注：开发与后勤协作，让工具更可靠。",
+  "mascot": "吉祥物",
+  "mascotName": "General0826",
+  "mascotDesc": "队形象代言，GenGen队创立者。",
+  "devTeam": "开发组（2 人）",
+  "devTeamDuties": "职责：项目架构、功能开发、性能优化与发布流程。",
+  "dev1Name": "liyifan202201",
+  "dev1Role": "核心开发 · C++/脚本 · 模块化设计",
+  "dev2Name": "GCSG01",
+  "dev2Role": "核心开发 · UI/交互 · 自动化与发布",
+  "logisticsTeam": "后勤组（1 人）",
+  "logisticsTeamDuties": "职责：运营支持、沟通协同、内容与用户反馈收集。",
+  "logisticsName": "Gcend",
+  "logisticsRole": "后勤支持 · 文档与社区运营",
+  "supportTitle": "支持我们",
+  "supportDescription": "我们在课业之余抽空开发与维护开源项目。你的支持能帮助我们覆盖基础成本、持续打磨体验。",
+  "donationTitle": "赞赏通道",
+  "donationDesc": "扫码赞赏，感谢你的每一份支持。",
+  "openImage": "打开大图",
+  "moreLinks": "更多链接",
+  "otherWays": "你还能这样帮助",
+  "waysToHelp": [
+    "Star/Watch：关注 GitHub 仓库，第一时间获得更新。给个 Star 吧🙏。",
+    "反馈建议：提交 Issue 共享想法与场景",
+    "传播分享：推荐给身边的 OIer 与同学",
+    "贡献代码：欢迎 PR 与脚本/模块扩展"
+  ],
+  "linksTitle": "链接",
+  "teamLinks": "队与项目",
+  "quickArrival": "快速到达",
+  "backTop": "返回顶部",
+  "githubOrg": "GitHub 组织",
+  "luoguTeam": "洛谷队主页",
+  "licenseNote": "提示：所有项目均使用 MIT 协议。",
+  "footer": "© <span id=\"y\"></span> GenGen Team · MIT",
+  "footerMotto": "To young to simple",
+  "luoguIntlLinks": [
+    {
+      "name": "主链接",
+      "url": "https://luogu.qzz.io/"
+    },
+    {
+      "name": "备用链接1",
+      "url": "https://lg.gengen.qzz.io/"
+    },
+    {
+      "name": "备用链接2",
+      "url": "https://luogu.qzz.io/"
+    }
+  ]
+}
