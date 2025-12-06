@@ -74,3 +74,55 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+
+// 添加主题切换功能
+function toggleTheme() {
+  const currentTheme = document.documentElement.classList.contains('dark-theme') ? 'dark' : 'light';
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  
+  if (window.switchTheme) {
+    window.switchTheme(newTheme);
+  } else {
+    // 如果全局函数不可用，则直接切换类
+    if (newTheme === 'dark') {
+      document.documentElement.classList.add('dark-theme');
+      document.documentElement.classList.remove('light-theme');
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0f172a');
+    } else {
+      document.documentElement.classList.add('light-theme');
+      document.documentElement.classList.remove('dark-theme');
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f8fafc');
+    }
+    localStorage.setItem('theme', newTheme);
+  }
+}
+
+// 可选：添加主题切换按钮到页面
+function addThemeToggle() {
+  // 创建主题切换按钮
+  const themeToggle = document.createElement('button');
+  themeToggle.className = 'theme-toggle';
+  themeToggle.innerHTML = '🌓'; // 使用月亮/太阳图标
+  themeToggle.setAttribute('aria-label', '切换主题');
+  themeToggle.style.cssText = `
+    background: transparent;
+    border: 1px solid #334155;
+    color: #a6adbb;
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-left: 10px;
+  `;
+  
+  themeToggle.addEventListener('click', toggleTheme);
+  
+  // 尝试将按钮添加到导航栏
+  const navContainer = document.querySelector('.nav > div');
+  if (navContainer) {
+    navContainer.appendChild(themeToggle);
+  }
+}
+
+// 页面加载完成后添加主题切换按钮
+document.addEventListener('DOMContentLoaded', addThemeToggle);
