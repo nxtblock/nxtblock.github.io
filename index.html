@@ -36,9 +36,31 @@
   
   <meta name="theme-color" content="#0f172a" />
   <link rel="stylesheet" href="css/style.css">
+  <script src="js/content-filter.js"></script>
   <script>
-    // 国际化功能
-    let currentLang = localStorage.getItem('lang') || 'zh';
+    // 自动检测浏览器语言
+    function getBrowserLanguage() {
+      const browserLang = navigator.language || navigator.languages[0] || 'zh';
+      // 检测是否为英文环境
+      if (browserLang.startsWith('en')) {
+        return 'en';
+      }
+      // 默认使用中文
+      return 'zh';
+    }
+    
+    // 检测系统主题偏好
+    function getSystemTheme() {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        return 'dark';
+      } else {
+        return 'light';
+      }
+    }
+    
+    // 初始化语言和主题
+    let currentLang = getBrowserLanguage();
+    let currentTheme = getSystemTheme();
     
     // 加载语言文件
     async function loadLocale(lang) {
@@ -99,35 +121,43 @@
         return current && current[key] !== undefined ? current[key] : undefined;
       }, obj);
     }
-    
-    // 切换语言
-    async function switchLanguage(lang) {
-      currentLang = lang;
-      localStorage.setItem('lang', lang);
-      await applyTranslations(lang);
-      
-      // 更新语言切换按钮状态
-      const zhBtn = document.getElementById('zh-btn');
-      const enBtn = document.getElementById('en-btn');
-      
-      if (zhBtn && enBtn) {
-        if (lang === 'zh') {
-          zhBtn.style.background = 'var(--brand)';
-          zhBtn.style.color = 'white';
-          enBtn.style.background = '#334155';
-          enBtn.style.color = '#a6adbb';
-        } else {
-          enBtn.style.background = 'var(--brand)';
-          enBtn.style.color = 'white';
-          zhBtn.style.background = '#334155';
-          zhBtn.style.color = '#a6adbb';
-        }
+
+    // 切换主题
+    function switchTheme(theme) {
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark-theme');
+        document.documentElement.classList.remove('light-theme');
+        document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0f172a');
+      } else {
+        document.documentElement.classList.add('light-theme');
+        document.documentElement.classList.remove('dark-theme');
+        document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f8fafc');
       }
+      localStorage.setItem('theme', theme);
+      currentTheme = theme;
     }
     
-    // 页面加载完成后应用翻译
+    // 页面加载完成后应用翻译和主题
     document.addEventListener('DOMContentLoaded', async () => {
+      // 应用翻译
       await applyTranslations(currentLang);
+      
+      // 检查本地存储的主题设置，否则使用系统偏好
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        switchTheme(savedTheme);
+      } else {
+        switchTheme(getSystemTheme());
+      }
+      
+      // 监听系统主题变化
+      if (window.matchMedia) {
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+          if (!localStorage.getItem('theme')) { // 只有在用户未手动设置主题时才跟随系统
+            switchTheme(event.matches ? 'dark' : 'light');
+          }
+        });
+      }
     });
   </script>
 </head>
@@ -155,10 +185,7 @@
         <button class="menu-btn" id="menuBtn" aria-label="打开菜单" data-i18n-attr="ariaMenu:aria-label">☰</button>
         
         <!-- 语言切换按钮 -->
-        <div class="lang-switcher">
-          <button class="lang-btn" onclick="switchLanguage('zh')" id="zh-btn" style="background: var(--brand); color: white; border: none; border-radius: 8px; padding: 6px 10px; font-size: 14px;">中文</button>
-          <button class="lang-btn" onclick="switchLanguage('en')" id="en-btn" style="background: #334155; color: #a6adbb; border: none; border-radius: 8px; padding: 6px 10px; font-size: 14px;">EN</button>
-        </div>
+
       </div>
 
       <nav class="nav-links" id="navLinks" aria-label="主导航" data-i18n-attr="ariaNav:aria-label">
