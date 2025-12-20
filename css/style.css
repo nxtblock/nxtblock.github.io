@@ -1,0 +1,206 @@
+/* css/style.css */
+/* ========== 基础变量与重置 ========== */
+:root{
+  --bg: #0b1020;              /* 背景（深色） */
+  --panel: #0f172a;           /* 面板底色 */
+  --card: #111827;            /* 卡片底色 */
+  --text: #e5e7eb;            /* 主文本 */
+  --muted: #a6adbb;           /* 次级文本 */
+  --brand: #60a5fa;           /* 品牌高亮 */
+  --brand-2: #34d399;         /* 辅助高亮 */
+  --danger: #ef4444;
+
+  --radius: 14px;
+  --radius-sm: 5px;
+  --shadow: 0 10px 30px rgba(0,0,0,.25);
+  --w: 1120px;
+  --nav-h: 64px;
+  --gap: 20px;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  padding-top: calc(var(--nav-h) + 1px); 
+  font: 16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,
+        "PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",
+        "Helvetica Neue",Arial,sans-serif;
+  color:var(--text);
+  background: radial-gradient(1200px 600px at 10% -10%, #1a2240 0%, transparent 60%) ,
+              radial-gradient(900px 400px at 90% -20%, #0e3448 0%, transparent 60%) ,
+              var(--bg);
+  background-attachment: fixed;
+}
+img{max-width:100%;height:auto;display:block}
+
+/* ========== 统一圆角渲染（所有用户/项目图片） ========== */
+img, .rounded { border-radius: var(--radius-sm); }
+
+/* ========== 布局与容器 ========== */
+.container{max-width:var(--w);padding:0 20px;margin:0 auto}
+section{padding:72px 0; scroll-margin-top: calc(var(--nav-h) + 12px);}
+.muted{color:var(--muted)}
+.brand{color:var(--brand)}
+.accent{color:var(--brand-2)}
+.btn{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:linear-gradient(135deg,var(--brand),#7c3aed);
+  color:#fff;border:none;border-radius:12px;padding:12px 16px;
+  font-weight:600;text-decoration:none;box-shadow:var(--shadow);
+  transition:transform .15s ease, filter .2s ease;
+}
+.btn:hover{transform:translateY(-1px);filter:saturate(1.1)}
+.btn.ghost{
+  background:transparent;border:1px solid #32405b;color:var(--text);
+  box-shadow:none;
+}
+.pill{
+  display:inline-block;padding:4px 10px;border-radius:999px;
+  background:#16233f;color:#b7c3d7;font-size:12px;border:1px solid #223359;
+}
+
+/* ========== 顶部导航 ========== */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 20;
+  height: var(--nav-h);
+  backdrop-filter: saturate(1.2) blur(10px);
+  background: color-mix(in oklab, var(--panel) 90%, transparent);
+  border-bottom: 1px solid #1f2937;
+}
+.nav{
+  height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;
+  gap:16px;
+}
+.brandmark{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text)}
+.brandmark .logo{
+  width:28px;height:28px;border-radius:8px;display:grid;place-items:center;
+  background:color-mix(in oklab, var(--panel) 90%, transparent);
+  box-shadow:color-mix(in oklab, var(--panel) 90%, transparent);
+  font-weight:900;color:#0b1020;font-size:14px;
+}
+.brandmark .title{font-weight:800;letter-spacing:.2px}
+.nav-links{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.nav-links a{
+  color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:10px;
+  transition:color .2s ease, background .2s ease;
+}
+.nav-links a.active, .nav-links a:hover{color:#fff;background:#1a243a}
+.menu-btn{display:none}
+
+/* ========== 区域（首页） ========== */
+.hero{
+  display:grid;gap:28px;align-items:center;
+  grid-template-columns: 1.25fr 1fr;
+}
+.hero h1{margin:0 0 10px;font-size:40px;line-height:1.15}
+.hero p{margin:0 0 18px;color:#cdd5e1}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap}
+.hero-visual{
+  padding:16px;background:linear-gradient(180deg,#0f1b34,#0b1326);
+  border:1px solid #1f2d4a;border-radius:var(--radius);box-shadow:var(--shadow);
+}
+.hero-visual img{width:100%;height:auto}
+
+/* ========== 卡片与网格 ========== */
+.grid{
+  display:grid;gap:18px;
+  grid-template-columns: repeat(12, 1fr);
+}
+.col-12{grid-column: span 12}
+.col-6{grid-column: span 6}
+.col-4{grid-column: span 4}
+.card{
+  background:linear-gradient(180deg,#0e162b,#0b1326);
+  border:1px solid #1f2d4a;border-radius:var(--radius);padding:18px;
+  box-shadow: var(--shadow);
+}
+.card h3{margin:0 0 6px}
+.card .meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+
+/* ========== 团队头像卡片 ========== */
+.member{
+  display:flex;gap:14px;align-items:center
+}
+.avatar{
+  width:64px;height:64px;flex:0 0 auto;border-radius:12px;overflow:hidden;
+  border:1px solid #1f2d4a;background:#0d1324;
+}
+.avatar img{width:100%;height:100%;object-fit:cover}
+
+/* ========== 底部与杂项 ========== */
+footer{padding:28px 0;color:#9da7bb;border-top:1px solid #1f2937;margin-top:20px}
+
+/* ========== 响应式 ========== */
+@media (max-width: 960px){
+  .hero{grid-template-columns: 1fr}
+  .col-6{grid-column: span 12}
+  .col-4{grid-column: span 12}
+}
+@media (max-width: 720px){
+  .nav{gap:8px}
+  .menu-btn{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:10px;background:#1a243a;border:1px solid #25324a;color:#cdd5e1}
+  .nav-links{display:none;position:absolute;left:0;right:0;top:var(--nav-h);padding:10px 20px;background:#0f172a;border-bottom:1px solid #1f2937}
+  .nav-links.show{display:flex}
+  .hero h1{font-size:32px}
+}
+
+/* ========== 小动画 ========== */
+.fade-in{opacity:0;transform:translateY(6px);animation:fade .6s ease both}
+@keyframes fade{to{opacity:1;transform:none}}
+
+/* 模态框背景 */
+.modal {
+display: none;
+position: fixed;
+z-index: 1000;
+padding-top: 100px;
+left: 0;
+top: 0;
+width: 100%;
+height: 100%;
+overflow: auto;
+background-color: rgb(0,0,0);
+background-color: rgba(0,0,0,0.9);
+}
+
+/* 模态框内容 */
+.modal-content {
+margin: auto;
+display: block;
+width: 80%;
+max-width: 700px;
+}
+
+/* 关闭按钮 */
+.close {
+position: absolute;
+top: 15px;
+right: 35px;
+color: #f1f1f1;
+font-size: 40px;
+font-weight: bold;
+transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+color: #bbb;
+text-decoration: none;
+cursor: pointer;
+}
+
+/* 动画效果 */
+.modal-content, #caption {  
+animation-name: zoom;
+animation-duration: 0.6s;
+}
+
+@keyframes zoom {
+from {transform:scale(0)} 
+to {transform:scale(1)}
+}
