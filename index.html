@@ -12,8 +12,8 @@
   <link rel="icon" type="image/x-icon" href="https://cdn.luogu.com.cn/upload/image_hosting/3s3czya0.png"/>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title data-i18n="title">GenGen 队</title>
-  <meta name="description" content="GenGen 队：用开源点亮 OI 工具的生态。" />
+  <title>GenGen 队 - 专注于 OI 编程竞赛工具开发的开源团队</title>
+  <meta name="description" content="GenGen 队：致力于为 OI 编程竞赛爱好者提供高效工具，包括桌面工具箱、Codeforces 提交脚本及洛谷国际版加速服务。" />
   <meta name="keywords" content="GenGen, OI, 开源, 工具, 洛谷, Codeforces, 编程竞赛, 工具箱, 脚本" />
   <meta name="author" content="GenGen Team" />
   <meta name="robots" content="index, follow" />
@@ -37,97 +37,9 @@
   <meta name="theme-color" content="#0f172a" />
   <link rel="stylesheet" href="css/style.css">
   <script>
-    // 国际化功能
-    let currentLang = localStorage.getItem('lang') || 'zh';
-    
-    // 加载语言文件
-    async function loadLocale(lang) {
-      try {
-        const response = await fetch(`locales/${lang}.json`);
-        return await response.json();
-      } catch (error) {
-        console.error('Failed to load locale:', error);
-        // 如果加载失败，回退到中文
-        if (lang !== 'zh') {
-          const fallbackResponse = await fetch('locales/zh.json');
-          return await fallbackResponse.json();
-        }
-        return {};
-      }
-    }
-    
-    // 应用翻译
-    async function applyTranslations(lang) {
-      const locale = await loadLocale(lang);
-      document.documentElement.lang = lang;
-      
-      // 更新标题和描述
-      document.title = locale.title || 'GenGen 队';
-      document.querySelector('meta[name="description"]').setAttribute('content', locale.description || 'GenGen 队：用开源点亮 OI 工具的生态。');
-      
-      // 更新所有带data-i18n属性的元素
-      document.querySelectorAll('[data-i18n]').forEach(element => {
-        const key = element.getAttribute('data-i18n');
-        const translation = getNestedValue(locale, key);
-        
-        if (translation !== undefined) {
-          // 检查是否包含HTML标签
-          if (translation.includes('<') && translation.includes('>')) {
-            element.innerHTML = translation;
-          } else {
-            element.textContent = translation;
-          }
-        }
-      });
-      
-      // 更新带data-i18n-attr属性的元素（如alt、placeholder等）
-      document.querySelectorAll('[data-i18n-attr]').forEach(element => {
-        const attrData = element.getAttribute('data-i18n-attr').split(':');
-        const key = attrData[0];
-        const attr = attrData[1];
-        const translation = getNestedValue(locale, key);
-        
-        if (translation !== undefined) {
-          element.setAttribute(attr, translation);
-        }
-      });
-    }
-    
-    // 获取嵌套对象的值（支持'obj.prop'格式）
-    function getNestedValue(obj, path) {
-      return path.split('.').reduce((current, key) => {
-        return current && current[key] !== undefined ? current[key] : undefined;
-      }, obj);
-    }
-    
-    // 切换语言
-    async function switchLanguage(lang) {
-      currentLang = lang;
-      localStorage.setItem('lang', lang);
-      await applyTranslations(lang);
-      
-      // 更新语言切换按钮状态
-      const zhBtn = document.getElementById('zh-btn');
-      const enBtn = document.getElementById('en-btn');
-      
-      if (zhBtn && enBtn) {
-        if (lang === 'zh') {
-          zhBtn.style.background = 'var(--brand)';
-          zhBtn.style.color = 'white';
-          enBtn.style.background = '#334155';
-          enBtn.style.color = '#a6adbb';
-        } else {
-          enBtn.style.background = 'var(--brand)';
-          enBtn.style.color = 'white';
-          zhBtn.style.background = '#334155';
-          zhBtn.style.color = '#a6adbb';
-        }
-      }
-    }
-    
-    // 页面加载完成后应用翻译
-    document.addEventListener('DOMContentLoaded', async () => {
-      await applyTranslations(currentLang);
+    // 页面加载完成后设置语言为中文
+    document.addEventListener('DOMContentLoaded', () => {
+      document.documentElement.lang = 'zh-CN';
     });
   </script>
 </head>
@@ -138,7 +50,6 @@
   <div id="myModal" class="modal">
     <span class="close">&times;</span>
     <img class="modal-content" id="img01">
-    <div id="caption"></div>
   </div>
 
   <!-- 顶部导航 -->
@@ -148,25 +59,21 @@
         <span class="logo">
           <img src="https://cdn.luogu.com.cn/upload/image_hosting/3s3czya0.png" alt="GenGen Logo" loading="lazy">
         </span>
-        <span class="title" data-i18n="title">GenGen 队</span>
+        <span class="title">GenGen 队</span>
       </a>
 
       <div style="display: flex; align-items: center; gap: 10px;">
-        <button class="menu-btn" id="menuBtn" aria-label="打开菜单" data-i18n-attr="ariaMenu:aria-label">☰</button>
+        <button class="menu-btn" id="menuBtn" aria-label="打开菜单">☰</button>
         
-        <!-- 语言切换按钮 -->
-        <div class="lang-switcher">
-          <button class="lang-btn" onclick="switchLanguage('zh')" id="zh-btn" style="background: var(--brand); color: white; border: none; border-radius: 8px; padding: 6px 10px; font-size: 14px;">中文</button>
-          <button class="lang-btn" onclick="switchLanguage('en')" id="en-btn" style="background: #334155; color: #a6adbb; border: none; border-radius: 8px; padding: 6px 10px; font-size: 14px;">EN</button>
-        </div>
+        
       </div>
 
-      <nav class="nav-links" id="navLinks" aria-label="主导航" data-i18n-attr="ariaNav:aria-label">
-        <a href="#home" data-i18n="home">首页</a>
-        <a href="#projects" data-i18n="projects">项目</a>
-        <a href="#team" data-i18n="team">团队</a>
-        <a href="#support" data-i18n="support">支持我们</a>
-        <a href="#links" data-i18n="links">链接</a>
+      <nav class="nav-links" id="navLinks" aria-label="主导航">
+        <a href="#home">首页</a>
+        <a href="#projects">项目</a>
+        <a href="#team">团队</a>
+        <a href="#support">支持我们</a>
+        <a href="#links">链接</a>
       </nav>
     </div>
   </header>
@@ -175,21 +82,20 @@
   <section id="home">
     <div class="container hero">
       <div class="fade-in" style="animation-delay:.05s">
-        <div class="pill" data-i18n="heroTagline">用开源点亮 OI 工具生态</div>
-        <h1 data-i18n="heroTitle">你好，我们是 <span class="brand">GenGen</span> 队</h1>
-        <p data-i18n="heroDescription">一支由 OIer 与开发者组成的小队，利用休息时间打造顺手的工具：从桌面工具箱到在线脚本，专注简洁、稳定与可扩展。</p>
+        <div class="pill">用开源点亮 OI 工具生态</div>
+        <h1>你好，我们是 <span class="brand">GenGen</span> 队</h1>
+        <p>一支由 OIer 与开发者组成的小队，利用休息时间打造顺手的工具：从桌面工具箱到在线脚本，专注简洁、稳定与可扩展。</p>
         <div class="cta">
-          <a class="btn" href="#projects" data-i18n="browseProjects">浏览项目</a>
-          <a class="btn ghost" href="#support" data-i18n="supportUs">支持我们</a>
+          <a class="btn" href="#projects">浏览项目</a>
+          <a class="btn ghost" href="#support">支持我们</a>
         </div>
-        <p class="muted" style="margin-top:10px" data-i18n="starsMessage">Star、分享与赞赏，都是推动我们前行的燃料。</p>
+        <p class="muted" style="margin-top:10px">Star、分享与赞赏，都是推动我们前行的燃料。</p>
       </div>
       <div class="hero-visual fade-in" style="animation-delay:.15s">
         <!-- 队吉祥物 General0826 -->
         <img
           src="https://cdn.luogu.com.cn/upload/image_hosting/7effselq.png"
           alt="GenGen 队吉祥物 General0826"
-          data-i18n-attr="mascotImage:alt"
           loading="lazy"
         />
       </div>
@@ -199,8 +105,8 @@
   <!-- 项目 -->
   <section id="projects">
     <div class="container">
-      <h2 style="margin:0 0 14px" data-i18n="projectsTitle">项目介绍</h2>
-      <p class="muted" style="margin:0 0 18px" data-i18n="projectsSubtitle">模块化、一站式、面向真实场景的工具集。</p>
+      <h2 style="margin:0 0 14px">项目介绍</h2>
+      <p class="muted" style="margin:0 0 18px">模块化、一站式、面向真实场景的工具集。</p>
 
       <div class="grid">
         <!-- GenGen ToolBox -->
@@ -212,24 +118,24 @@
             <span class="pill">模块化</span>
             <span class="pill">MIT License</span>
           </div>
-          <h3 data-i18n="toolboxTitle">GenGen ToolBox</h3>
-          <p data-i18n="toolboxDescription">基于 raylib、使用 C++ 开发，面向 OIer 的桌面工具箱。集成导航、签到、MC 启动、脚本市场等功能，以模块化设计提供一站式服务，便于扩展[...]</p>
+          <h3>GenGen ToolBox</h3>
+          <p>基于 raylib、使用 C++ 开发，面向 OIer 的桌面工具箱。集成导航、签到、MC 启动、脚本市场等功能，以模块化设计提供一站式服务，便于扩展[...]</p>
           <ul class="muted" style="margin:10px 0 14px">
-            <li><strong data-i18n="toolboxFeatures.modular">模块化：</strong><span data-i18n="toolboxFeatures.modularDesc">按需启用与组合功能模块</span></li>
-            <li><strong data-i18n="toolboxFeatures.oneStop">一站式：</strong><span data-i18n="toolboxFeatures.oneStopDesc">从日常打卡到工具启动，集中管理</span></li>
-            <li><strong data-i18n="toolboxFeatures.crossPlatform">跨平台潜力：</strong><span data-i18n="toolboxFeatures.crossPlatformDesc">基于 raylib 图形层，界面轻量</span></li>
+            <li><strong>模块化：</strong><span>按需启用与组合功能模块</span></li>
+            <li><strong>一站式：</strong><span>从日常打卡到工具启动，集中管理</span></li>
+            <li><strong>跨平台潜力：</strong><span>基于 raylib 图形层，界面轻量</span></li>
           </ul>
           <div class="rounded" style="overflow:hidden;border:1px solid #223359">
             <img
               src="https://cdn.luogu.com.cn/upload/image_hosting/ri1qzzft.png"
               alt="GenGen ToolBox 截图"
-              data-i18n-attr="toolboxImage:alt"
+             
               loading="lazy"
             />
           </div>
           <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
-            <a class="btn" href="https://github.com/nxtblock/ggtoolbox/releases/" target="_blank" rel="noopener" data-i18n="getFromGitHub">GitHub 获取</a>
-            <a class="btn" href="https://j.1win.ggff.net/https://github.com/nxtblock/ggtoolbox/releases/download/v1.4/Setup.exe" target="_blank" rel="noopener" data-i18n="getFromMirror">国内镜像获取</a>
+            <a class="btn" href="https://github.com/nxtblock/ggtoolbox/releases/" target="_blank" rel="noopener">GitHub 获取</a>
+            <a class="btn" href="https://j.1win.ggff.net/https://github.com/nxtblock/ggtoolbox/releases/download/v1.4/Setup.exe" target="_blank" rel="noopener">国内镜像获取</a>
           </div>
         </article>
 
@@ -241,31 +147,31 @@
             <span class="pill">Edge + 暴力猴推荐</span>
             <span class="pill">MIT License</span>
           </div>
-          <h3 data-i18n="cfRmjTitle">GenGen CF RMJ</h3>
-          <p data-i18n="cfRmjDescription">用于在洛谷平台直接提交 Codeforces 题目的脚本。减少页面切换与手动粘贴操作，提升做题流畅度。</p>
+          <h3>GenGen CF RMJ</h3>
+          <p>用于在洛谷平台直接提交 Codeforces 题目的脚本。减少页面切换与手动粘贴操作，提升做题流畅度。</p>
           <ul class="muted" style="margin:10px 0 14px">
-            <li><strong data-i18n="cfRmjRequirements.prerequisite">使用前提：</strong><span data-i18n="cfRmjRequirements.prerequisiteDesc">拥有并登录 CF 账号</span></li>
-            <li><strong data-i18n="cfRmjRequirements.environment">环境建议：</strong><span data-i18n="cfRmjRequirements.environmentDesc">安装暴力猴/篡改猴，推荐 Edge + 暴力猴</span></li>
-            <li><strong data-i18n="cfRmjRequirements.installGuide">安装指南：</strong><span data-i18n="cfRmjRequirements.installGuideDesc">获取最新 <code>.user.js</code> 脚本并允许管理器接管</span></li>
+            <li><strong>使用前提：</strong><span>拥有并登录 CF 账号</span></li>
+            <li><strong>环境建议：</strong><span>安装暴力猴/篡改猴，推荐 Edge + 暴力猴</span></li>
+            <li><strong>安装指南：</strong><span>获取最新 <code>.user.js</code> 脚本并允许管理器接管</span></li>
           </ul>
           <div class="rounded" style="overflow:hidden;border:1px solid #223359">
             <img
               src="https://cdn.luogu.com.cn/upload/image_hosting/pl6l7fbk.png"
               alt="GenGen CF RMJ 使用界面示意图"
-              data-i18n-attr="cfRmjImage:alt"
+             
               loading="lazy"
             />
           </div>
           <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
-            <a class="btn" href="https://openuserjs.org/scripts/liyifan202201outlook.com/GenGen_CF_RMJ" target="_blank" rel="noopener" data-i18n="installGuide">下载/安装指引</a>
+            <a class="btn" href="https://openuserjs.org/scripts/liyifan202201outlook.com/GenGen_CF_RMJ" target="_blank" rel="noopener">下载/安装指引</a>
           </div>
           <details style="margin-top:10px">
-            <summary class="muted" data-i18n="quickInstallSteps">快速安装步骤</summary>
-            <ol style="margin:8px 0 0 18px" data-i18n="installSteps">
-              <li data-i18n="installSteps.0">在浏览器安装脚本管理器（推荐 Edge 安装 暴力猴）。</li>
-              <li data-i18n="installSteps.1">访问上方 GitHub 链接，找到 CF RMJ 的最新 <code>.user.js</code>。</li>
-              <li data-i18n="installSteps.2">点击脚本文件，管理器将提示安装；确认后在洛谷站点即可生效。</li>
-              <li data-i18n="installSteps.3">确保已登录 Codeforces 账号，否则提交会失败。</li>
+            <summary class="muted">快速安装步骤</summary>
+            <ol style="margin:8px 0 0 18px">
+              <li>在浏览器安装脚本管理器（推荐 Edge 安装 暴力猴）。</li>
+              <li>访问上方 GitHub 链接，找到 CF RMJ 的最新 <code>.user.js</code>。</li>
+              <li>点击脚本文件，管理器将提示安装；确认后在洛谷站点即可生效。</li>
+              <li>确保已登录 Codeforces 账号，否则提交会失败。</li>
             </ol>
           </details>
         </article>
@@ -277,25 +183,25 @@
             <span class="pill">部署于 CloudFlare</span>
             <span class="pill">无广告，速度极快</span>
           </div>
-          <h3 data-i18n="luoguIntlTitle">GenGen 洛谷国际</h3>
-          <p data-i18n="luoguIntlDescription">用于在国内优化队洛谷国际版的查看体验（类似于 luogu.me）。</p>
+          <h3>GenGen 洛谷国际</h3>
+          <p>用于在国内优化队洛谷国际版的查看体验（类似于 luogu.me）。</p>
           <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
-            <a class="btn" href="https://luogu.qzz.io/" target="_blank" rel="noopener" data-i18n="visit">点击访问</a>
+            <a class="btn" href="https://luogu.qzz.io/" target="_blank" rel="noopener">点击访问</a>
             <a class="btn ghost" href="https://lg.gengen.qzz.io/" target="_blank" rel="noopener">备用链接1</a>
             <a class="btn ghost" href="https://luogu.qzz.io/" target="_blank" rel="noopener">备用链接2</a>
           </div>
           <ul class="muted" style="margin:10px 0 14px">
-            <li><strong data-i18n="luoguIntlFeatures.speed">访问速度：</strong><span data-i18n="luoguIntlFeatures.speedDesc">极快（Cloudflare 全球边缘网络）</span></li>
-            <li><strong data-i18n="luoguIntlFeatures.ads">广告：</strong><span data-i18n="luoguIntlFeatures.adsDesc">完全无广告</span></li>
-            <li><strong data-i18n="luoguIntlFeatures.features">功能范围：</strong><span data-i18n="luoguIntlFeatures.featuresDesc">完整代理 luogu.com（用户/专栏等）</span></li>
-            <li><strong data-i18n="luoguIntlFeatures.usage">使用说明：</strong><span data-i18n="luoguIntlFeatures.usageDesc">只需将原洛谷国际站链接中的域名替换为 lg.gengen.qzz.io 即可</span></li>
+            <li><strong>访问速度：</strong><span>极快（Cloudflare 全球边缘网络）</span></li>
+            <li><strong>广告：</strong><span>完全无广告</span></li>
+            <li><strong>功能范围：</strong><span>完整代理 luogu.com（用户/专栏等）</span></li>
+            <li><strong>使用说明：</strong><span>只需将原洛谷国际站链接中的域名替换为 lg.gengen.qzz.io 即可</span></li>
           </ul>
           <details style="margin-top:10px">
-            <summary class="muted" data-i18n="usageNotes">使用说明</summary>
-            <ol style="margin:8px 0 0 18px" data-i18n="usageInstructions">
-              <li data-i18n="usageInstructions.0">只需将原洛谷国际站链接中的域名替换为 lg.gengen.qzz.io 即可</li>
-              <li data-i18n="usageInstructions.1">⛔不隶属于洛谷（Luogu）官方团队；</li>
-              <li data-i18n="usageInstructions.2">⛔所有内容版权归属原站 luogu.com 所有，本站仅提供代理的功能；</li>
+            <summary class="muted">使用说明</summary>
+            <ol style="margin:8px 0 0 18px">
+              <li>只需将原洛谷国际站链接中的域名替换为 lg.gengen.qzz.io 即可</li>
+              <li>⛔不隶属于洛谷（Luogu）官方团队；</li>
+              <li>⛔所有内容版权归属原站 luogu.com 所有，本站仅提供代理的功能；</li>
             </ol>
           </details>
         </article>
@@ -306,18 +212,18 @@
   <!-- 队 -->
   <section id="team">
     <div class="container">
-      <h2 style="margin:0 0 14px" data-i18n="teamTitle">队成员</h2>
-      <p class="muted" style="margin:0 0 18px" data-i18n="teamSubtitle">小而专注：开发与后勤协作，让工具更可靠。</p>
+      <h2 style="margin:0 0 14px">队成员</h2>
+      <p class="muted" style="margin:0 0 18px">小而专注：开发与后勤协作，让工具更可靠。</p>
 
       <!-- 吉祥物 -->
       <div class="card fade-in" style="animation-delay:.05s">
         <div class="member">
           <div class="avatar">
-            <img src="https://cdn.luogu.com.cn/upload/usericon/1351126.png" alt="General0826 头像" data-i18n-attr="mascotAvatar:alt" loading="lazy" />
+            <img src="https://cdn.luogu.com.cn/upload/usericon/1351126.png" alt="General0826 头像" loading="lazy" />
           </div>
           <div>
-            <strong data-i18n="mascot">吉祥物：</strong><span data-i18n="mascotName">General0826</span>
-            <div class="muted" data-i18n="mascotDesc">队形象代言，GenGen队创立者。</div>
+            <strong>吉祥物：</strong><span>General0826</span>
+            <div class="muted">队形象代言，GenGen队创立者。</div>
           </div>
         </div>
       </div>
@@ -325,18 +231,18 @@
       <!-- 开发组 -->
       <div class="grid" style="margin-top:16px">
         <div class="col-12">
-          <div class="pill" data-i18n="devTeam">开发组（2 人）</div>
-          <p class="muted" style="margin:8px 0 12px" data-i18n="devTeamDuties">职责：项目架构、功能开发、性能优化与发布流程。</p>
+          <div class="pill">开发组（2 人）</div>
+          <p class="muted" style="margin:8px 0 12px">职责：项目架构、功能开发、性能优化与发布流程。</p>
         </div>
 
         <div class="card col-6 fade-in" style="animation-delay:.1s">
           <div class="member">
             <div class="avatar">
-              <img src="https://cdn.luogu.com.cn/upload/usericon/661094.png" alt="liyifan202201 头像" data-i18n-attr="liyifanAvatar:alt" loading="lazy" />
+              <img src="https://cdn.luogu.com.cn/upload/usericon/661094.png" alt="liyifan202201 头像" loading="lazy" />
             </div>
             <div>
-              <strong data-i18n="dev1Name">liyifan202201</strong>
-              <div class="muted" data-i18n="dev1Role">核心开发 · C++/脚本 · 模块化设计</div>
+              <strong>liyifan202201</strong>
+              <div class="muted">核心开发 · C++/脚本 · 模块化设计</div>
             </div>
           </div>
         </div>
@@ -344,11 +250,11 @@
         <div class="card col-6 fade-in" style="animation-delay:.15s">
           <div class="member">
             <div class="avatar">
-              <img src="https://cdn.luogu.com.cn/upload/usericon/1032267.png" alt="GCSG01 头像" data-i18n-attr="gcsq01Avatar:alt" loading="lazy" />
+              <img src="https://cdn.luogu.com.cn/upload/usericon/1032267.png" alt="GCSG01 头像" loading="lazy" />
             </div>
             <div>
-              <strong data-i18n="dev2Name">GCSG01</strong>
-              <div class="muted" data-i18n="dev2Role">核心开发 · UI/交互 · 自动化与发布</div>
+              <strong>GCSG01</strong>
+              <div class="muted">核心开发 · UI/交互 · 自动化与发布</div>
             </div>
           </div>
         </div>
@@ -357,18 +263,18 @@
       <!-- 后勤组 -->
       <div class="grid" style="margin-top:12px">
         <div class="col-12">
-          <div class="pill" data-i18n="logisticsTeam">后勤组（1 人）</div>
-          <p class="muted" style="margin:8px 0 12px" data-i18n="logisticsTeamDuties">职责：运营支持、沟通协同、内容与用户反馈收集。</p>
+          <div class="pill">后勤组（1 人）</div>
+          <p class="muted" style="margin:8px 0 12px">职责：运营支持、沟通协同、内容与用户反馈收集。</p>
         </div>
 
         <div class="card col-6 fade-in" style="animation-delay:.2s">
           <div class="member">
             <div class="avatar">
-              <img src="https://cdn.luogu.com.cn/upload/usericon/697932.png" alt="Gcend 头像" data-i18n-attr="gcendAvatar:alt" loading="lazy" />
+              <img src="https://cdn.luogu.com.cn/upload/usericon/697932.png" alt="Gcend 头像" loading="lazy" />
             </div>
             <div>
-              <strong data-i18n="logisticsName">Gcend</strong>
-              <div class="muted" data-i18n="logisticsRole">后勤支持 · 文档与社区运营</div>
+              <strong>Gcend</strong>
+              <div class="muted">后勤支持 · 文档与社区运营</div>
             </div>
           </div>
         </div>
@@ -380,37 +286,37 @@
   <!-- 支持我们 -->
   <section id="support">
     <div class="container">
-      <h2 style="margin:0 0 14px" data-i18n="supportTitle">支持我们</h2>
-      <p class="muted" style="margin:0 0 12px" data-i18n="supportDescription">
+      <h2 style="margin:0 0 14px">支持我们</h2>
+      <p class="muted" style="margin:0 0 12px">
         我们在课业之余抽空开发与维护开源项目。你的支持能帮助我们覆盖基础成本、持续打磨体验。
       </p>
       <div class="grid">
         <div class="col-6">
           <div class="card fade-in" style="animation-delay:.05s">
-            <h3 style="margin:0 0 8px" data-i18n="donationTitle">赞赏通道</h3>
-            <p class="muted" style="margin:0 0 10px" data-i18n="donationDesc">扫码赞赏，感谢你的每一份支持。</p>
+            <h3 style="margin:0 0 8px">赞赏通道</h3>
+            <p class="muted" style="margin:0 0 10px">扫码赞赏，感谢你的每一份支持。</p>
             <div class="rounded" style="overflow:hidden;border:1px solid #223359;max-width:320px">
               <img
                 src="https://cdn.luogu.com.cn/upload/image_hosting/7uzglkak.png"
                 alt="赞赏二维码"
-                data-i18n-attr="donationImage:alt"
+               
                 loading="lazy"
               />
             </div>
             <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
-              <a class="btn" onclick="img.click()" data-i18n="openImage">打开大图</a>
-              <a class="btn ghost" href="#links" data-i18n="moreLinks">更多链接</a>
+              <a class="btn" onclick="img.click()">打开大图</a>
+              <a class="btn ghost" href="#links">更多链接</a>
             </div>
           </div>
         </div>
         <div class="col-6">
           <div class="card fade-in" style="animation-delay:.15s">
-            <h3 style="margin:0 0 8px" data-i18n="otherWays">你还能这样帮助</h3>
+            <h3 style="margin:0 0 8px">你还能这样帮助</h3>
             <ul class="muted" style="margin:6px 0 0">
-              <li><strong data-i18n="waysToHelp.0">Star/Watch：</strong><span data-i18n="waysToHelp.0Desc">关注 GitHub 仓库，第一时间获得更新。给个 Star 吧🙏。</span></li>
-              <li><strong data-i18n="waysToHelp.1">反馈建议：</strong><span data-i18n="waysToHelp.1Desc">提交 Issue 共享想法与场景</span></li>
-              <li><strong data-i18n="waysToHelp.2">传播分享：</strong><span data-i18n="waysToHelp.2Desc">推荐给身边的 OIer 与同学</span></li>
-              <li><strong data-i18n="waysToHelp.3">贡献代码：</strong><span data-i18n="waysToHelp.3Desc">欢迎 PR 与脚本/模块扩展</span></li>
+              <li><strong>Star/Watch：</strong><span>关注 GitHub 仓库，第一时间获得更新。给个 Star 吧🙏。</span></li>
+              <li><strong>反馈建议：</strong><span>提交 Issue 共享想法与场景</span></li>
+              <li><strong>传播分享：</strong><span>推荐给身边的 OIer 与同学</span></li>
+              <li><strong>贡献代码：</strong><span>欢迎 PR 与脚本/模块扩展</span></li>
             </ul>
           </div>
         </div>
@@ -422,25 +328,25 @@
   <!-- 外部链接 -->
   <section id="links">
     <div class="container">
-      <h2 style="margin:0 0 14px" data-i18n="linksTitle">链接</h2>
+      <h2 style="margin:0 0 14px">链接</h2>
       <div class="grid">
         <div class="col-6">
           <div class="card fade-in" style="animation-delay:.05s">
-            <h3 style="margin:0 0 8px" data-i18n="teamLinks">队与项目</h3>
+            <h3 style="margin:0 0 8px">队与项目</h3>
             <ul style="margin:0;padding-left:18px">
-              <li><strong data-i18n="githubOrg">GitHub 组织：</strong><a class="brand" href="https://github.com/nxtblock" target="_blank" rel="noopener">https://github.com/nxtblock</a></li>
-              <li><strong data-i18n="luoguTeam">洛谷队主页：</strong><a class="brand" href="https://www.luogu.com.cn/team/111044" target="_blank" rel="noopener">https://www.luogu.com.cn/team/111044</a> <span cla[...]
+              <li><strong>GitHub 组织：</strong><a class="brand" href="https://github.com/nxtblock" target="_blank" rel="noopener">https://github.com/nxtblock</a></li>
+              <li><strong>洛谷队主页：</strong><a class="brand" href="https://www.luogu.com.cn/team/111044" target="_blank" rel="noopener">https://www.luogu.com.cn/team/111044</a> <span cla[...]
             </ul>
-            <p class="muted" style="margin:12px 0 0" data-i18n="licenseNote">提示：所有项目均使用 MIT 协议。</p>
+            <p class="muted" style="margin:12px 0 0">提示：所有项目均使用 MIT 协议。</p>
           </div>
         </div>
         <div class="col-6">
           <div class="card fade-in" style="animation-delay:.1s">
-            <h3 style="margin:0 0 8px" data-i18n="quickArrival">快速到达</h3>
+            <h3 style="margin:0 0 8px">快速到达</h3>
             <div style="display:flex;gap:10px;flex-wrap:wrap">
-              <a class="btn" href="#projects" data-i18n="browseProjects">查看项目</a>
-              <a class="btn ghost" href="#support" data-i18n="supportUs">去赞赏</a>
-              <a class="btn" href="#home" data-i18n="backTop">返回顶部</a> <!-- 修复了错误的 class -->
+              <a class="btn" href="#projects">查看项目</a>
+              <a class="btn ghost" href="#support">去赞赏</a>
+              <a class="btn" href="#home">返回顶部</a> <!-- 修复了错误的 class -->
             </div>
             <p class="muted" style="margin:12px 0 0">遇到问题？开个 Issue 或在洛谷队留言即可。</p>
           </div>
@@ -452,8 +358,8 @@
   <!-- 页脚 -->
   <footer>
     <div class="container" style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between">
-      <div data-i18n="footer">© <span id="y"></span> GenGen Team · MIT</div>
-      <div class="muted" data-i18n="footerMotto">To young to simple</div>
+      <div>© <span id="y"></span> GenGen Team · MIT</div>
+      <div class="muted">To young to simple</div>
     </div>
   </footer>
 
