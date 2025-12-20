@@ -16,6 +16,237 @@
   --w: 1120px;
   --nav-h: 64px;
   --gap: 20px;
+  
+  /* 浅色模式变量 */
+  --bg-light: #f5f7fa;
+  --panel-light: #ffffff;
+  --card-light: #f8fafc;
+  --text-light: #1f2937;
+  --muted-light: #6b7280;
+  --brand-light: #3b82f6;
+  --brand-2-light: #10b981;
+  --danger-light: #ef4444;
+}
+
+/* 深浅色模式切换容器样式 */
+#dark-mode-container {
+  position: relative;
+  width: 60px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+}
+
+#day, #night {
+  width: 60px;
+  height: 26px;
+  background: white;
+  position: absolute;
+  z-index: 1;
+  cursor: pointer;
+  border-radius: 100px;
+  background: #9cd6ef;
+  border: 6px solid #65c0e7;
+}
+
+#night {
+  pointer-events: none;
+}
+
+#background {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  background: #d3edf8;
+  z-index: -1;
+}
+
+#dark-mode-container svg {
+  transform: scale(0.4);
+  z-index: 2;
+  pointer-events: none;
+}
+
+@media (max-width: 720px) {
+  #day, #night {
+    width: 320px;
+    height: 150px;
+  }
+  #dark-mode-container svg {
+    transform: scale(0.95);
+  }
+}
+
+/* 深浅色模式切换动画 */
+body.dark #night {
+  pointer-events: none;
+}
+
+body.light #day {
+  pointer-events: none;
+}
+
+/* 语言选择器样式 */
+#language-selector {
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid #223359;
+  border-radius: 8px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* 深色模式下的一些默认样式 */
+body {
+  background: radial-gradient(1200px 600px at 10% -10%, #1a2240 0%, transparent 60%) ,
+              radial-gradient(900px 400px at 90% -20%, #0e3448 0%, transparent 60%) ,
+              var(--bg);
+  background-attachment: fixed;
+  color: var(--text);
+}
+
+/* 深浅色模式切换 */
+body.light {
+  background: radial-gradient(1200px 600px at 10% -10%, #d1e0ef 0%, transparent 60%) ,
+              radial-gradient(900px 400px at 90% -20%, #c1d9e9 0%, transparent 60%) ,
+              var(--bg-light);
+  color: var(--text-light);
+}
+
+/* 深浅色模式对应的样式 */
+body:not(.light) .btn {
+  background: linear-gradient(135deg, var(--brand), #7c3aed);
+  color: #fff;
+  border: none;
+}
+
+body.light .btn {
+  background: linear-gradient(135deg, var(--brand-light), #7c3aed);
+  color: #000;
+  border: 1px solid #ccc;
+}
+
+body:not(.light) .btn.ghost {
+  background: transparent;
+  border: 1px solid #32405b;
+  color: var(--text);
+}
+
+body.light .btn.ghost {
+  background: transparent;
+  border: 1px solid #ccc;
+  color: var(--text-light);
+}
+
+body:not(.light) .pill {
+  background: #16233f;
+  color: #b7c3d7;
+  border: 1px solid #223359;
+}
+
+body.light .pill {
+  background: #e2e8f0;
+  color: var(--text-light);
+  border: 1px solid #ccc;
+}
+
+body:not(.light) .nav-links a {
+  color: var(--muted);
+}
+
+body.light .nav-links a {
+  color: var(--muted-light);
+}
+
+body:not(.light) .nav-links a.active, 
+body:not(.light) .nav-links a:hover {
+  color: #fff;
+  background: #1a243a;
+}
+
+body.light .nav-links a.active,
+body.light .nav-links a:hover {
+  color: #000;
+  background: #e2e8f0;
+}
+
+body:not(.light) .hero-visual {
+  background: linear-gradient(180deg, #0f1b34, #0b1326);
+  border: 1px solid #1f2d4a;
+}
+
+body.light .hero-visual {
+  background: linear-gradient(180deg, #e2e8f0, #f1f5f9);
+  border: 1px solid #ccc;
+}
+
+body:not(.light) .card {
+  background: linear-gradient(180deg, #0e162b, #0b1326);
+  border: 1px solid #1f2d4a;
+}
+
+body.light .card {
+  background: linear-gradient(180deg, #ffffff, #f8fafc);
+  border: 1px solid #ccc;
+}
+
+body:not(.light) .avatar {
+  border: 1px solid #1f2d4a;
+  background: #0d1324;
+}
+
+body.light .avatar {
+  border: 1px solid #ccc;
+  background: #f1f5f9;
+}
+
+body:not(.light) footer {
+  color: #9da7bb;
+  border-top: 1px solid #1f2937;
+}
+
+body.light footer {
+  color: var(--muted-light);
+  border-top: 1px solid #ccc;
+}
+
+body:not(.light) .site-header {
+  background: color-mix(in oklab, var(--panel) 90%, transparent);
+  border-bottom: 1px solid #1f2937;
+}
+
+body.light .site-header {
+  background: color-mix(in oklab, var(--panel-light) 90%, transparent);
+  border-bottom: 1px solid #ccc;
+}
+
+body:not(.light) .brand {
+  color: var(--brand);
+}
+
+body.light .brand {
+  color: var(--brand-light);
+}
+
+body:not(.light) .muted {
+  color: var(--muted);
+}
+
+body.light .muted {
+  color: var(--muted-light);
+}
+
+body:not(.light) .menu-btn {
+  background: #1a243a;
+  border: 1px solid #25324a;
+  color: #cdd5e1;
+}
+
+body.light .menu-btn {
+  background: #e2e8f0;
+  border: 1px solid #ccc;
+  color: var(--text-light);
 }
 *{box-sizing:border-box}
 html,body{height:100%}
