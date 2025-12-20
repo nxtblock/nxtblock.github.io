@@ -87,7 +87,7 @@ body.light #day {
 }
 
 /* 语言选择器样式 */
-#language-selector {
+.language-selector {
   background: var(--panel);
   color: var(--text);
   border: 1px solid #223359;
@@ -95,6 +95,61 @@ body.light #day {
   padding: 6px 10px;
   cursor: pointer;
   font-size: 14px;
+}
+
+/* 深浅色模式下的语言选择器 */
+body:not(.light) .language-selector {
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid #223359;
+}
+
+body.light .language-selector {
+  background: var(--panel-light);
+  color: var(--text-light);
+  border: 1px solid #ccc;
+}
+
+/* 深浅色模式切换按钮样式 */
+.dark-mode-toggle {
+  background: var(--panel);
+  border: 1px solid #223359;
+  border-radius: 20px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+body.light .dark-mode-toggle {
+  background: var(--panel-light);
+  border: 1px solid #ccc;
+}
+
+.dark-mode-toggle .sun-icon,
+.dark-mode-toggle .moon-icon {
+  position: absolute;
+  transition: opacity 0.3s ease;
+}
+
+.dark-mode-toggle .sun-icon {
+  opacity: 1;
+}
+
+.dark-mode-toggle .moon-icon {
+  opacity: 0;
+}
+
+body.dark .dark-mode-toggle .sun-icon {
+  opacity: 0;
+}
+
+body.dark .dark-mode-toggle .moon-icon {
+  opacity: 1;
 }
 
 /* 深色模式下的一些默认样式 */
@@ -312,9 +367,28 @@ section{padding:72px 0; scroll-margin-top: calc(var(--nav-h) + 12px);}
   width:28px;height:28px;border-radius:8px;display:grid;place-items:center;
   background:color-mix(in oklab, var(--panel) 90%, transparent);
   box-shadow:color-mix(in oklab, var(--panel) 90%, transparent);
-  font-weight:900;color:#0b1020;font-size:14px;
+  font-weight:900;
+  color: #0b1020;
+  font-size:14px;
 }
 .brandmark .title{font-weight:800;letter-spacing:.2px}
+
+/* 深浅色模式下的brandmark */
+body:not(.light) .brandmark {
+  color: var(--text);
+}
+
+body.light .brandmark {
+  color: var(--text-light);
+}
+
+body:not(.light) .brandmark .logo {
+  color: #0b1020;
+}
+
+body.light .brandmark .logo {
+  color: #f0f0f0;
+}
 .nav-links{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
 .nav-links a{
   color:var(--muted);text-decoration:none;padding:8px 10px;border-radius:10px;
