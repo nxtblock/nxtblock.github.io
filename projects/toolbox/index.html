@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- Clarity tracking code for https://gengen.qzz.io/ -->
+  <script>
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "ubgsa4072p");
+  </script>
+  <link rel="icon" type="image/x-icon" href="https://cdn.luogu.com.cn/upload/image_hosting/3s3czya0.png"/>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>GenGen ToolBox - GenGen 队</title>
+  <meta name="description" content="GenGen ToolBox：基于 raylib、使用 C++ 开发，面向 OIer 的桌面工具箱。集成导航、签到、MC 启动、脚本市场等功能，以模块化设计提供一站式服务。" />
+  <meta name="keywords" content="GenGen, OI, 开源, 工具, 洛谷, Codeforces, 编程竞赛, 工具箱, 脚本, C++, raylib" />
+  <meta name="author" content="GenGen Team" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow" />
+  <meta name="revisit-after" content="7 days" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://gengen.qzz.io/projects/toolbox" />
+  <meta property="og:title" content="GenGen ToolBox - GenGen 队" />
+  <meta property="og:description" content="GenGen ToolBox：基于 raylib、使用 C++ 开发，面向 OIer 的桌面工具箱。集成导航、签到、MC 启动、脚本市场等功能，以模块化设计提供一站式服务。" />
+  <meta property="og:image" content="https://cdn.luogu.com.cn/upload/image_hosting/ri1qzzft.png" />
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://gengen.qzz.io/projects/toolbox" />
+  <meta property="twitter:title" content="GenGen ToolBox - GenGen 队" />
+  <meta property="twitter:description" content="GenGen ToolBox：基于 raylib、使用 C++ 开发，面向 OIer 的桌面工具箱。集成导航、签到、MC 启动、脚本市场等功能，以模块化设计提供一站式服务。" />
+  <meta property="twitter:image" content="https://cdn.luogu.com.cn/upload/image_hosting/ri1qzzft.png" />
+  
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="stylesheet" href="../../css/style.css">
+  
+  <!-- Schema.org structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "GenGen ToolBox",
+    "description": "基于 raylib、使用 C++ 开发，面向 OIer 的桌面工具箱。集成导航、签到、MC 启动、脚本市场等功能，以模块化设计提供一站式服务。",
+    "url": "https://gengen.qzz.io/projects/toolbox",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Windows",
+    "softwareVersion": "1.4",
+    "license": "https://opensource.org/licenses/MIT",
+    "author": {
+      "@type": "Organization",
+      "name": "GenGen Team"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "image": "https://cdn.luogu.com.cn/upload/image_hosting/ri1qzzft.png",
+    "screenshot": "https://cdn.luogu.com.cn/upload/image_hosting/ri1qzzft.png"
+  }
+  </script>
+  <!-- jQuery for dark mode -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- GSAP for animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+  <a href="#toolbox" class="pill" style="position:absolute;left:-999px;top:0">跳至主要内容</a>
+
+  <!-- 模态框 -->
+  <div id="myModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="img01">
+  </div>
+
+  <!-- 顶部导航 -->
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brandmark" href="/" aria-label="返回首页">
+        <span class="logo">
+          <img src="https://cdn.luogu.com.cn/upload/image_hosting/3s3czya0.png" alt="GenGen 队徽标 - 代表 GenGen 团队的标志" loading="lazy">
+        </span>
+        <span class="title">GenGen 队</span>
+      </a>
+
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <button class="menu-btn" id="menuBtn" aria-label="打开菜单">☰</button>
+        
+        <!-- 语言选择下拉框 -->
+        <select id="language-selector" class="language-selector">
+          <option value="zh-CN" data-i18n="lang_zh_cn">中文</option>
+          <option value="zh-TW" data-i18n="lang_zh_tw">繁體</option>
+          <option value="en" data-i18n="lang_en">English</option>
+        </select>
+        
+        <!-- 深浅色模式切换按钮 -->
+        <button id="dark-mode-toggle" class="dark-mode-toggle">
+          <span class="sun-icon">☀️</span>
+          <span class="moon-icon">🌙</span>
+        </button>
+      </div>
+
+      <nav class="nav-links" id="navLinks" aria-label="主导航">
+        <a href="/" data-i18n="home">首页</a>
+        <a href="/projects" data-i18n="projects">项目</a>
+        <a href="/team" data-i18n="team">团队</a>
+        <a href="/support" data-i18n="support">支持我们</a>
+        <a href="/links" data-i18n="links">链接</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- GenGen ToolBox 项目详情 -->
+  <section id="toolbox">
+    <div class="container">
+      <div style="display: flex; align-items: center; margin-bottom: 20px;">
+        <h1 style="margin:0">GenGen ToolBox</h1>
+        <span class="pill" style="margin-left: 15px;">C++</span>
+        <span class="pill" style="margin-left: 10px;">raylib</span>
+        <span class="pill" style="margin-left: 10px;">桌面应用</span>
+      </div>
+      
+      <div class="grid">
+        <div class="col-8">
+          <div class="card">
+            <h2>项目简介</h2>
+            <p>GenGen ToolBox 是一款基于 raylib、使用 C++ 开发的桌面工具箱，专为 OI（信息学奥林匹克竞赛）选手设计。它集成了导航、签到、MC 启动、脚本市场等多种实用功能，通过模块化设计提供一站式服务，便于用户根据需求自由扩展。</p>
+            
+            <h3 style="margin-top: 25px;">核心特性</h3>
+            <ul>
+              <li><strong>模块化架构：</strong>用户可以根据自己的需求启用或禁用特定功能模块，避免功能冗余，保持界面简洁。</li>
+              <li><strong>一站式服务：</strong>整合了从日常签到到工具启动的多种功能，减少在不同应用间切换的时间成本。</li>
+              <li><strong>跨平台潜力：</strong>基于 raylib 图形库开发，界面轻量且具备良好的跨平台扩展能力。</li>
+              <li><strong>持续更新：</strong>团队定期发布更新，添加新功能并优化用户体验。</li>
+              <li><strong>用户友好：</strong>界面直观，操作简单，适合各个水平的 OI 选手使用。</li>
+            </ul>
+            
+            <h3 style="margin-top: 25px;">功能模块</h3>
+            <div class="grid">
+              <div class="col-6">
+                <div class="card">
+                  <h4>导航模块</h4>
+                  <p>提供常用 OI 站点的快速访问入口，包括洛谷、Codeforces、AtCoder 等，方便用户快速跳转到相关页面。</p>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="card">
+                  <h4>签到模块</h4>
+                  <p>自动完成洛谷、力扣等平台的每日签到任务，帮助用户养成持续学习的习惯。</p>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="card">
+                  <h4>MC 启动器</h4>
+                  <p>集成 Minecraft 启动器功能，方便用户在学习之余放松娱乐。</p>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="card">
+                  <h4>脚本市场</h4>
+                  <p>提供各类编程竞赛相关的脚本下载，用户可以根据需要安装和使用。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="card" style="margin-top: 20px;">
+            <h3>使用指南</h3>
+            <ol>
+              <li>从下方下载链接获取最新版本的 GenGen ToolBox 安装包</li>
+              <li>运行安装程序，按照提示完成安装过程</li>
+              <li>启动应用，根据引导完成初始配置</li>
+              <li>在设置中启用需要的功能模块</li>
+              <li>开始享受一站式 OI 工具体验</li>
+            </ol>
+          </div>
+        </div>
+        
+        <div class="col-4">
+          <div class="card">
+            <h3>项目信息</h3>
+            <ul class="muted" style="margin: 10px 0;">
+              <li><strong>开发语言：</strong>C++</li>
+              <li><strong>图形库：</strong>raylib</li>
+              <li><strong>平台：</strong>Windows</li>
+              <li><strong>许可证：</strong>MIT License</li>
+              <li><strong>最新版本：</strong>v1.4</li>
+              <li><strong>发布日期：</strong>2024年</li>
+            </ul>
+            
+            <h3 style="margin-top: 20px;">下载链接</h3>
+            <div style="margin-top: 15px; display: flex; flex-direction: column; gap: 10px;">
+              <a class="btn" href="https://github.com/nxtblock/ggtoolbox/releases/" target="_blank" rel="noopener">GitHub 获取</a>
+              <a class="btn" href="https://j.1win.ggff.net/https://github.com/nxtblock/ggtoolbox/releases/download/v1.4/Setup.exe" target="_blank" rel="noopener">国内镜像获取</a>
+            </div>
+            
+            <h3 style="margin-top: 20px;">项目截图</h3>
+            <div class="rounded" style="overflow:hidden;border:1px solid #223359; margin-top: 10px;">
+              <img
+                src="https://cdn.luogu.com.cn/upload/image_hosting/ri1qzzft.png"
+                alt="GenGen ToolBox 应用程序界面截图 - 显示编程竞赛工具箱功能"
+                style="width: 100%;"
+                loading="lazy"
+              />
+            </div>
+          </div>
+          
+          <div class="card" style="margin-top: 20px;">
+            <h3>社区与支持</h3>
+            <ul class="muted" style="margin: 10px 0;">
+              <li>遇到问题？请在 GitHub 仓库提交 Issue</li>
+              <li>有功能建议？欢迎在项目页面提出 PR</li>
+              <li>交流反馈？可在洛谷队留言讨论</li>
+            </ul>
+            <a class="btn" href="https://github.com/nxtblock/ggtoolbox" target="_blank" rel="noopener" style="margin-top: 10px;">访问 GitHub 仓库</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer>
+    <div class="container" style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between">
+      <div>© <span id="y"></span> GenGen Team · MIT</div>
+      <div class="muted" data-i18n="footer_slogan">Welcome GenGen Studio</div>
+    </div>
+  </footer>
+
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/script.js"></script>
+</body>
+</html>

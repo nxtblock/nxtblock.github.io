@@ -88,7 +88,7 @@
   <!-- 顶部导航 -->
   <header class="site-header">
     <div class="container nav">
-      <a class="brandmark" href="#home" aria-label="返回首页">
+      <a class="brandmark" href="/" aria-label="返回首页">
         <span class="logo">
           <img src="https://cdn.luogu.com.cn/upload/image_hosting/3s3czya0.png" alt="GenGen 队徽标 - 代表 GenGen 团队的标志" loading="lazy">
         </span>
@@ -113,11 +113,11 @@
       </div>
 
       <nav class="nav-links" id="navLinks" aria-label="主导航">
-        <a href="#home" data-i18n="home">首页</a>
-        <a href="#projects" data-i18n="projects">项目</a>
-        <a href="#team" data-i18n="team">团队</a>
-        <a href="#support" data-i18n="support">支持我们</a>
-        <a href="#links" data-i18n="links">链接</a>
+        <a href="/" data-i18n="home">首页</a>
+        <a href="/projects" data-i18n="projects">项目</a>
+        <a href="/team" data-i18n="team">团队</a>
+        <a href="/support" data-i18n="support">支持我们</a>
+        <a href="/links" data-i18n="links">链接</a>
       </nav>
     </div>
   </header>
@@ -130,8 +130,8 @@
         <h1 data-i18n="hero_title">你好，我们是 <span class="brand">GenGen</span> 队</h1>
         <p data-i18n="hero_subtitle">一支由 OIer 与开发者组成的小队，利用休息时间打造顺手的工具：从桌面工具箱到在线脚本，专注简洁、稳定与可扩展。</p>
         <div class="cta">
-          <a class="btn" href="#projects" data-i18n="browse_projects">浏览项目</a>
-          <a class="btn ghost" href="#support" data-i18n="support_us">支持我们</a>
+          <a class="btn" href="/projects" data-i18n="browse_projects">浏览项目</a>
+          <a class="btn ghost" href="/support" data-i18n="support_us">支持我们</a>
         </div>
         <p class="muted" style="margin-top:10px" data-i18n="hero_cta_text">Star、分享与赞赏，都是推动我们前行的燃料。</p>
       </div>
@@ -146,11 +146,11 @@
     </div>
   </section>
 
-  <!-- 项目 -->
-  <section id="projects">
+  <!-- 项目预览 -->
+  <section id="projects-preview">
     <div class="container">
-      <h2 style="margin:0 0 14px">项目介绍</h2>
-      <p class="muted" style="margin:0 0 18px">模块化、一站式、面向真实场景的工具集。</p>
+      <h2 style="margin:0 0 14px">项目概览</h2>
+      <p class="muted" style="margin:0 0 18px">我们专注于为 OI 编程竞赛爱好者提供高效工具。我们的项目涵盖了从桌面工具箱到在线脚本，致力于打造简洁、稳定与可扩展的工具集。</p>
 
       <div class="grid">
         <!-- GenGen ToolBox -->
@@ -163,24 +163,8 @@
             <span class="pill">MIT License</span>
           </div>
           <h3>GenGen ToolBox</h3>
-          <p>基于 raylib、使用 C++ 开发，面向 OIer 的桌面工具箱。集成导航、签到、MC 启动、脚本市场等功能，以模块化设计提供一站式服务，便于扩展[...]</p>
-          <ul class="muted" style="margin:10px 0 14px">
-            <li><strong>模块化：</strong><span>按需启用与组合功能模块</span></li>
-            <li><strong>一站式：</strong><span>从日常打卡到工具启动，集中管理</span></li>
-            <li><strong>跨平台潜力：</strong><span>基于 raylib 图形层，界面轻量</span></li>
-          </ul>
-          <div class="rounded" style="overflow:hidden;border:1px solid #223359">
-            <img
-              src="https://cdn.luogu.com.cn/upload/image_hosting/ri1qzzft.png"
-              alt="GenGen ToolBox 应用程序界面截图 - 显示编程竞赛工具箱功能"
-             
-              loading="lazy"
-            />
-          </div>
-          <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
-            <a class="btn" href="https://github.com/nxtblock/ggtoolbox/releases/" target="_blank" rel="noopener">GitHub 获取</a>
-            <a class="btn" href="https://j.1win.ggff.net/https://github.com/nxtblock/ggtoolbox/releases/download/v1.4/Setup.exe" target="_blank" rel="noopener">国内镜像获取</a>
-          </div>
+          <p>基于 raylib、使用 C++ 开发，面向 OIer 的桌面工具箱。集成导航、签到、MC 启动、脚本市场等功能，以模块化设计提供一站式服务，便于扩展。</p>
+          <a class="btn" href="/projects/toolbox" style="margin-top:12px">查看详情</a>
         </article>
 
         <!-- GenGen CF RMJ -->
@@ -193,208 +177,54 @@
           </div>
           <h3>GenGen CF RMJ</h3>
           <p>用于在洛谷平台直接提交 Codeforces 题目的脚本。减少页面切换与手动粘贴操作，提升做题流畅度。</p>
-          <ul class="muted" style="margin:10px 0 14px">
-            <li><strong>使用前提：</strong><span>拥有并登录 CF 账号</span></li>
-            <li><strong>环境建议：</strong><span>安装暴力猴/篡改猴，推荐 Edge + 暴力猴</span></li>
-            <li><strong>安装指南：</strong><span>获取最新 <code>.user.js</code> 脚本并允许管理器接管</span></li>
-          </ul>
-          <div class="rounded" style="overflow:hidden;border:1px solid #223359">
-            <img
-              src="https://cdn.luogu.com.cn/upload/image_hosting/pl6l7fbk.png"
-              alt="GenGen CF RMJ 脚本使用界面示意图 - 显示在洛谷平台直接提交 Codeforces 题目的功能"
-             
-              loading="lazy"
-            />
-          </div>
-          <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
-            <a class="btn" href="https://openuserjs.org/scripts/liyifan202201outlook.com/GenGen_CF_RMJ" target="_blank" rel="noopener">下载/安装指引</a>
-          </div>
-          <details style="margin-top:10px">
-            <summary class="muted">快速安装步骤</summary>
-            <ol style="margin:8px 0 0 18px">
-              <li>在浏览器安装脚本管理器（推荐 Edge 安装 暴力猴）。</li>
-              <li>访问上方 GitHub 链接，找到 CF RMJ 的最新 <code>.user.js</code>。</li>
-              <li>点击脚本文件，管理器将提示安装；确认后在洛谷站点即可生效。</li>
-              <li>确保已登录 Codeforces 账号，否则提交会失败。</li>
-            </ol>
-          </details>
+          <a class="btn" href="/projects/rmj" style="margin-top:12px">查看详情</a>
         </article>
-  
-        <!-- GenGen 洛谷国际 -->
-        <article class="card col-6 fade-in" style="animation-delay:.15s">
-          <div class="meta">
-            <span class="pill">网站代理</span>
-            <span class="pill">部署于 CloudFlare</span>
-            <span class="pill">无广告，速度极快</span>
-          </div>
-          <h3>GenGen 洛谷国际</h3>
-          <p>用于在国内优化队洛谷国际版的查看体验（类似于 luogu.me）。</p>
-          <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
-            <a class="btn" href="https://luogu.qzz.io/" target="_blank" rel="noopener">点击访问</a>
-            <a class="btn ghost" href="https://lg.gengen.qzz.io/" target="_blank" rel="noopener">备用链接1</a>
-            <a class="btn ghost" href="https://luogu.qzz.io/" target="_blank" rel="noopener">备用链接2</a>
-          </div>
-          <ul class="muted" style="margin:10px 0 14px">
-            <li><strong>访问速度：</strong><span>极快（Cloudflare 全球边缘网络）</span></li>
-            <li><strong>广告：</strong><span>完全无广告</span></li>
-            <li><strong>功能范围：</strong><span>完整代理 luogu.com（用户/专栏等）</span></li>
-            <li><strong>使用说明：</strong><span>只需将原洛谷国际站链接中的域名替换为 lg.gengen.qzz.io 即可</span></li>
-          </ul>
-          <details style="margin-top:10px">
-            <summary class="muted">使用说明</summary>
-            <ol style="margin:8px 0 0 18px">
-              <li>只需将原洛谷国际站链接中的域名替换为 lg.gengen.qzz.io 即可</li>
-              <li>⛔不隶属于洛谷（Luogu）官方团队；</li>
-              <li>⛔所有内容版权归属原站 luogu.com 所有，本站仅提供代理的功能；</li>
-            </ol>
-          </details>
-        </article>
+      </div>
+      
+      <div style="text-align: center; margin-top: 20px;">
+        <a class="btn" href="/projects" data-i18n="browse_projects">浏览全部项目</a>
       </div>
     </div>
   </section>
 
-  <!-- 队 -->
-  <section id="team">
+  <!-- 团队简介 -->
+  <section id="team-preview">
     <div class="container">
-      <h2 style="margin:0 0 14px">队成员</h2>
-      <p class="muted" style="margin:0 0 18px">小而专注：开发与后勤协作，让工具更可靠。</p>
+      <h2 style="margin:0 0 14px">团队简介</h2>
+      <p class="muted" style="margin:0 0 18px">GenGen 队是一支由 OIer 与开发者组成的小队，致力于利用开源技术改善编程竞赛体验。我们专注于简洁、稳定与可扩展的工具开发。</p>
 
-      <!-- 吉祥物 -->
-      <div class="card fade-in" style="animation-delay:.05s">
-        <div class="member">
-          <div class="avatar">
-            <img src="https://cdn.luogu.com.cn/upload/usericon/1351126.png" alt="General0826 头像 - GenGen 队吉祥物和创立者形象" loading="lazy" />
-          </div>
-          <div>
-            <strong>吉祥物：</strong><span>General0826</span>
-            <div class="muted">队形象代言，GenGen队创立者。</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 开发组 -->
-      <div class="grid" style="margin-top:16px">
-        <div class="col-12">
-          <div class="pill">开发组（2 人）</div>
-          <p class="muted" style="margin:8px 0 12px">职责：项目架构、功能开发、性能优化与发布流程。</p>
-        </div>
-
-        <div class="card col-6 fade-in" style="animation-delay:.1s">
-          <div class="member">
-            <div class="avatar">
-              <img src="https://cdn.luogu.com.cn/upload/usericon/661094.png" alt="liyifan202201 头像 - GenGen 队核心开发者专注于 C++/脚本和模块化设计" loading="lazy" />
-            </div>
-            <div>
-              <strong>liyifan202201</strong>
-              <div class="muted">核心开发 · C++/脚本 · 模块化设计</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card col-6 fade-in" style="animation-delay:.15s">
-          <div class="member">
-            <div class="avatar">
-              <img src="https://cdn.luogu.com.cn/upload/usericon/1032267.png" alt="GCSG01 头像 - GenGen 队核心开发者专注于 UI/交互和自动化" loading="lazy" />
-            </div>
-            <div>
-              <strong>GCSG01</strong>
-              <div class="muted">核心开发 · UI/交互 · 自动化与发布</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 后勤组 -->
-      <div class="grid" style="margin-top:12px">
-        <div class="col-12">
-          <div class="pill">后勤组（1 人）</div>
-          <p class="muted" style="margin:8px 0 12px">职责：运营支持、沟通协同、内容与用户反馈收集。</p>
-        </div>
-
-        <div class="card col-6 fade-in" style="animation-delay:.2s">
-          <div class="member">
-            <div class="avatar">
-              <img src="https://cdn.luogu.com.cn/upload/usericon/697932.png" alt="Gcend 头像 - GenGen 队后勤支持专员负责文档与社区运营" loading="lazy" />
-            </div>
-            <div>
-              <strong>Gcend</strong>
-              <div class="muted">后勤支持 · 文档与社区运营</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- 支持我们 -->
-  <section id="support">
-    <div class="container">
-      <h2 style="margin:0 0 14px">支持我们</h2>
-      <p class="muted" style="margin:0 0 12px">
-        我们在课业之余抽空开发与维护开源项目。你的支持能帮助我们覆盖基础成本、持续打磨体验。
-      </p>
       <div class="grid">
         <div class="col-6">
           <div class="card fade-in" style="animation-delay:.05s">
-            <h3 style="margin:0 0 8px">赞赏通道</h3>
-            <p class="muted" style="margin:0 0 10px">扫码赞赏，感谢你的每一份支持。</p>
-            <div class="rounded" style="overflow:hidden;border:1px solid #223359;max-width:320px">
-              <img
-                src="https://cdn.luogu.com.cn/upload/image_hosting/7uzglkak.png"
-                alt="GenGen 队赞赏二维码 - 支持开源项目开发"
-               
-                loading="lazy"
-              />
-            </div>
-            <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
-              <a class="btn" onclick="img.click()">打开大图</a>
-              <a class="btn ghost" href="#links">更多链接</a>
+            <div class="member">
+              <div class="avatar">
+                <img src="https://cdn.luogu.com.cn/upload/usericon/661094.png" alt="liyifan202201 头像 - GenGen 队核心开发者专注于 C++/脚本和模块化设计" loading="lazy" />
+              </div>
+              <div>
+                <strong>liyifan202201</strong>
+                <div class="muted">核心开发 · C++/脚本 · 模块化设计</div>
+              </div>
             </div>
           </div>
         </div>
+
         <div class="col-6">
           <div class="card fade-in" style="animation-delay:.15s">
-            <h3 style="margin:0 0 8px">你还能这样帮助</h3>
-            <ul class="muted" style="margin:6px 0 0">
-              <li><strong>Star/Watch：</strong><span>关注 GitHub 仓库，第一时间获得更新。给个 Star 吧🙏。</span></li>
-              <li><strong>反馈建议：</strong><span>提交 Issue 共享想法与场景</span></li>
-              <li><strong>传播分享：</strong><span>推荐给身边的 OIer 与同学</span></li>
-              <li><strong>贡献代码：</strong><span>欢迎 PR 与脚本/模块扩展</span></li>
-            </ul>
+            <div class="member">
+              <div class="avatar">
+                <img src="https://cdn.luogu.com.cn/upload/usericon/1032267.png" alt="GCSG01 头像 - GenGen 队核心开发者专注于 UI/交互和自动化" loading="lazy" />
+              </div>
+              <div>
+                <strong>GCSG01</strong>
+                <div class="muted">核心开发 · UI/交互 · 自动化与发布</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
-    </div>
-  </section>
-
-  <!-- 外部链接 -->
-  <section id="links">
-    <div class="container">
-      <h2 style="margin:0 0 14px">链接</h2>
-      <div class="grid">
-        <div class="col-6">
-          <div class="card fade-in" style="animation-delay:.05s">
-            <h3 style="margin:0 0 8px">队与项目</h3>
-            <ul style="margin:0;padding-left:18px">
-              <li><strong>GitHub 组织：</strong><a class="brand" href="https://github.com/nxtblock" target="_blank" rel="noopener">https://github.com/nxtblock</a></li>
-              <li><strong>洛谷队主页：</strong><a class="brand" href="https://www.luogu.com.cn/team/111044" target="_blank" rel="noopener">https://www.luogu.com.cn/team/111044</a> <span cla[...]
-            </ul>
-            <p class="muted" style="margin:12px 0 0">提示：所有项目均使用 MIT 协议。</p>
-          </div>
-        </div>
-        <div class="col-6">
-          <div class="card fade-in" style="animation-delay:.1s">
-            <h3 style="margin:0 0 8px">快速到达</h3>
-            <div style="display:flex;gap:10px;flex-wrap:wrap">
-              <a class="btn" href="#projects">查看项目</a>
-              <a class="btn ghost" href="#support">去赞赏</a>
-              <a class="btn" href="#home">返回顶部</a> <!-- 修复了错误的 class -->
-            </div>
-            <p class="muted" style="margin:12px 0 0">遇到问题？开个 Issue 或在洛谷队留言即可。</p>
-          </div>
-        </div>
+      
+      <div style="text-align: center; margin-top: 20px;">
+        <a class="btn" href="/team" data-i18n="team">了解完整团队</a>
       </div>
     </div>
   </section>

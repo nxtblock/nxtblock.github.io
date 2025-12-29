@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- Clarity tracking code for https://gengen.qzz.io/ -->
+  <script>
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "ubgsa4072p");
+  </script>
+  <link rel="icon" type="image/x-icon" href="https://cdn.luogu.com.cn/upload/image_hosting/3s3czya0.png"/>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>GenGen CF RMJ - GenGen 队</title>
+  <meta name="description" content="GenGen CF RMJ：用于在洛谷平台直接提交 Codeforces 题目的脚本。减少页面切换与手动粘贴操作，提升做题流畅度。" />
+  <meta name="keywords" content="GenGen, OI, 开源, 工具, 洛谷, Codeforces, 编程竞赛, 脚本, 油猴, 提交" />
+  <meta name="author" content="GenGen Team" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow" />
+  <meta name="revisit-after" content="7 days" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://gengen.qzz.io/projects/rmj" />
+  <meta property="og:title" content="GenGen CF RMJ - GenGen 队" />
+  <meta property="og:description" content="GenGen CF RMJ：用于在洛谷平台直接提交 Codeforces 题目的脚本。减少页面切换与手动粘贴操作，提升做题流畅度。" />
+  <meta property="og:image" content="https://cdn.luogu.com.cn/upload/image_hosting/pl6l7fbk.png" />
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://gengen.qzz.io/projects/rmj" />
+  <meta property="twitter:title" content="GenGen CF RMJ - GenGen 队" />
+  <meta property="twitter:description" content="GenGen CF RMJ：用于在洛谷平台直接提交 Codeforces 题目的脚本。减少页面切换与手动粘贴操作，提升做题流畅度。" />
+  <meta property="twitter:image" content="https://cdn.luogu.com.cn/upload/image_hosting/pl6l7fbk.png" />
+  
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="stylesheet" href="../../css/style.css">
+  
+  <!-- Schema.org structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "GenGen CF RMJ",
+    "description": "用于在洛谷平台直接提交 Codeforces 题目的脚本。减少页面切换与手动粘贴操作，提升做题流畅度。",
+    "url": "https://gengen.qzz.io/projects/rmj",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Web Browser",
+    "softwareVersion": "1.0",
+    "license": "https://opensource.org/licenses/MIT",
+    "author": {
+      "@type": "Organization",
+      "name": "GenGen Team"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "image": "https://cdn.luogu.com.cn/upload/image_hosting/pl6l7fbk.png",
+    "screenshot": "https://cdn.luogu.com.cn/upload/image_hosting/pl6l7fbk.png"
+  }
+  </script>
+  <!-- jQuery for dark mode -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- GSAP for animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+  <a href="#rmj" class="pill" style="position:absolute;left:-999px;top:0">跳至主要内容</a>
+
+  <!-- 模态框 -->
+  <div id="myModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="img01">
+  </div>
+
+  <!-- 顶部导航 -->
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brandmark" href="/" aria-label="返回首页">
+        <span class="logo">
+          <img src="https://cdn.luogu.com.cn/upload/image_hosting/3s3czya0.png" alt="GenGen 队徽标 - 代表 GenGen 团队的标志" loading="lazy">
+        </span>
+        <span class="title">GenGen 队</span>
+      </a>
+
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <button class="menu-btn" id="menuBtn" aria-label="打开菜单">☰</button>
+        
+        <!-- 语言选择下拉框 -->
+        <select id="language-selector" class="language-selector">
+          <option value="zh-CN" data-i18n="lang_zh_cn">中文</option>
+          <option value="zh-TW" data-i18n="lang_zh_tw">繁體</option>
+          <option value="en" data-i18n="lang_en">English</option>
+        </select>
+        
+        <!-- 深浅色模式切换按钮 -->
+        <button id="dark-mode-toggle" class="dark-mode-toggle">
+          <span class="sun-icon">☀️</span>
+          <span class="moon-icon">🌙</span>
+        </button>
+      </div>
+
+      <nav class="nav-links" id="navLinks" aria-label="主导航">
+        <a href="/" data-i18n="home">首页</a>
+        <a href="/projects" data-i18n="projects">项目</a>
+        <a href="/team" data-i18n="team">团队</a>
+        <a href="/support" data-i18n="support">支持我们</a>
+        <a href="/links" data-i18n="links">链接</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- GenGen CF RMJ 项目详情 -->
+  <section id="rmj">
+    <div class="container">
+      <div style="display: flex; align-items: center; margin-bottom: 20px;">
+        <h1 style="margin:0">GenGen CF RMJ</h1>
+        <span class="pill" style="margin-left: 15px;">油猴脚本</span>
+        <span class="pill" style="margin-left: 10px;">Luogu × Codeforces</span>
+      </div>
+      
+      <div class="grid">
+        <div class="col-8">
+          <div class="card">
+            <h2>项目简介</h2>
+            <p>GenGen CF RMJ 是一款专为 OI 选手设计的浏览器脚本，用于在洛谷平台直接提交 Codeforces 题目。该脚本通过智能识别题目信息和自动填充提交表单，极大简化了跨平台提交的复杂流程，让 OIer 可以更专注于解题本身，而无需在不同平台间频繁切换和手动粘贴代码。</p>
+            
+            <h3 style="margin-top: 25px;">核心特性</h3>
+            <ul>
+              <li><strong>一键提交：</strong>在洛谷页面即可直接提交 Codeforces 题目，无需手动复制粘贴代码</li>
+              <li><strong>智能识别：</strong>自动检测题目类型和提交格式，减少手动操作</li>
+              <li><strong>流畅体验：</strong>减少页面切换与手动粘贴操作，显著提升做题流畅度</li>
+              <li><strong>安全可靠：</strong>仅在用户确认后执行提交操作，确保账号安全</li>
+              <li><strong>兼容性强：</strong>支持主流浏览器和脚本管理器</li>
+            </ul>
+            
+            <h3 style="margin-top: 25px;">使用说明</h3>
+            <div class="card">
+              <h4>安装前准备</h4>
+              <ul>
+                <li>拥有并登录有效的 Codeforces 账号，确保账号权限正常</li>
+                <li>在浏览器中安装脚本管理器（推荐暴力猴/Tampermonkey）</li>
+                <li>推荐使用 Edge 浏览器配合暴力猴以获得最佳体验</li>
+              </ul>
+              
+              <h4 style="margin-top: 20px;">安装步骤</h4>
+              <ol>
+                <li>在浏览器中安装脚本管理器（如暴力猴、篡改猴等）</li>
+                <li>点击下方"下载/安装指引"按钮，系统将自动检测并提示安装脚本</li>
+                <li>确认安装后，脚本将在洛谷相关页面自动生效</li>
+                <li>确保已登录 Codeforces 账号，否则提交会失败</li>
+              </ol>
+              
+              <h4 style="margin-top: 20px;">使用方法</h4>
+              <ol>
+                <li>访问洛谷上的 Codeforces 题目页面</li>
+                <li>脚本会自动识别题目信息并显示提交按钮</li>
+                <li>编写或粘贴解决方案代码</li>
+                <li>选择合适的编程语言</li>
+                <li>点击"提交到 CF"按钮完成提交</li>
+              </ol>
+            </div>
+            
+            <h3 style="margin-top: 25px;">常见问题</h3>
+            <div class="card">
+              <h4>为什么提交失败？</h4>
+              <p>可能原因：未登录 CF 账号、CF 账号权限不足、网络连接问题、题目 ID 识别错误。请确保已正确登录 CF 账号并检查网络连接。</p>
+              
+              <h4 style="margin-top: 15px;">是否支持所有 CF 题目？</h4>
+              <p>目前支持大部分 CF 题目类型，包括常规题目、特殊题型等。如遇不支持的题型，请在项目页面反馈。</p>
+              
+              <h4 style="margin-top: 15px;">如何更新脚本？</h4>
+              <p>脚本管理器通常会自动检测更新，您也可以手动访问项目页面获取最新版本的 .user.js 文件。</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-4">
+          <div class="card">
+            <h3>项目信息</h3>
+            <ul class="muted" style="margin: 10px 0;">
+              <li><strong>类型：</strong>油猴脚本 (UserScript)</li>
+              <li><strong>兼容平台：</strong>洛谷 × Codeforces</li>
+              <li><strong>推荐环境：</strong>Edge + 暴力猴</li>
+              <li><strong>许可证：</strong>MIT License</li>
+              <li><strong>最新版本：</strong>v1.0</li>
+              <li><strong>发布日期：</strong>2024年</li>
+            </ul>
+            
+            <h3 style="margin-top: 20px;">下载链接</h3>
+            <div style="margin-top: 15px; display: flex; flex-direction: column; gap: 10px;">
+              <a class="btn" href="https://openuserjs.org/scripts/liyifan202201outlook.com/GenGen_CF_RMJ" target="_blank" rel="noopener">下载/安装指引</a>
+            </div>
+            
+            <h3 style="margin-top: 20px;">使用截图</h3>
+            <div class="rounded" style="overflow:hidden;border:1px solid #223359; margin-top: 10px;">
+              <img
+                src="https://cdn.luogu.com.cn/upload/image_hosting/pl6l7fbk.png"
+                alt="GenGen CF RMJ 脚本使用界面示意图 - 显示在洛谷平台直接提交 Codeforces 题目的功能"
+                style="width: 100%;"
+                loading="lazy"
+              />
+            </div>
+          </div>
+          
+          <div class="card" style="margin-top: 20px;">
+            <h3>技术细节</h3>
+            <ul class="muted" style="margin: 10px 0;">
+              <li>基于 JavaScript 开发的用户脚本</li>
+              <li>通过 DOM 操作实现功能集成</li>
+              <li>使用 CF API 进行安全的提交验证</li>
+              <li>支持多种编程语言提交</li>
+            </ul>
+          </div>
+          
+          <div class="card" style="margin-top: 20px;">
+            <h3>社区与支持</h3>
+            <ul class="muted" style="margin: 10px 0;">
+              <li>遇到问题？请在 GitHub 仓库提交 Issue</li>
+              <li>有功能建议？欢迎在项目页面提出 PR</li>
+              <li>交流反馈？可在洛谷队留言讨论</li>
+            </ul>
+            <a class="btn" href="https://github.com/nxtblock/gengen-cf-rmj" target="_blank" rel="noopener" style="margin-top: 10px;">访问 GitHub 仓库</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer>
+    <div class="container" style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between">
+      <div>© <span id="y"></span> GenGen Team · MIT</div>
+      <div class="muted" data-i18n="footer_slogan">Welcome GenGen Studio</div>
+    </div>
+  </footer>
+
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- Clarity tracking code for https://gengen.qzz.io/ -->
+  <script>
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "ubgsa4072p");
+  </script>
+  <link rel="icon" type="image/x-icon" href="https://cdn.luogu.com.cn/upload/image_hosting/3s3czya0.png"/>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>项目概览 - GenGen 队</title>
+  <meta name="description" content="GenGen 队项目概览：为 OI 编程竞赛爱好者提供高效工具，包括桌面工具箱、Codeforces 提交脚本及洛谷国际版加速服务。" />
+  <meta name="keywords" content="GenGen, OI, 开源, 工具, 洛谷, Codeforces, 编程竞赛, 工具箱, 脚本" />
+  <meta name="author" content="GenGen Team" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow" />
+  <meta name="revisit-after" content="7 days" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://gengen.qzz.io/projects" />
+  <meta property="og:title" content="项目概览 - GenGen 队" />
+  <meta property="og:description" content="GenGen 队项目概览：为 OI 编程竞赛爱好者提供高效工具，包括桌面工具箱、Codeforces 提交脚本及洛谷国际版加速服务。" />
+  <meta property="og:image" content="https://cdn.luogu.com.cn/upload/image_hosting/7effselq.png" />
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://gengen.qzz.io/projects" />
+  <meta property="twitter:title" content="项目概览 - GenGen 队" />
+  <meta property="twitter:description" content="GenGen 队项目概览：为 OI 编程竞赛爱好者提供高效工具，包括桌面工具箱、Codeforces 提交脚本及洛谷国际版加速服务。" />
+  <meta property="twitter:image" content="https://cdn.luogu.com.cn/upload/image_hosting/7effselq.png" />
+  
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="stylesheet" href="../css/style.css">
+  
+  <!-- Schema.org structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "GenGen Team",
+    "description": "GenGen 队：致力于为 OI 编程竞赛爱好者提供高效工具，包括桌面工具箱、Codeforces 提交脚本及洛谷国际版加速服务。",
+    "url": "https://gengen.qzz.io/",
+    "logo": "https://cdn.luogu.com.cn/upload/image_hosting/3s3czya0.png",
+    "foundingDate": "2023",
+    "sameAs": [
+      "https://github.com/nxtblock",
+      "https://www.luogu.com.cn/team/111044"
+    ],
+    "member": [
+      {
+        "@type": "Person",
+        "name": "liyifan202201",
+        "jobTitle": "Core Developer"
+      },
+      {
+        "@type": "Person",
+        "name": "GCSG01",
+        "jobTitle": "Core Developer"
+      },
+      {
+        "@type": "Person",
+        "name": "Gcend",
+        "jobTitle": "Logistics Support"
+      }
+    ],
+    "knowsAbout": ["OI Programming", "Competitive Programming", "Programming Tools", "Codeforces", "Luogu"]
+  }
+  </script>
+  <!-- jQuery for dark mode -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- GSAP for animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+  <a href="#projects" class="pill" style="position:absolute;left:-999px;top:0">跳至主要内容</a>
+
+  <!-- 模态框 -->
+  <div id="myModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="img01">
+  </div>
+
+  <!-- 顶部导航 -->
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brandmark" href="/" aria-label="返回首页">
+        <span class="logo">
+          <img src="https://cdn.luogu.com.cn/upload/image_hosting/3s3czya0.png" alt="GenGen 队徽标 - 代表 GenGen 团队的标志" loading="lazy">
+        </span>
+        <span class="title">GenGen 队</span>
+      </a>
+
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <button class="menu-btn" id="menuBtn" aria-label="打开菜单">☰</button>
+        
+        <!-- 语言选择下拉框 -->
+        <select id="language-selector" class="language-selector">
+          <option value="zh-CN" data-i18n="lang_zh_cn">中文</option>
+          <option value="zh-TW" data-i18n="lang_zh_tw">繁體</option>
+          <option value="en" data-i18n="lang_en">English</option>
+        </select>
+        
+        <!-- 深浅色模式切换按钮 -->
+        <button id="dark-mode-toggle" class="dark-mode-toggle">
+          <span class="sun-icon">☀️</span>
+          <span class="moon-icon">🌙</span>
+        </button>
+      </div>
+
+      <nav class="nav-links" id="navLinks" aria-label="主导航">
+        <a href="/" data-i18n="home">首页</a>
+        <a href="/projects" data-i18n="projects">项目</a>
+        <a href="/team" data-i18n="team">团队</a>
+        <a href="/support" data-i18n="support">支持我们</a>
+        <a href="/links" data-i18n="links">链接</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 项目 -->
+  <section id="projects">
+    <div class="container">
+      <h1 style="margin:0 0 14px">项目介绍</h1>
+      <p class="muted" style="margin:0 0 18px">模块化、一站式、面向真实场景的工具集。我们专注于为 OI 编程竞赛爱好者提供高效工具，涵盖从桌面应用到浏览器脚本的完整解决方案。</p>
+
+      <div class="grid">
+        <!-- GenGen ToolBox -->
+        <article class="card col-6 fade-in" style="animation-delay:.05s">
+          <div class="meta">
+            <span class="pill">C++</span>
+            <span class="pill">raylib</span>
+            <span class="pill">桌面应用</span>
+            <span class="pill">模块化</span>
+            <span class="pill">MIT License</span>
+          </div>
+          <h3>GenGen ToolBox</h3>
+          <p>基于 raylib、使用 C++ 开发，面向 OIer 的桌面工具箱。集成导航、签到、MC 启动、脚本市场等功能，以模块化设计提供一站式服务，便于扩展。通过精心设计的模块化架构，用户可以根据自己的需求自由组合功能模块，实现个性化的工作流程优化。</p>
+          <ul class="muted" style="margin:10px 0 14px">
+            <li><strong>模块化：</strong><span>按需启用与组合功能模块，避免功能冗余</span></li>
+            <li><strong>一站式：</strong><span>从日常打卡到工具启动，集中管理常用功能</span></li>
+            <li><strong>跨平台潜力：</strong><span>基于 raylib 图形层，界面轻量且具备跨平台扩展能力</span></li>
+            <li><strong>持续更新：</strong><span>定期添加新功能和优化用户体验</span></li>
+          </ul>
+          <div class="rounded" style="overflow:hidden;border:1px solid #223359">
+            <img
+              src="https://cdn.luogu.com.cn/upload/image_hosting/ri1qzzft.png"
+              alt="GenGen ToolBox 应用程序界面截图 - 显示编程竞赛工具箱功能"
+             
+              loading="lazy"
+            />
+          </div>
+          <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+            <a class="btn" href="/projects/toolbox">详细了解</a>
+            <a class="btn" href="https://github.com/nxtblock/ggtoolbox/releases/" target="_blank" rel="noopener">GitHub 获取</a>
+            <a class="btn" href="https://j.1win.ggff.net/https://github.com/nxtblock/ggtoolbox/releases/download/v1.4/Setup.exe" target="_blank" rel="noopener">国内镜像获取</a>
+          </div>
+        </article>
+
+        <!-- GenGen CF RMJ -->
+        <article class="card col-6 fade-in" style="animation-delay:.15s">
+          <div class="meta">
+            <span class="pill">油猴脚本</span>
+            <span class="pill">Luogu × Codeforces</span>
+            <span class="pill">Edge + 暴力猴推荐</span>
+            <span class="pill">MIT License</span>
+          </div>
+          <h3>GenGen CF RMJ</h3>
+          <p>用于在洛谷平台直接提交 Codeforces 题目的脚本。减少页面切换与手动粘贴操作，提升做题流畅度。该脚本通过智能识别题目信息和自动填充提交表单，极大简化了跨平台提交的复杂流程，让 OIer 可以更专注于解题本身。</p>
+          <ul class="muted" style="margin:10px 0 14px">
+            <li><strong>使用前提：</strong><span>拥有并登录 CF 账号，确保账号权限正常</span></li>
+            <li><strong>环境建议：</strong><span>安装暴力猴/篡改猴，推荐 Edge + 暴力猴以获得最佳体验</span></li>
+            <li><strong>安装指南：</strong><span>获取最新 <code>.user.js</code> 脚本并允许管理器接管</span></li>
+            <li><strong>智能识别：</strong><span>自动检测题目类型和提交格式，减少手动操作</span></li>
+          </ul>
+          <div class="rounded" style="overflow:hidden;border:1px solid #223359">
+            <img
+              src="https://cdn.luogu.com.cn/upload/image_hosting/pl6l7fbk.png"
+              alt="GenGen CF RMJ 脚本使用界面示意图 - 显示在洛谷平台直接提交 Codeforces 题目的功能"
+             
+              loading="lazy"
+            />
+          </div>
+          <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+            <a class="btn" href="/projects/rmj">详细了解</a>
+            <a class="btn" href="https://openuserjs.org/scripts/liyifan202201outlook.com/GenGen_CF_RMJ" target="_blank" rel="noopener">下载/安装指引</a>
+          </div>
+          <details style="margin-top:10px">
+            <summary class="muted">快速安装步骤</summary>
+            <ol style="margin:8px 0 0 18px">
+              <li>在浏览器安装脚本管理器（推荐 Edge 安装 暴力猴）。</li>
+              <li>访问上方 GitHub 链接，找到 CF RMJ 的最新 <code>.user.js</code>。</li>
+              <li>点击脚本文件，管理器将提示安装；确认后在洛谷站点即可生效。</li>
+              <li>确保已登录 Codeforces 账号，否则提交会失败。</li>
+            </ol>
+          </details>
+        </article>
+  
+        <!-- GenGen 洛谷国际 -->
+        <article class="card col-6 fade-in" style="animation-delay:.15s">
+          <div class="meta">
+            <span class="pill">网站代理</span>
+            <span class="pill">部署于 CloudFlare</span>
+            <span class="pill">无广告，速度极快</span>
+          </div>
+          <h3>GenGen 洛谷国际</h3>
+          <p>用于在国内优化洛谷国际版的查看体验（类似于 luogu.me）。通过全球分布的 CloudFlare 节点，我们提供了一个访问速度更快、无广告干扰的洛谷国际版访问渠道，让国内用户也能享受流畅的编程竞赛学习体验。</p>
+          <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+            <a class="btn" href="https://luogu.qzz.io/" target="_blank" rel="noopener">点击访问</a>
+            <a class="btn ghost" href="https://lg.gengen.qzz.io/" target="_blank" rel="noopener">备用链接1</a>
+            <a class="btn ghost" href="https://luogu.qzz.io/" target="_blank" rel="noopener">备用链接2</a>
+          </div>
+          <ul class="muted" style="margin:10px 0 14px">
+            <li><strong>访问速度：</strong><span>极快（Cloudflare 全球边缘网络，平均响应时间低于100ms）</span></li>
+            <li><strong>广告：</strong><span>完全无广告，提供纯净的学习环境</span></li>
+            <li><strong>功能范围：</strong><span>完整代理 luogu.com（用户/专栏等），支持所有功能</span></li>
+            <li><strong>使用说明：</strong><span>只需将原洛谷国际站链接中的域名替换为 lg.gengen.qzz.io 即可</span></li>
+          </ul>
+          <details style="margin-top:10px">
+            <summary class="muted">使用说明</summary>
+            <ol style="margin:8px 0 0 18px">
+              <li>只需将原洛谷国际站链接中的域名替换为 lg.gengen.qzz.io 即可</li>
+              <li>⛔不隶属于洛谷（Luogu）官方团队；</li>
+              <li>⛔所有内容版权归属原站 luogu.com 所有，本站仅提供代理的功能；</li>
+            </ol>
+          </details>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer>
+    <div class="container" style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between">
+      <div>© <span id="y"></span> GenGen Team · MIT</div>
+      <div class="muted" data-i18n="footer_slogan">Welcome GenGen Studio</div>
+    </div>
+  </footer>
+
+  <script src="../js/i18n.js"></script>
+  <script src="../js/script.js"></script>
+</body>
+</html>
