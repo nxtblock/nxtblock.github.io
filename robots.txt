@@ -1,6 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /cgi-bin/
-Disallow: /admin/
 
 Sitemap: https://gengen.qzz.io/sitemap.xml
