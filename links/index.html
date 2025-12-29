@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- Clarity tracking code for https://gengen.qzz.io/ -->
+  <script>
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "ubgsa4072p");
+  </script>
+  <link rel="icon" type="image/x-icon" href="https://cdn.luogu.com.cn/upload/image_hosting/3s3czya0.png"/>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>外部链接 - GenGen 队</title>
+  <meta name="description" content="GenGen 队相关链接汇总，包括 GitHub 组织、洛谷队主页、项目仓库等。" />
+  <meta name="keywords" content="GenGen, 链接, GitHub, 洛谷, Codeforces, 编程竞赛, 工具" />
+  <meta name="author" content="GenGen Team" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow" />
+  <meta name="revisit-after" content="7 days" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://gengen.qzz.io/links" />
+  <meta property="og:title" content="外部链接 - GenGen 队" />
+  <meta property="og:description" content="GenGen 队相关链接汇总，包括 GitHub 组织、洛谷队主页、项目仓库等。" />
+  <meta property="og:image" content="https://cdn.luogu.com.cn/upload/image_hosting/7effselq.png" />
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://gengen.qzz.io/links" />
+  <meta property="twitter:title" content="外部链接 - GenGen 队" />
+  <meta property="twitter:description" content="GenGen 队相关链接汇总，包括 GitHub 组织、洛谷队主页、项目仓库等。" />
+  <meta property="twitter:image" content="https://cdn.luogu.com.cn/upload/image_hosting/7effselq.png" />
+  
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="stylesheet" href="../css/style.css">
+  
+  <!-- Schema.org structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "GenGen Team",
+    "description": "GenGen 队：致力于为 OI 编程竞赛爱好者提供高效工具，包括桌面工具箱、Codeforces 提交脚本及洛谷国际版加速服务。",
+    "url": "https://gengen.qzz.io/",
+    "logo": "https://cdn.luogu.com.cn/upload/image_hosting/3s3czya0.png",
+    "foundingDate": "2023",
+    "sameAs": [
+      "https://github.com/nxtblock",
+      "https://www.luogu.com.cn/team/111044"
+    ],
+    "member": [
+      {
+        "@type": "Person",
+        "name": "liyifan202201",
+        "jobTitle": "Core Developer"
+      },
+      {
+        "@type": "Person",
+        "name": "GCSG01",
+        "jobTitle": "Core Developer"
+      },
+      {
+        "@type": "Person",
+        "name": "Gcend",
+        "jobTitle": "Logistics Support"
+      }
+    ],
+    "knowsAbout": ["OI Programming", "Competitive Programming", "Programming Tools", "Codeforces", "Luogu"]
+  }
+  </script>
+  <!-- jQuery for dark mode -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- GSAP for animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+  <a href="#links" class="pill" style="position:absolute;left:-999px;top:0">跳至主要内容</a>
+
+  <!-- 模态框 -->
+  <div id="myModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="img01">
+  </div>
+
+  <!-- 顶部导航 -->
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brandmark" href="/" aria-label="返回首页">
+        <span class="logo">
+          <img src="https://cdn.luogu.com.cn/upload/image_hosting/3s3czya0.png" alt="GenGen 队徽标 - 代表 GenGen 团队的标志" loading="lazy">
+        </span>
+        <span class="title">GenGen 队</span>
+      </a>
+
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <button class="menu-btn" id="menuBtn" aria-label="打开菜单">☰</button>
+        
+        <!-- 语言选择下拉框 -->
+        <select id="language-selector" class="language-selector">
+          <option value="zh-CN" data-i18n="lang_zh_cn">中文</option>
+          <option value="zh-TW" data-i18n="lang_zh_tw">繁體</option>
+          <option value="en" data-i18n="lang_en">English</option>
+        </select>
+        
+        <!-- 深浅色模式切换按钮 -->
+        <button id="dark-mode-toggle" class="dark-mode-toggle">
+          <span class="sun-icon">☀️</span>
+          <span class="moon-icon">🌙</span>
+        </button>
+      </div>
+
+      <nav class="nav-links" id="navLinks" aria-label="主导航">
+        <a href="/" data-i18n="home">首页</a>
+        <a href="/projects" data-i18n="projects">项目</a>
+        <a href="/team" data-i18n="team">团队</a>
+        <a href="/support" data-i18n="support">支持我们</a>
+        <a href="/links" data-i18n="links">链接</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 外部链接 -->
+  <section id="links">
+    <div class="container">
+      <h1 style="margin:0 0 14px">链接汇总</h1>
+      <p class="muted" style="margin:0 0 18px">以下是 GenGen 队相关的所有链接，包括我们的项目仓库、社区页面以及相关资源。通过这些链接，您可以深入了解我们的项目、参与社区讨论或获取更多编程竞赛相关资源。</p>
+
+      <div class="grid">
+        <div class="col-6">
+          <div class="card fade-in" style="animation-delay:.05s">
+            <h2 style="margin:0 0 8px">团队与项目</h2>
+            <ul style="margin:0;padding-left:18px">
+              <li><strong>GitHub 组织：</strong><a class="brand" href="https://github.com/nxtblock" target="_blank" rel="noopener">https://github.com/nxtblock</a></li>
+              <li><strong>洛谷队主页：</strong><a class="brand" href="https://www.luogu.com.cn/team/111044" target="_blank" rel="noopener">https://www.luogu.com.cn/team/111044</a></li>
+              <li><strong>GenGen ToolBox 仓库：</strong><a class="brand" href="https://github.com/nxtblock/ggtoolbox" target="_blank" rel="noopener">https://github.com/nxtblock/ggtoolbox</a></li>
+              <li><strong>GenGen CF RMJ 仓库：</strong><a class="brand" href="https://github.com/nxtblock/gengen-cf-rmj" target="_blank" rel="noopener">https://github.com/nxtblock/gengen-cf-rmj</a></li>
+              <li><strong>GenGen 洛谷国际版：</strong><a class="brand" href="https://luogu.qzz.io/" target="_blank" rel="noopener">https://luogu.qzz.io/</a></li>
+            </ul>
+            <p class="muted" style="margin:12px 0 0">提示：所有项目均使用 MIT 协议，欢迎 Star 和贡献代码。</p>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="card fade-in" style="animation-delay:.1s">
+            <h2 style="margin:0 0 8px">相关资源</h2>
+            <ul style="margin:0;padding-left:18px">
+              <li><strong>洛谷官网：</strong><a class="brand" href="https://www.luogu.com.cn/" target="_blank" rel="noopener">https://www.luogu.com.cn/</a></li>
+              <li><strong>Codeforces：</strong><a class="brand" href="https://codeforces.com/" target="_blank" rel="noopener">https://codeforces.com/</a></li>
+              <li><strong>AtCoder：</strong><a class="brand" href="https://atcoder.jp/" target="_blank" rel="noopener">https://atcoder.jp/</a></li>
+              <li><strong>GitHub Pages：</strong><a class="brand" href="https://pages.github.com/" target="_blank" rel="noopener">https://pages.github.com/</a></li>
+              <li><strong>OpenUserJS：</strong><a class="brand" href="https://openuserjs.org/" target="_blank" rel="noopener">https://openuserjs.org/</a></li>
+            </ul>
+            <p class="muted" style="margin:12px 0 0">这些是编程竞赛和开发相关的常用平台和工具。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 社区链接 -->
+      <div class="card" style="margin-top: 20px;">
+        <h2>社区与交流</h2>
+        <div class="grid">
+          <div class="col-6">
+            <h3>官方社区</h3>
+            <ul style="margin:0;padding-left:18px">
+              <li><strong>洛谷讨论区：</strong>在洛谷队页面参与讨论</li>
+              <li><strong>GitHub Issues：</strong>在各项目仓库提交 Issue</li>
+              <li><strong>GitHub Discussions：</strong>参与项目讨论和功能建议</li>
+            </ul>
+          </div>
+          <div class="col-6">
+            <h3>技术社区</h3>
+            <ul style="margin:0;padding-left:18px">
+              <li><strong>CSDN：</strong>技术博客和经验分享</li>
+              <li><strong>知乎：</strong>编程竞赛相关话题讨论</li>
+              <li><strong>Stack Overflow：</strong>编程问题解答</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 友情链接 -->
+      <div class="card" style="margin-top: 20px;">
+        <h2>合作伙伴与友链</h2>
+        <div class="grid">
+          <div class="col-6">
+            <h3>编程竞赛平台</h3>
+            <ul style="margin:0;padding-left:18px">
+              <li><strong>洛谷国际版：</strong><a class="brand" href="https://www.luogu.com/" target="_blank" rel="noopener">https://www.luogu.com/</a></li>
+              <li><strong>AtCoder：</strong><a class="brand" href="https://atcoder.jp/" target="_blank" rel="noopener">https://atcoder.jp/</a></li>
+              <li><strong>TopCoder：</strong><a class="brand" href="https://www.topcoder.com/" target="_blank" rel="noopener">https://www.topcoder.com/</a></li>
+            </ul>
+          </div>
+          <div class="col-6">
+            <h3>开发工具</h3>
+            <ul style="margin:0;padding-left:18px">
+              <li><strong>GitHub：</strong><a class="brand" href="https://github.com/" target="_blank" rel="noopener">https://github.com/</a></li>
+              <li><strong>GitLab：</strong><a class="brand" href="https://about.gitlab.com/" target="_blank" rel="noopener">https://about.gitlab.com/</a></li>
+              <li><strong>Visual Studio Code：</strong><a class="brand" href="https://code.visualstudio.com/" target="_blank" rel="noopener">https://code.visualstudio.com/</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 快速访问 -->
+      <div class="card" style="margin-top: 20px;">
+        <h2>快速访问</h2>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn" href="/projects">查看项目</a>
+          <a class="btn ghost" href="/support">去赞赏</a>
+          <a class="btn" href="/team">了解团队</a>
+          <a class="btn ghost" href="/">返回首页</a>
+        </div>
+        <p class="muted" style="margin:12px 0 0">遇到问题？开个 Issue 或在洛谷队留言即可。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer>
+    <div class="container" style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between">
+      <div>© <span id="y"></span> GenGen Team · MIT</div>
+      <div class="muted" data-i18n="footer_slogan">Welcome GenGen Studio</div>
+    </div>
+  </footer>
+
+  <script src="../js/i18n.js"></script>
+  <script src="../js/script.js"></script>
+</body>
+</html>
