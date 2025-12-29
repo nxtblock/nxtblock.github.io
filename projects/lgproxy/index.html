@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- Clarity tracking code for https://gengen.qzz.io/ -->
+  <script>
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "ubgsa4072p");
+  </script>
+  <link rel="icon" type="image/x-icon" href="https://cdn.luogu.com.cn/upload/image_hosting/3s3czya0.png"/>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>GenGen 洛谷国际 - GenGen 队项目</title>
+  <meta name="description" content="GenGen 洛谷国际：基于 CloudFlare 的洛谷国际版加速服务，为国内用户提供快速、无广告的洛谷国际版访问体验。成立于2024-07-28，经历了两个发展阶段。" />
+  <meta name="keywords" content="GenGen, 洛谷国际, Luogu, 加速, 代理, 编程竞赛, OI, 算法竞赛, CF, Codeforces" />
+  <meta name="author" content="GenGen Team" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow" />
+  <meta name="revisit-after" content="7 days" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://gengen.qzz.io/projects/lgproxy" />
+  <meta property="og:title" content="GenGen 洛谷国际 - GenGen 队项目" />
+  <meta property="og:description" content="GenGen 洛谷国际：基于 CloudFlare 的洛谷国际版加速服务，为国内用户提供快速、无广告的洛谷国际版访问体验。成立于2024-07-28，经历了两个发展阶段。" />
+  <meta property="og:image" content="https://cdn.luogu.com.cn/upload/image_hosting/7effselq.png" />
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://gengen.qzz.io/projects/lgproxy" />
+  <meta property="twitter:title" content="GenGen 洛谷国际 - GenGen 队项目" />
+  <meta property="twitter:description" content="GenGen 洛谷国际：基于 CloudFlare 的洛谷国际版加速服务，为国内用户提供快速、无广告的洛谷国际版访问体验。成立于2024-07-28，经历了两个发展阶段。" />
+  <meta property="twitter:image" content="https://cdn.luogu.com.cn/upload/image_hosting/7effselq.png" />
+  
+  <meta name="theme-color" content="#0f172a" />
+  <link rel="stylesheet" href="../../css/style.css">
+  
+  <!-- Schema.org structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "GenGen 洛谷国际",
+    "description": "基于 CloudFlare 的洛谷国际版加速服务，为国内用户提供快速、无广告的洛谷国际版访问体验",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "CNY"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "GenGen Team",
+      "url": "https://gengen.qzz.io/",
+      "logo": "https://cdn.luogu.com.cn/upload/image_hosting/3s3czya0.png"
+    }
+  }
+  </script>
+  <!-- jQuery for dark mode -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- GSAP for animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+  <a href="#lgproxy" class="pill" style="position:absolute;left:-999px;top:0">跳至主要内容</a>
+
+  <!-- 模态框 -->
+  <div id="myModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="img01">
+  </div>
+
+  <!-- 顶部导航 -->
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brandmark" href="/" aria-label="返回首页">
+        <span class="logo">
+          <img src="https://cdn.luogu.com.cn/upload/image_hosting/3s3czya0.png" alt="GenGen 队徽标 - 代表 GenGen 团队的标志" loading="lazy">
+        </span>
+        <span class="title">GenGen 队</span>
+      </a>
+
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <button class="menu-btn" id="menuBtn" aria-label="打开菜单">☰</button>
+        
+        <!-- 语言选择下拉框 -->
+        <select id="language-selector" class="language-selector">
+          <option value="zh-CN" data-i18n="lang_zh_cn">中文</option>
+          <option value="zh-TW" data-i18n="lang_zh_tw">繁體</option>
+          <option value="en" data-i18n="lang_en">English</option>
+        </select>
+        
+        <!-- 深浅色模式切换按钮 -->
+        <button id="dark-mode-toggle" class="dark-mode-toggle">
+          <span class="sun-icon">☀️</span>
+          <span class="moon-icon">🌙</span>
+        </button>
+      </div>
+
+      <nav class="nav-links" id="navLinks" aria-label="主导航">
+        <a href="/" data-i18n="home">首页</a>
+        <a href="/projects" data-i18n="projects">项目</a>
+        <a href="/team" data-i18n="team">团队</a>
+        <a href="/support" data-i18n="support">支持我们</a>
+        <a href="/links" data-i18n="links">链接</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- GenGen 洛谷国际项目详情 -->
+  <section id="lgproxy">
+    <div class="container">
+      <h1 style="margin:0 0 14px">GenGen 洛谷国际</h1>
+      <p class="muted" style="margin:0 0 18px">基于 CloudFlare 的洛谷国际版加速服务，为国内用户提供快速、无广告的洛谷国际版访问体验</p>
+
+      <div class="grid">
+        <article class="card col-12 fade-in" style="animation-delay:.05s">
+          <div class="meta">
+            <span class="pill">网站代理</span>
+            <span class="pill">部署于 CloudFlare</span>
+            <span class="pill">无广告，速度极快</span>
+            <span class="pill">成立于 2024-07-28</span>
+          </div>
+          
+          <h3>项目简介</h3>
+          <p>GenGen 洛谷国际是专为国内编程竞赛爱好者设计的洛谷国际版（luogu.com）加速服务。通过全球分布的 CloudFlare 节点，我们提供了一个访问速度更快、无广告干扰的洛谷国际版访问渠道，让国内用户也能享受流畅的编程竞赛学习体验。</p>
+          
+          <h3 style="margin:18px 0 10px">项目历史</h3>
+          <p>GenGen 洛谷国际项目成立于2024年7月28日，至今经历了两个重要的发展阶段：</p>
+          
+          <ul class="muted" style="margin:10px 0 14px">
+            <li><strong>第一阶段（2024-07-28 至 2025-08-10）：</strong>由 general0826 领导的"用创意改变生活"时代。在此期间，项目专注于基础架构的搭建和核心代理功能的实现，奠定了稳定的技术基础。</li>
+            <li><strong>第二阶段（2025-08-11 至今）：</strong>由 Gcend 领导的"用科技改变生活"时代。在此期间，项目进行了重大技术重构和功能优化，显著提升了访问速度和用户体验。</li>
+          </ul>
+          
+          <h3 style="margin:18px 0 10px">技术实现</h3>
+          <p>我们利用 CloudFlare Workers 的强大功能，实现了对洛谷国际版的高效代理。通过全球分布的边缘节点，用户请求可以就近处理，大大减少了网络延迟。同时，我们移除了原站的广告内容，为用户提供纯净的学习环境。</p>
+          
+          <div style="margin:18px 0; padding: 15px; background: var(--panel); border-radius: var(--radius); border: 1px solid #223359;">
+            <h4>第一阶段演示</h4>
+            <p>在第一阶段，由 general0826 领导的"用创意改变生活"时期，我们有一个特殊的演示页面：</p>
+            <iframe src="https://luogu.store/d/870801" width="100%" height="400" style="border: 1px solid #223359; border-radius: var(--radius); margin-top: 10px;"></iframe>
+          </div>
+          
+          <h3 style="margin:18px 0 10px">功能特点</h3>
+          <ul class="muted" style="margin:10px 0 14px">
+            <li><strong>访问速度：</strong><span>极快（Cloudflare 全球边缘网络，平均响应时间低于100ms）</span></li>
+            <li><strong>广告：</strong><span>完全无广告，提供纯净的学习环境</span></li>
+            <li><strong>功能范围：</strong><span>完整代理 luogu.com（用户/专栏等），支持所有功能</span></li>
+            <li><strong>使用说明：</strong><span>只需将原洛谷国际站链接中的域名替换为 lg.gengen.qzz.io 即可</span></li>
+          </ul>
+          
+          <h3 style="margin:18px 0 10px">使用方法</h3>
+          <p>使用 GenGen 洛谷国际非常简单，您只需要将原洛谷国际站链接中的域名替换为 lg.gengen.qzz.io 即可。例如，如果原链接是 https://www.luogu.com/problem/P1001，您只需访问 https://lg.gengen.qzz.io/problem/P1001 即可获得加速访问体验。</p>
+          
+          <details style="margin:10px 0 14px">
+            <summary class="muted">详细使用说明</summary>
+            <ol style="margin:8px 0 0 18px">
+              <li>只需将原洛谷国际站链接中的域名替换为 lg.gengen.qzz.io 即可</li>
+              <li>⛔不隶属于洛谷（Luogu）官方团队；</li>
+              <li>⛔所有内容版权归属原站 luogu.com 所有，本站仅提供代理的功能；</li>
+            </ol>
+          </details>
+          
+          <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+            <a class="btn" href="https://luogu.qzz.io/" target="_blank" rel="noopener">点击访问</a>
+            <a class="btn ghost" href="/">返回项目列表</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer>
+    <div class="container" style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between">
+      <div>© <span id="y"></span> GenGen Team · MIT</div>
+      <div class="muted" data-i18n="footer_slogan">Welcome GenGen Studio</div>
+    </div>
+  </footer>
+
+  <script src="../../js/i18n.js"></script>
+  <script src="../../js/script.js"></script>
+</body>
+</html>

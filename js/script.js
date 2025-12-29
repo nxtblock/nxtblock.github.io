@@ -78,9 +78,18 @@ window.onclick = function(event) {
 // 深浅色模式切换功能
 document.addEventListener('DOMContentLoaded', function() {
   // 检查用户偏好和本地存储
-  const isDarkMode = localStorage.getItem('darkMode') === 'true' || 
-                    (window.matchMedia('(prefers-color-scheme: dark)').matches && localStorage.getItem('darkMode') !== 'false');
-  
+  const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+  let isDarkMode;
+
+  // 检查本地存储是否有设置
+  const storedDarkMode = localStorage.getItem('darkMode');
+  if (storedDarkMode !== null) {
+    isDarkMode = storedDarkMode === 'true';
+  } else {
+    // 如果没有本地存储，使用系统偏好
+    isDarkMode = prefersDarkScheme.matches;
+  }
+
   // 设置初始状态
   if (isDarkMode) {
     document.body.classList.add('dark');
@@ -89,13 +98,13 @@ document.addEventListener('DOMContentLoaded', function() {
     document.body.classList.add('light');
     document.body.classList.remove('dark');
   }
-  
+
   // 深浅色模式切换按钮
   const darkModeToggle = document.getElementById('dark-mode-toggle');
   if (darkModeToggle) {
     darkModeToggle.addEventListener('click', function() {
       const isCurrentlyDark = document.body.classList.contains('dark');
-      
+
       if (isCurrentlyDark) {
         document.body.classList.remove('dark');
         document.body.classList.add('light');

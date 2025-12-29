@@ -54,7 +54,7 @@ const i18nData = {
 };
 
 // 默认语言
-const defaultLanguage = 'en';
+const defaultLanguage = 'zh-CN';
 
 // 获取浏览器语言
 function getBrowserLanguage() {
@@ -82,7 +82,7 @@ function getCurrentLanguage() {
 
 // 设置语言
 function setLanguage(lang) {
-  // 如果语言不在支持范围内，默认为英文
+  // 如果语言不在支持范围内，默认为中文简体
   if (!i18nData[lang]) {
     lang = defaultLanguage;
   }

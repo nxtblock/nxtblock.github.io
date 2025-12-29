@@ -161,7 +161,7 @@
           </div>
         </article>
 
-        <!-- GenGen RMJ -->
+        <!-- GenGen CF RMJ -->
         <article class="card col-6 fade-in" style="animation-delay:.15s">
           <div class="meta">
             <span class="pill">油猴脚本</span>
@@ -195,11 +195,6 @@
               <li>在浏览器安装脚本管理器（推荐 Edge 安装 暴力猴）。</li>
               <li>访问上方 GitHub 链接，找到 RMJ 的最新 <code>.user.js</code>。</li>
               <li>点击脚本文件，管理器将提示安装；确认后在洛谷站点即可生效。</li>
-              <li>确保已登录 Codeforces 或 ATcoder 账号，否则提交会失败。</li>
-            </ol>
-          </details>
-        </article>
-
         <!-- GenGen 洛谷国际 -->
         <article class="card col-6 fade-in" style="animation-delay:.15s">
           <div class="meta">
@@ -220,6 +215,11 @@
             <li><strong>功能范围：</strong><span>完整代理 luogu.com（用户/专栏等），支持所有功能</span></li>
             <li><strong>使用说明：</strong><span>只需将原洛谷国际站链接中的域名替换为 lg.gengen.qzz.io 即可</span></li>
           </ul>
+        </article>
+              <li>⛔不隶属于洛谷（Luogu）官方团队；</li>
+              <li>⛔所有内容版权归属原站 luogu.com 所有，本站仅提供代理的功能；</li>
+            </ol>
+          </details>
         </article>
       </div>
     </div>
