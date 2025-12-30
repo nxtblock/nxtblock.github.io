@@ -53,17 +53,15 @@ const modal = document.getElementById("myModal");
 const modalImg = document.getElementById("img01");
 let captionText = document.getElementById("caption");
 
-// 获取关闭按钮
-const closeButtons = document.getElementsByClassName("close");
-if (closeButtons.length > 0) {
-  for (let i = 0; i < closeButtons.length; i++) {
-    closeButtons[i].onclick = function() { 
-      if (modal) {
-        modal.style.display = "none";
-      }
+// 获取关闭按钮 - 修复close按钮无法点击的bug
+const closeButtons = document.querySelectorAll(".close");
+closeButtons.forEach(button => {
+  button.onclick = function() { 
+    if (modal) {
+      modal.style.display = "none";
     }
   }
-}
+});
 
 // 点击模态框外区域关闭模态框
 if (modal) {
@@ -113,6 +111,12 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.classList.add('dark');
         localStorage.setItem('darkMode', 'true');
       }
+      
+      // 确保国际化功能正常工作
+      if (typeof translatePage === 'function') {
+        const currentLang = localStorage.getItem('language') || 'zh-CN';
+        translatePage(currentLang);
+      }
     });
   }
 });
@@ -122,12 +126,16 @@ document.addEventListener('DOMContentLoaded', function() {
   const languageSelector = document.getElementById('language-selector');
   
   // 初始化语言
-  const currentLang = getCurrentLanguage();
-  setLanguage(currentLang);
+  if (typeof getCurrentLanguage === 'function' && typeof setLanguage === 'function') {
+    const currentLang = getCurrentLanguage();
+    setLanguage(currentLang);
+  }
   
-  languageSelector.addEventListener('change', function() {
-    const selectedLang = this.value;
-    setLanguage(selectedLang);
-  });
+  if (languageSelector && typeof setLanguage === 'function') {
+    languageSelector.addEventListener('change', function() {
+      const selectedLang = this.value;
+      setLanguage(selectedLang);
+    });
+  }
 });
 
