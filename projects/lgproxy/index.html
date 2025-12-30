@@ -85,27 +85,14 @@
 
       <div style="display: flex; align-items: center; gap: 10px;">
         <button class="menu-btn" id="menuBtn" aria-label="打开菜单">☰</button>
-        
-        <!-- 语言选择下拉框 -->
-        <select id="language-selector" class="language-selector">
-          <option value="zh-CN" data-i18n="lang_zh_cn">中文</option>
-          <option value="zh-TW" data-i18n="lang_zh_tw">繁體</option>
-          <option value="en" data-i18n="lang_en">English</option>
-        </select>
-        
-        <!-- 深浅色模式切换按钮 -->
-        <button id="dark-mode-toggle" class="dark-mode-toggle">
-          <span class="sun-icon">☀️</span>
-          <span class="moon-icon">🌙</span>
-        </button>
       </div>
 
       <nav class="nav-links" id="navLinks" aria-label="主导航">
-        <a href="/" data-i18n="home">首页</a>
-        <a href="/projects" data-i18n="projects">项目</a>
-        <a href="/team" data-i18n="team">团队</a>
-        <a href="/support" data-i18n="support">支持我们</a>
-        <a href="/links" data-i18n="links">链接</a>
+        <a href="/">首页</a>
+        <a href="/projects">项目</a>
+        <a href="/team">团队</a>
+        <a href="/support">支持我们</a>
+        <a href="/links">链接</a>
       </nav>
     </div>
   </header>
@@ -132,7 +119,7 @@
           <div class="grid">
             <div class="col-6">
               <h4>内引洛谷保存站</h4>
-              <div style="height: 800px; overflow-y: scroll; border: 1px solid #223359; border-radius: var(--radius); margin-top: 10px;">
+              <div style="height: 400px; overflow-y: scroll; border: 1px solid #223359; border-radius: var(--radius); margin-top: 10px;">
                 <img src="https://cdn.luogu.com.cn/upload/image_hosting/lj7jvtlf.png" alt="洛谷保存站演示图" width="100%" />
               </div>
             </div>
@@ -177,11 +164,10 @@
   <footer>
     <div class="container" style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between">
       <div>© <span id="y"></span> GenGen Team · MIT</div>
-      <div class="muted" data-i18n="footer_slogan">We are GenGen</div>
+      <div class="muted">We are GenGen</div>
     </div>
   </footer>
 
-  <script src="../../js/i18n.js"></script>
   <script src="../../js/script.js"></script>
 </body>
 </html>
