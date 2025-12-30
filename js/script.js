@@ -54,12 +54,14 @@ const modalImg = document.getElementById("img01");
 let captionText = document.getElementById("caption");
 
 // 获取关闭按钮
-const span = document.getElementsByClassName("close")[0];
-
-// 当用户点击关闭按钮时，关闭模态框
-if (span) {
-  span.onclick = function() { 
-    modal.style.display = "none";
+const closeButtons = document.getElementsByClassName("close");
+if (closeButtons.length > 0) {
+  for (let i = 0; i < closeButtons.length; i++) {
+    closeButtons[i].onclick = function() { 
+      if (modal) {
+        modal.style.display = "none";
+      }
+    }
   }
 }
 
@@ -129,13 +131,3 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-// 显示完整团队信息的函数
-function showFullTeam() {
-  const fullTeamInfo = document.getElementById('fullTeamInfo');
-  if (fullTeamInfo) {
-    fullTeamInfo.style.display = 'block';
-    // 滚动到团队信息部分
-    fullTeamInfo.scrollIntoView({ behavior: 'smooth' });
-  }
-  return false; // 阻止链接默认行为
-}
