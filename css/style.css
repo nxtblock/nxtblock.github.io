@@ -421,18 +421,28 @@ body.light .brandmark .logo {
 }
 .col-12{grid-column: span 12}
 .col-6{grid-column: span 12}
-.col-4{grid-column: span 12}
+.col-12{grid-column: span 12}
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.5s ease-in forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
 @media (min-width: 640px) {
   .col-6{grid-column: span 6}
-  .col-4{grid-column: span 12}
+  .col-12{grid-column: span 12}
 }
 @media (min-width: 768px) {
   .col-6{grid-column: span 6}
-  .col-4{grid-column: span 4}
+  .col-12{grid-column: span 12}
 }
 @media (min-width: 960px) {
   .col-6{grid-column: span 6}
-  .col-4{grid-column: span 4}
+  .col-12{grid-column: span 12}
 }
 .card{
   background:linear-gradient(180deg,#0e162b,#0b1326);
