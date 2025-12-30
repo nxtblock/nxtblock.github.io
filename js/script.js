@@ -48,30 +48,27 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
 // 获取模态框元素
 const modal = document.getElementById("myModal");
 
-// 获取图片元素
-const img = document.querySelector("#support .rounded img");
+// 获取图片元素 - 修复支持我们页面的打开大图功能
+// 注意：支持我们页面的图片已经有onclick事件，这里不再重复绑定
 const modalImg = document.getElementById("img01");
-const captionText = document.getElementById("caption");
-
-// 当用户点击图片时，打开模态框
-img.onclick = function(){
-  modal.style.display = "block";
-  modalImg.src = this.src;
-  captionText.innerHTML = this.alt;
-}
+let captionText = document.getElementById("caption");
 
 // 获取关闭按钮
 const span = document.getElementsByClassName("close")[0];
 
 // 当用户点击关闭按钮时，关闭模态框
-span.onclick = function() { 
-  modal.style.display = "none";
+if (span) {
+  span.onclick = function() { 
+    modal.style.display = "none";
+  }
 }
 
 // 点击模态框外区域关闭模态框
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
+if (modal) {
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
   }
 }
 
@@ -131,3 +128,14 @@ document.addEventListener('DOMContentLoaded', function() {
     setLanguage(selectedLang);
   });
 });
+
+// 显示完整团队信息的函数
+function showFullTeam() {
+  const fullTeamInfo = document.getElementById('fullTeamInfo');
+  if (fullTeamInfo) {
+    fullTeamInfo.style.display = 'block';
+    // 滚动到团队信息部分
+    fullTeamInfo.scrollIntoView({ behavior: 'smooth' });
+  }
+  return false; // 阻止链接默认行为
+}
