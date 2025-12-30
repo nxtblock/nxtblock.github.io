@@ -51,19 +51,25 @@ const modal = document.getElementById("myModal");
 // 获取图片元素 - 修复支持我们页面的打开大图功能
 // 注意：支持我们页面的图片已经有onclick事件，这里不再重复绑定
 const modalImg = document.getElementById("img01");
-let captionText = document.getElementById("caption");
 
 // 获取关闭按钮
 const closeButtons = document.getElementsByClassName("close");
-if (closeButtons.length > 0) {
-  for (let i = 0; i < closeButtons.length; i++) {
-    closeButtons[i].onclick = function() { 
-      if (modal) {
-        modal.style.display = "none";
-      }
+for (let i = 0; i < closeButtons.length; i++) {
+  closeButtons[i].onclick = function() { 
+    if (modal) {
+      modal.style.display = "none";
     }
   }
 }
+
+// 使用事件委托处理动态内容或稍后加载的内容
+document.addEventListener('click', function(e) {
+  if (e.target && e.target.className === 'close') {
+    if (modal) {
+      modal.style.display = "none";
+    }
+  }
+});
 
 // 点击模态框外区域关闭模态框
 if (modal) {
@@ -121,13 +127,18 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', function() {
   const languageSelector = document.getElementById('language-selector');
   
-  // 初始化语言
-  const currentLang = getCurrentLanguage();
-  setLanguage(currentLang);
-  
-  languageSelector.addEventListener('change', function() {
-    const selectedLang = this.value;
-    setLanguage(selectedLang);
-  });
+  // 检查国际化函数是否存在
+  if (typeof getCurrentLanguage === 'function' && typeof setLanguage === 'function') {
+    // 初始化语言
+    const currentLang = getCurrentLanguage();
+    setLanguage(currentLang);
+    
+    if (languageSelector) {
+      languageSelector.addEventListener('change', function() {
+        const selectedLang = this.value;
+        setLanguage(selectedLang);
+      });
+    }
+  }
 });
 

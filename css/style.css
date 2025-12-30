@@ -430,10 +430,6 @@ body.light .brandmark .logo {
   .col-6{grid-column: span 6}
   .col-4{grid-column: span 4}
 }
-@media (max-width: 959px) {
-  .col-6{grid-column: span 12}
-  .col-4{grid-column: span 12}
-}
 .card{
   background:linear-gradient(180deg,#0e162b,#0b1326);
   border:1px solid #1f2d4a;border-radius:var(--radius);padding:18px;
