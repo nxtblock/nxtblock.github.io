@@ -15,7 +15,7 @@ const i18nData = {
     browse_projects: '浏览项目',
     support_us: '支持我们',
     hero_cta_text: 'Star、分享与赞赏，都是推动我们前行的燃料。',
-    footer_slogan: 'Welcome GenGen Studio'
+    footer_slogan: 'We are GenGen'
   },
   'zh-TW': {
     lang_zh_cn: '简体',
@@ -32,7 +32,7 @@ const i18nData = {
     browse_projects: '瀏覽項目',
     support_us: '支持我們',
     hero_cta_text: 'Star、分享與讚賞，都是推動我們前行的燃料。',
-    footer_slogan: 'Welcome GenGen Studio'
+    footer_slogan: 'We are GenGen'
   },
   'en': {
     lang_zh_cn: 'Simplified',
@@ -49,7 +49,7 @@ const i18nData = {
     browse_projects: 'Browse Projects',
     support_us: 'Support Us',
     hero_cta_text: 'Stars, shares, and appreciation are all fuel that drives us forward.',
-    footer_slogan: 'Welcome GenGen Studio'
+    footer_slogan: 'We are GenGen'
   }
 };
 
