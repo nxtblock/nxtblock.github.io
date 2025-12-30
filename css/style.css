@@ -422,6 +422,10 @@ body.light .brandmark .logo {
 .col-12{grid-column: span 12}
 .col-6{grid-column: span 12}
 .col-4{grid-column: span 12}
+@media (min-width: 640px) {
+  .col-6{grid-column: span 6}
+  .col-4{grid-column: span 12}
+}
 @media (min-width: 768px) {
   .col-6{grid-column: span 6}
   .col-4{grid-column: span 4}
